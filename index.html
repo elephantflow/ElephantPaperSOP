@@ -28,7 +28,7 @@
     .tools{display:grid;grid-template-columns:1.7fr 1fr 1fr;gap:10px;margin:14px 0}
     input,select{width:100%;padding:12px 13px;border:1px solid var(--line);border-radius:12px;background:#fff;font-size:15px;color:var(--ink)}
 
-    .layout{display:grid;grid-template-columns:360px 1fr 460px;gap:12px}
+    .layout{display:grid;grid-template-columns:300px 1fr 620px;gap:12px}
     .panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px;box-shadow:0 2px 16px rgba(9,44,36,.04)}
     .panel h2{margin:2px 0 10px;font-size:18px}
 
@@ -58,6 +58,7 @@
     .tabs{display:flex;gap:7px;flex-wrap:wrap;margin:10px 0}
     .tab-btn{border:1px solid var(--line);background:#fff;border-radius:999px;padding:7px 11px;font-size:13px;cursor:pointer}
     .tab-btn.active{background:var(--soft);border-color:#94d9cc;color:#0c5f58;font-weight:700}
+    .section-tab{margin:8px 0 10px}
 
     .para{margin:8px 0;padding:10px;border-radius:9px;background:#fff;border:1px dashed #d8e8e4;font-size:14px;line-height:1.66}
     .blank-slot{background:var(--blank);padding:1px 4px;border-radius:5px;border:1px solid #f3c29f;font-weight:700;color:#8a3d00}
@@ -166,7 +167,7 @@ async function load(){
   for(const tid of index.templates){
     tMap[tid] = await j(`./${index.paths.templates_intro_dir}/${tid}.json`);
   }
-  return {index,tMap,paperCache:{}, activeTplTab:'introduction'};
+  return {index,tMap,paperCache:{}, activeTplTab:'introduction', activeDetailTab:'introduction'};
 }
 
 function app(state){
@@ -246,9 +247,10 @@ function app(state){
     if(!pMeta){ detail.innerHTML='<div class="map">未找到论文元数据。</div>'; return; }
 
     const paper=await loadPaper(pid);
-    const intro=paper.analysis?.introduction || {};
-    const hs=Array.isArray(intro.highlights)?intro.highlights:[];
-    const maps=Array.isArray(intro.template_mapping)?intro.template_mapping:[];
+    const tab = state.activeDetailTab || 'introduction';
+    const secAnalysis = paper.analysis?.[tab] || {};
+    const hs=Array.isArray(secAnalysis.highlights)?secAnalysis.highlights:[];
+    const maps=Array.isArray(secAnalysis.template_mapping)?secAnalysis.template_mapping:[];
     const sec=paper.content?.sections||{};
     const ft=paper.content?.fulltext||{};
 
@@ -257,7 +259,7 @@ function app(state){
           const tip = `中文改写: ${h.rewrite_zh||'暂无'}\n\n可套用句式: ${h.reusable_pattern||'暂无'}`;
           return `<div class="quote-card">${esc(h.text||'')}<div class="tip">${esc(tip)}</div></div>`;
         }).join('')
-      : '<div class="map">暂无摘抄句</div>';
+      : '<div class="map">该章节暂无摘抄句（后续批次会增量补充）。</div>';
 
     const secRows=['introduction','related_work','method','experiments','conclusion']
       .map(k=>`<div class="map"><b>${k}</b><br/>${esc(sec[k]?.status||'pending')} · ${esc(sec[k]?.chars||0)} chars</div>`).join('');
@@ -276,10 +278,31 @@ function app(state){
         <div class="map"><b>模板匹配</b><br/>${esc(pMeta.template_id)}</div>
       </div>
 
-      <div class="sec"><h3>优秀摘抄（悬浮查看中文与套用）</h3>${quoteHtml}</div>
-      <div class="sec"><h3>模板映射（Introduction）</h3>${maps.map(m=>`<div class="map"><b>${esc(m.template_paragraph||'')}</b><br/>${esc(m.paper_evidence||'')}</div>`).join('')||'<div class="map">暂无映射</div>'}</div>
+      <div class="sec">
+        <h3>优秀摘抄（按章节）</h3>
+        <div class="tabs section-tab">
+          <button class="tab-btn ${tab==='introduction'?'active':''}" data-detail-tab="introduction">Introduction</button>
+          <button class="tab-btn ${tab==='method'?'active':''}" data-detail-tab="method">Method</button>
+          <button class="tab-btn ${tab==='experiments'?'active':''}" data-detail-tab="experiments">Experiments</button>
+          <button class="tab-btn ${tab==='conclusion'?'active':''}" data-detail-tab="conclusion">Conclusion</button>
+        </div>
+        ${quoteHtml}
+      </div>
+      <div class="sec"><h3>模板映射（${esc(SECTION_LABELS[tab]||tab)}）</h3>${maps.map(m=>`<div class="map"><b>${esc(m.template_paragraph||'')}</b><br/>${esc(m.paper_evidence||'')}</div>`).join('')||'<div class="map">该章节暂无映射</div>'}</div>
       <div class="sec"><h3>章节解析状态</h3>${secRows}</div>
     `;
+
+    detail.querySelectorAll('[data-detail-tab]').forEach(btn=>{
+      btn.addEventListener('click',()=>{
+        state.activeDetailTab = btn.dataset.detailTab;
+        if (state.activeDetailTab === 'method' || state.activeDetailTab === 'experiments' || state.activeDetailTab === 'conclusion') {
+          state.activeTplTab = state.activeDetailTab;
+        } else {
+          state.activeTplTab = 'introduction';
+        }
+        renderDetail(pid).catch(e=>{detail.innerHTML=`<div class="map">${esc(String(e))}</div>`;});
+      });
+    });
 
     renderTpl(pMeta.template_id);
   }
