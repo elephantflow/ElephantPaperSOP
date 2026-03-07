@@ -1,0 +1,2 @@
+# ElephantPaperSOP
+Auto paper SOP
