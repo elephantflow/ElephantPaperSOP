@@ -1,20 +1,32 @@
 # ElephantPaperSOP
 
-面向论文写作的可演化经验库（测试版）。
+Introduction 写作经验库（v0.2.0）。
 
-## batch-0001 已完成
+## 本轮优化
 
-- 以 `elephantflow/ElephantPaper` 的 10 篇论文进行端到端测试
-- 生成结构化分析（主题/任务/方法范式/叙事/写作风格）
-- 生成章节套路与模板库
-- 生成按论文类型组织的写作 SOP
-- 提供可检索前端页面 `index.html`
+- 以 10 篇论文为单位，聚焦 Introduction。
+- 每篇论文提供：
+  - 优秀摘抄句（来自 Introduction）
+  - 该论文与模板的映射
+  - 组织架构与模板段落对应
+- 提供跨论文归纳的模板家族：
+  - Gap-Formalization
+  - Tradeoff-Bridge
+  - Pipeline-Reframing
+  - Task-Benchmark Definition
+- 每个模板家族都包含：
+  - 摘要 4 段模板
+  - Introduction 5 段模板
+  - 可复用句式
 
 ## 数据文件
 
-- `data/analysis/latest.json`
-- `data/kb/templates.json`
-- `data/kb/sop.json`
-- `data/kb/taxonomy.json`
-- `data/fulltext/acquisition-batch-0001.json`
-- `data/reports/batch-0001-diff.md`
+- `data/intro/intro-templates-v2.json`
+- `data/intro/papers-intro-batch-0001.json`
+
+## 页面
+
+- `index.html`
+  - 论文列表（可筛选）
+  - 论文详情（摘抄句 + 模板映射 + 组织架构对应）
+  - 模板库侧栏（可直接用来写作）
