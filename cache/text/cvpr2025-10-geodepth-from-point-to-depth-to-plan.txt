@@ -1,0 +1,276 @@
+GeoDepth: From Point-to-Depth to Plane-to-Depth Modeling for
+Self-Supervised Monocular Depth Estimation
+Haifeng Wu, Shuhang Gu, Lixin Duan, Wen Li *
+University of Electronic Science and Technology of China
+{haifengwu205, shuhanggu, lxduan, liwenbnu }@gmail.com
+Abstract
+Self-supervised monocular depth estimation has long been
+treated as a point-wise prediction problem, where the depth
+of each pixel is usually estimated independently. However ,
+artifacts are often observed in the estimated depth map, e.g.,
+depth values for points located in the same region may jump
+dramatically. To address this issue, we propose a novel selfsupervised monocular depth estimation framework called
+GeoDepth, where we explore the intrinsic geometric representation in 3D scenes for producing accurate and continuous depth maps. In particular , we model the complex 3D
+scene as a collection of planes with varying sizes, where
+each plane is characterized by a unique set of parameters,
+namely planar normal (indicating plane orientation) and
+planar offset (deﬁning the perpendicular distance from the
+camera center to the plane). Under this modeling, points
+in the same plane are enforced to share a unique representation and their depth variations related only to pixel coordinates, thus this geometric relationship can be exploited
+to regularize the depth variations of these points. To this
+end, we design a structured plane generation module that
+introduces spatio-temporal geometric cues and the plane
+uniqueness principle to recover the correct scene plane representation. In addition, we develop a depth discontinuity
+module to identify depth discontinuity regions and subsequently optimize them. Our experiments on the KITTI and
+NYUv2 datasets demonstrate that GeoDepth achieves stateof-the-art performance, with additional tests on Make3D
+and ScanNet validating its generalization capabilities.
+1. Introduction
+Monocular depth estimation is a pivotal task in computer
+vision, which aims to predict a pixel-wise depth map for
+a given image. Each value in the depth map measures the
+distance from the corresponding point in the 3D scene to
+the camera plane [
+44]. Given its ability to provide 3D
+*Corresponding author
+scene structure information, monocular depth estimation
+is broadly applicable in ﬁelds such as autonomous driving
+[
+11, 33], robotics [7], and augmented reality [31]. While supervised learning can deliver high-performance depth predictions, acquiring dense depth labels is often costly. As
+a result, self-supervised monocular depth estimation methods, which leverage only video or stereo images for training
+[
+9, 13, 46, 60], have emerged as a practical alternative.
+Despite its advantages, self-supervised monocular depth
+estimation frequently encounters difﬁculties in achieving
+accurate and smooth depth estimation, particularly in regions lacking texture [
+27, 55, 57]. This mainly because
+the mainstream approaches usually adopts a point-to-depth
+modeling strategy (refer to Fig. 1(a)), where image pixels
+are treated as independent points, and the depth values are
+estimated from their discrete representations[
+28]. As a result, artifacts are often observed in the estimated depth map,
+e.g., depth values for points located in the same region may
+jump dramatically. We refer to this phenomenon as depth
+discontinuity. Some works [
+27, 36, 54, 55, 57, 59] attempt
+to leverage only plane cues from surface normals to facilitate smoother depth estimation by assuming neighboring
+pixels form a local plane. Nevertheless, relying solely on
+surface normals as plane indicators might be unreliable, as
+it contradicts the principle of plane uniqueness in Geometric Algebra [
+20], which necessitates both a normal vector
+and an offset for a deﬁnitive plane representation in 3D
+space. Therefore, it is appealing to develop a robust modeling strategy to capture the intrinsic geometric representation
+for achieving accurate and continuous depth estimation.
+In this paper, we propose a new self-supervised monocular depth estimation framework called GeoDepth, where
+a novel plane-to-depth modeling strategy is developed to
+address the depth discontinuity issues inherent in point-todepth methods. The motivation of GeoDepth is that a 3D
+scene can essentially be modeled as a collection of planes
+of varying sizes, where all points within the same plane can
+be described by a unique set of parameters, namely the planar normal and planar offset [
+20]. As depicted in Fig. 1(b),
+our methodology models coplanar points as a uniform plaThis CVPR paper is the Open Access version, provided by the Computer Vision Foundation.
+Except for this watermark, it is identical to the accepted version;
+the final published version of the proceedings is available on IEEE Xplore.
+11525
+𝑃ଵ(𝐷ଵ, 𝑁ଵ, 𝑂ଵ)Scene depth(𝐷ଵ)
+𝑃ଶ(𝐷ଶ, 𝑁ଵ, 𝑂ଵ)
+𝑃ଷ(𝐷ଷ, 𝑁ଶ, 𝑂ଶ)
+𝑃ଵ
+𝑃ଶ
+𝑃ଷ
+Planar normal Image Planar offset Scene depth
+Share the same plane
+(a) Point-to-depth modeling (b) Plane-to-depth modeling (Ours)
+Planar normal
+Planar offset
+Scene depth
+Captured image
+Scene depth
+Feature map
+Share the same plane
+Treated as independent 
+points
+Depth often varies abruptly
+3m
+0.5m×
+Discrete representation
+1.5m
+Depth accurate and smooth
+1.7m
+√
+Same
+Different
+𝑃ଵ
+𝑃ଶ
+𝑃ଷ
+𝑃ଵ
+𝑃ଶ
+𝑃ଷ
+Geometric mapping
+𝑃ଵ(𝐷ଵ, 𝑁ଵ, 𝑂ଵ)Scene depth(𝐷ଵ)
+𝑃ଶ(𝐷ଶ, 𝑁ଵ, 𝑂ଵ)
+𝑃ଷ(𝐷ଷ, 𝑁ଶ, 𝑂ଶ)
+𝑃ଵ
+𝑃ଶ
+𝑃ଷ
+Planar normal Image Planar offset Scene depth
+Planar representation
+(a) Point-to-depth modeling (b) Plane-to-depth modeling (Ours)
+Planar normal
+Planar offset
+Scene depth
+Captured image
+Scene depth
+Feature map
+Planar representation
+Treated as independent 
+points
+Depth often varies abruptly
+3m
+0.5m×
+Discrete representation
+1.5m
+1.7m
+√
+Same
+Different
+𝑃ଵ
+𝑃ଶ
+𝑃ଷ
+𝑃ଵ
+𝑃ଶ
+𝑃ଷ
+Geometric mapping
+Depth accurate and smooth
+Figure 1. An illustration of our motivation . (a) Self-supervised monocular depth estimation has long been treated as a point-wise
+prediction problem, where the depth of each pixel is usually estimated independently. Consequently, artifacts are often observed in the
+estimated depth map, e.g., depth values for points located in the same region may jump dramatically. (b) Instead, our GeoDepth models
+the complex 3D scene as planes of varying size, parameterized by planar normals and planar offsets, and infers the geometric correlation
+from them to depth. In GeoDepth, coplanar points are modeled as a uniﬁed representation instead of discrete representation and their
+depth variations are solely related to continuous image coordinates (see Eq. (
+1)). Therefore, by recovering structured representation among
+pixels, we are able to obtain more continuous depth map.
+nar representation, rather than discrete points. This insight
+naturally leads us to estimate these two planar properties
+from the input image as a structured plane representation
+and derive the geometric correlation to depth from them. In
+our modeling framework, the depth variations of coplanar
+points are exclusively linked to pixel coordinates (see Eq.
+(
+1)), thereby eliminating depth discontinuities by restoring
+the structured representation among pixels.
+To accurately recover the plane representation, we propose a structured plane generation module. This module
+initially utilizes spatio-temporal geometric cues to guide
+the two planar properties to recover the approximate scene
+structure, and then jointly optimizes them based on the
+plane uniqueness principle [
+20] to ensure that coplanar
+points converge to a uniﬁed representation. Additionally,
+recognizing that depth discontinuities often occur in lowtexture regions, we introduce a depth discontinuity awareness module that dynamically identiﬁes pixels with lower
+photometric errors as potential depth discontinuity regions
+and subsequently optimizes them.
+We conduct extensive experiments on two outdoor
+datasets: KITTI [
+11] and Make3D [ 37], and two indoor
+datasets: NYUv2 [ 42] and ScanNet [ 6]. Results on KITTI
+and NYUv2 show that our method achieves state-of-theart performance and that our design choices are effective.
+Results on Make3D and ScanNet verify the generalization
+ability of our method to unseen outdoor and indoor scenes.
+In summary, our main contributions are as follows:
+• We introduce GeoDepth, a novel self-supervised monocular depth estimation framework, which develops a planeto-depth modeling strategy to address the depth discontinuity issues inherent in point-to-depth methods.
+• We propose a structured plane generation module and
+a depth discontinuity awareness module to learn correct
+plane representations ( i.e., normal and offset) in a selfsupervised paradigm.
+• Extensive experiments on widely-used outdoor datasets
+(KITTI and Make3D) and indoor datasets (NYUv2 and
+ScanNet) show the robustness and generalization ability.
+2. Related Work
+2.1. Supervised Monocular Depth Estimation
+As a pioneering work on supervised learning, Eigen et al.
+[
+8] ﬁrst predicted a depth from a single image by stacking
+coarse-scale and ﬁne-scale networks. Since then, many su11526
+pervised works have been proposed by modifying the model
+architecture [
+38, 50, 56], training on large datasets [ 5, 51],
+designing robust loss functions [ 26, 61], and transforming
+this task into an ordinal regression issue [2, 3, 21, 39]. However, we can only capture sparse depth data from the physical world, and collecting large-scale training data is timeconsuming and expensive. Thus, high data requirements
+and collection costs limit the application of these methods.
+2.2. Self­supervised Monocular Depth Estimation
+Considering that large-scale annotated datasets are not always available, self-supervised depth estimation methods
+have attracted some attention. Garg et al. [
+10] ﬁrst introduced an alternative to learn depth from stereo pairs in
+a self-supervised manner. To release the requirement of
+stereo images, Zhou et al. [
+66] estimated depth map and
+camera pose simultaneously and only used video data in the
+training phase. Following this, a series of works were proposed by designing robust losses [
+16, 41, 58], using auxiliary information during training [25, 48], dealing with moving objects [13, 24], and adding extra geometric constraints
+[27, 55]. However, these methods adopt point-to-depth
+modeling, that is, independently modeling the depth of each
+pixel [
+28], leading to depth discontinuities. In contrast, we
+revisit this task and propose a novel self-supervised framework, which utilizes plane-to-depth modeling to tackle the
+depth discontinuities.
+2.3. Plane Cues for Depth Estimation
+The purpose of depth estimation is to obtain depth maps
+with continuous structure. To this end, one type of monocular depth estimation work attempts to introduce multi-plane
+representations. GonzalezBello et al. [
+14, 15] predeﬁned
+multiple depth planes and then used a deep neural network to learn the predeﬁned plane to which each pixel belongs. However, as real 3D scenes are complex and contain
+slanted planes, such representation is sensitive to discretization [
+47]. Another type of work focuses on incorporating
+local plane prior. Y anget al. [55] introduced an edge-aware
+depth-normal consistency constraint inside the network to
+regularize the depth map by using the surface normal extracted from the depth map. Subsequently, some works
+[
+36, 54, 59] jointly predicted the depth map and the surface normal, and regularized the depth with a depth-normal
+consistency loss. In addition, StructDepth [
+27] adopted
+a Manhattan-world assumption in indoor settings, forcing
+major surfaces (ﬂoor, ceiling, and walls) to align with dominant directions. However, these methods adopted solely
+surface normals as plane guides, which is unreliable since
+it cannot represent the scene plane deterministically. Moreover, as non-planar region violates the local plane assumption, planar guidance in these methods is performed on all
+pixels, leading to incorrect depth training.
+3. Plane-to-Depth Modeling
+In monocular depth estimation, the objective is to produce
+a depth map where each value corresponds to the distance
+between the camera plane and its corresponding point in
+the 3D scene. Consequently, once the 3D scene has been
+reconstructed, the depth map can be readily derived using
+the principles of perspective geometry.
+Typically, a real-world 3D scene can be seen as an assembly of planes of varying dimensions, ranging from the
+entire scene down to a single pixel. According to the plane
+uniqueness representation principle, a plane in 3D space can
+be represented by a normal vector n and an offset vector o.
+Thus, a complete 3D scene can be mathematically denoted
+as: π = {nk, ok}M
+k=1, where M is the number of planes
+in the 3D scene. According to the point-normal form, a
+3D point P on a plane πi = {ni, oi} satisﬁes: nT
+i P = oi,
+In addition, the 3D point P located in the plane πi can be
+projected to a 2D point p = [ u, v]T in the image space:
+˜p = P/(dK− 1), where ˜p denotes the homogeneous coordinate of p, d is the depth at P, and K is intrinsic to the camera.
+Thus, for an individual plane, the geometric correlation between the depth and planar normal as well as planar offset
+is deﬁned as:
+d = oi
+nT
+i K− 1˜p . (1)
+It can be observed that the depth variations of coplanar
+points are exclusively linked to pixel coordinates p, since
+their planar normal and planar offset are equal. This insight
+naturally leads us to estimate these two planar properties
+from the input image as a structured plane representation
+and derive the geometric correlation to depth from them. To
+this end, we extend Eq. (
+1) to formulate the plane-to-depth
+modeling for self-supervised monocular depth estimation:
+D(p) = O(p)
+NT (p)K− 1˜p , (2)
+where N ∈ R3× H× W , O ∈ R3× H× W and D ∈ R3× H× W
+are the planar normal, planar offset, and depth map of an
+image, respectively. Note that H × W represent the spatial
+resolution of the input image.
+Compared with the direct prediction of pixel-wise depth
+in existing self-supervised monocular depth estimation
+framework, our approach focuses on mining structured explici

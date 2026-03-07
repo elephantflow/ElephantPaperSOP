@@ -1,0 +1,207 @@
+Flash3D: Super-scaling Point Transformers through Joint Hardware-Geometry
+Locality
+Liyan Chen1, Gregory P. Meyer2, Zaiwei Zhang2, Eric M. Wolff2, Paul Vernaza2
+1The University of Texas at Austin
+2Cruise LLC
+liyanc@cs.utexas.edu, eric.wolff@getcruise.com, paul.vernaza@getcruise.com
+https://github.com/liyanc/Flash3DTransformer
+Abstract
+Recent efforts recognize the power of scale in 3D learning (e.g. PTv3) and attention mechanisms (e.g. FlashAttention). However, current point cloud backbones fail to
+holistically unify geometric locality, attention mechanisms,
+and GPU architectures in one view. In this paper, we introduce Flash3D Transformer, which aligns geometric locality and GPU tiling through a principled locality mechanism based on Perfect Spatial Hashing (PSH). The common
+alignment with GPU tiling naturally fuses our PSH locality mechanism with FlashAttention at negligible extra cost.
+This mechanism affords flexible design choices throughout
+the backbone that result in superior downstream task results. Flash3D outperforms state-of-the-art PTv3 results on
+benchmark datasets, delivering a 2.25x speed increase and
+2.4x memory efficiency boost. This efficiency enables scaling to wider attention scopes and larger models without additional overhead. Such scaling allows Flash3D to achieve
+even higher task accuracies than PTv3 under the same compute budget.
+1. Introduction
+Efficient and scalable processing of point clouds is crucial for a wide range of applications, including autonomous
+driving [14, 15, 27, 35, 44], robotic navigation [24, 29, 38,
+42, 45], and augmented reality [11, 30]. Point cloud backbones are essential architectures that extract meaningful
+features from raw 3D data. Recent advancements [17, 18,
+22, 39, 41] have explored various strategies to enhance the
+performance of these backbones, particularly focusing on
+how Multi-Head Self-Attention (MHSA) mechanisms can
+be optimized for 3D point clouds. Windowing MHSA and
+region shifting (e.g., Swin Transformers [21, 43]) enable
+efficient local-global feature extraction, but scaling point
+cloud backbones to larger point cloud sizes and model capacities remains challenging [21, 39, 41].
+x N
+GPU 
+tile 
+(SM)
+GPU 
+tile 
+(SM)
+GPU 
+tile 
+(SM)
+Principled Locality Mechanism
+FA2
+FA2
+FA2
+FA2
+FA2
+FA2
+Zero-Overhead Bucket-Swin
+latency
+Flash3D: 20ms
+PTv3: 45ms
+Figure 1. Effectiveness our Flash3D transformer by unifying geometric locality, FlashAttention (FA2), and GPU tiling architecture. Our unified perspective leads to drastically improved speed
+and scalability of point transformers.
+In this paper, we tackle the challenges of efficient and
+scalable point cloud backbones by introducing Flash3D
+Transformer, a new architecture that unifies geometric locality with GPU memory locality. This is achieved through
+a principled locality mechanism based on Perfect Spatial
+Hashing (PSH). Flash3D is designed to align point cloud
+backbones with the tiling architecture of GPUs, leading
+to marked improvements in both efficiency and scalability. Our work integrates a locality mechanism that bridges
+geometric and GPU memory locality, enabling an efficient
+mapping of 3D points into compact memory spaces. Benefiting from compact memory layouts, Flash3D introduces
+a multilevel attention grouping method, Bucket-and-Swin,
+precisely aligned with GPU tiling, allowing zero overhead
+region shifting fused with FlashAttention-2 [6]. The joint
+locality and efficiency boost are illustrated in Figure 1.
+Our key contributions are summarized as follows:
+• Unified geometric and GPU memory locality : Using
+Perfect Spatial Hashing (PSH), we propose a principled
+locality mechanism that brings together geometric and
+memory locality, benefiting downstream feature quality
+and operation throughput.
+This CVPR paper is the Open Access version, provided by the Computer Vision Foundation.
+Except for this watermark, it is identical to the accepted version;
+the final published version of the proceedings is available on IEEE Xplore.
+6595
+• Attention aligned with GPU tiling : We propose a
+novel Bucket-and-Swin attention mechanism, structured
+closely to GPU tiling, incorporating zero-overhead region
+shifting and striding.
+• Scalable Performance : Flash3D Transformer outperforms PTv3 on benchmark datasets, simultaneously
+achieving a 2.25x speed increase and 2.4x memory efficiency boost.
+2. Related Work
+3D Point Transformers Many variations of Point Transformers have appeared recently, such as PTv1 [46],
+PTv2 [40], PTv3 [41], FlatFormer [22], and OctFormer [39], each differing in their definitions of geometric
+locality. PTv1 and PTv2 introduced foundational concepts
+in point cloud transformers, focusing on capturing both
+local and global geometric structures within point clouds
+through intricate windowing of MHSA.
+FlatFormer [22] demonstrated that partitioning point
+clouds into equally sized windows benefits MHSA by enabling efficient batching. OctFormer [39] proposed octreebased neighborbood partitioning for fast window computation. Additionally, region shifting based on Swin Transformers has been utilized to aggregate and distribute global
+information through subsequent local windowing, enhancing the network’s ability to capture both local and global
+features [9, 21, 22]. PTv3 [41] incorporated such design principles and achieved state-of-the-art performance
+by scaling up MHSA window sizes and parameter sizes.
+However, by relying on abstractions of global serialization
+and scattering of points and features, PTv3 overlooks GPU
+architectural issues, incurring substantial and unnecessary
+computational and memory costs (see Figure 2 and Section 3 for details). This highlights the need to holistically
+integrate geometric locality with hardware considerations.
+Varied definitions of geometric locality call for a general approach to encompass a family of such. Ideal geometric locality definitions should be flexible and computeefficient to represent striding and shifting and incorporate
+global structures within point clouds. Variations among partition sizes lead to negligible differences in downstream task
+performances while hindering compute efficiency [36, 39].
+Therefore, we motivate our principled locality mechanism
+to align flexible geometric locality definitions with evenly
+sized windows, which allow regularly batched computations on GPUs and saturate GPU compute throughput. Our
+Bucket-and-Swin attention offers an efficient method for
+striding and shifting on top of properly localized points by
+leveraging our principled locality mechanism.
+FlashAttention FlashAttention algorithms [6, 7, 32]
+leverage the tiling structure of GPU chips and optimize attention mechanisms by retaining intermediate results onchip and carefully localizing computations. Retention
+of intermediate results on-chip helps FlashAttention algorithms to reduce quadratic memory cost down to a linear
+one [7, 25, 33, 34]. Partitioning input arrays into tiles
+aligned with GPU tiling structures maximizes computation
+throughput. Given that GPU architectures have maintained
+a tiling structure for over two decades—a fundamental design aspect unlikely to change [13]—these methods aim to
+maximize GPU utilization for a range of GPU chips.
+These two principles motivate our design choices of
+Bucket-and-Swin attention. We partition point cloud features into tiles fit in GPU tiles; each tile is fetched on-the-fly
+based on logical assignments; logical partitions and fetching are fused with FlashAttention-2 CUDA kernel.
+Perfect Spatial Hashing (PSH) Spatial hashing was
+originally proposed to efficiently locate and query spatially
+sparse data points [12, 23]. To enhance memory locality and
+computational efficiency, researchers introduced the concept of perfectness [5], compacting the hash table into a
+contiguous linear array in memory. This approach resulted
+in improved memory access patterns and query speed [20].
+Later, [1] proposed a parallelized PSH construction on
+GPUs, achieving exceptionally fast constructions even on
+early GPUs by leveraging their massive parallel processing
+capabilities and placing buckets within GPU tiles.
+In our work, we focus on perfectness, propose a principled locality mechanism, and remove the traditional table
+indexing structure. We focus on hashing a large number
+of points into a contiguous memory array for MHSA. This
+simplification aligns with our goal of unifying geometric locality with GPU memory locality to optimize performance.
+3. Preliminaries
+In order to explain how Flash3D achieves fast performance,
+we must first understand the bottlenecks in previous work.
+Figure 2 depicts the high-level dataflow associated with a
+method such as PTv3 (note that some layers are omitted
+for the sake of simplicity of exposition). Each numbered
+rectangle represents a float stored in memory. We assume
+the data has been pre-sorted to ensure contiguous floats are
+likely to be close in terms of some meaningful metric.
+Before the data can be processed, it must be loaded from
+main memory into the L1 cache (which is practically equivalent to shared memory in GPU jargon). An H100 can perform this step at a rate of roughly 1 TFloat/s. Although this
+seems like an impressive number, it is dwarfed by the maximum achievable FLOP throughput of the GPU, which is in
+excess of 60 TFloat/s. In our case, the compute-intensive
+step consists of FlashAttention, which can perform in excess of 500 TFLOPs/s (albeit at reduced precision).
+After writing results to memory, PTv3 then performs a
+global reordering of the points in order to communicate in6596
+Figure 2. High-level schematic overview of PTv3. Numbered rectangles represent locations in memory. Adjacent rectangles are adjacent
+in memory. Arrows indicate data movement. See Section 3 for details.
+Figure 3. High-level schematic overview of Flash3D. Flash3D performs multiple rounds of attention with different neighborhood definitions via our bucket-and-swin approach, which saves an expensive global shuffle in each round. See Section 4 for details.
+formation across a different set of neighborhoods. As depicted in the figure, this step is orders of magnitude slower
+than the other steps. This is because the GPU is optimized
+to transfer large amounts of data in transactions of contiguous blocks. Transferring data between random locations is
+analogous to using many buckets (memory transactions) to
+move water one drop (float) at a time—this process can only
+be efficient if we fill the buckets (by transferring the data in
+contiguous chunks)1.
+1Though global shuffling through raw DRAM channels bottlenecks at
+0.1TFloat/s, Flash3D effectively coalesces shuffling in L2 cache and ap4. Method
+From the preceding discussion, it is clear that the global
+shuffle step of PTv3 is a key bottleneck. Our key idea is
+to mitigate this bottleneck through our Bucket-and-Swin
+strategy. In this approach, illustrated in Figure 3, we initially bucket the points into spatially similar neighborhoods
+using hash functions. This involves an up-front global shufproximates 1TFloat/s limit in reality. One million points FP16[1M, 3]
+cost 6MB memory while H100 has 50MB L2 cache to coalesce shuffled
+results, write well-packed results, and maximize DRAM bandwidth.
+6597
+fle operation that places points in the same contiguous block
+of memory if they are in the same bucket.
+In subsequent iterations, instead of repeating a slow
+global shuffle in order to communicate information using
+different neighborhoods, we logically shuffle the buckets to
+yield different neighborhoods for attention. This shuffle is
+logical in the sense that it does not involve any permutation
+of bytes in memory—instead, we simply load the appropriate buckets into L1 just before calculating attentions. To
+return to the water analogy, this is akin to transferring water
+using full buckets of water (by loading entire point-buckets
+into L1) instead of nearly empty buckets. We are thus able
+to mostly mitigate the global shuffling bottleneck.
+Implementing this strategy efficiently involves a few
+non-trivial details, which we elaborate upon in the following subsections.
+4.1. Principled Locality Mechanism with PSH
+Our principled locality mechanism leverages Perfect Spatial Hashing (PSH) [1, 20] to map spatially sparse 3D point
+clouds into compact and contiguous arrays. PSH constructs
+a bijection to scatter 3D points. In the output array, memory
+address proximity implies spatial proximity.
+Input and Output The PSH algorithm takes as input the
+point coordinates C ∈ RN ×3, representing N points in 3D
+space, and the bucket capacity S, defining the maximum
+points per bucket. It outputs the bucket IDs bucket id ∈
+ZN , assigning each point to a bucket, and bucket offsets bucket offset ∈ ZN , indexing each point’s position within its assigned bucket. The index of the i-th
+point can be determined bybucket base[bucket id[i]]+
+bucket offset[i]. When buckets are concatenated backto-back, the resulting indices are guaranteed to be contiguous, and scattering points according to these indices produces a contiguous array of points. We describe our full
+PSH construction algorithm in Alg 1 and Alg 2.
+Stage Orchestration In Flash3D, PSH orchestrates three
+key components within each transformer stage. First, PSH
+groups spatially adjacent points into contiguous memory arrays and produces bucket id, bucket offset. The resulted array suits point-wise MLPs and LayerNorm. The
+second component maps buckets to attention scopes during FlashAttention without extra cost. Lastly, the bucket
+structure directs a tile-level in-bucket pooling layer. Because points within each bucket are geometrically local,
+pooling operations are confined within buckets, reducing
+the need for costly global neighbor queries. This localized
+pooling achieves high computational efficiency by retaining
+geometric coherence in point clusters, enabling efficient,
+spatially-aware feature aggregation throughout the model.
+Bucket rebalancing Ideally, we would assign a bucket to
+each poin

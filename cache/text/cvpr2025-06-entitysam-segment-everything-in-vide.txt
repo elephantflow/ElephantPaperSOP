@@ -1,0 +1,205 @@
+EntitySAM: Segment Everything in Video
+Mingqiao Ye1,* Seoung Wug Oh2 Lei Ke3 Joon-Young Lee2
+1EPFL 2Adobe Research 3Carnegie Mellon University
+Video
+SAM2
+DEVA
+EntitySAM
+Frame 0 51 63 66 69 72 87
+(Ours)
+Figure 1. Zero-shot video entity segmentation performance comparison on VIPEntitySeg dataset using models trained on COCO, showing:
+1) SAM 2 [39] using Mask2Former [7] mask prompts for the initial frame, 2) Mask2Former with DEV A [11] association, and 3) our
+proposed EntitySAM. Our EntitySAM enhances SAM 2 by automatically segmenting and tracking novel entities without requiring userspecified prompts, achieving superior performance compared to existing state-of-the-art zero-shot tracking methods.
+Abstract
+Automatically tracking and segmenting every video entity
+remains a significant challenge. Despite rapid advancements in video segmentation, even state-of-the-art models
+like SAM 2 struggle to consistently track all entities across a
+video—a task we refer to as Video Entity Segmentation. We
+propose EntitySAM, a framework for zero-shot video entity
+segmentation. EntitySAM extends SAM 2 by removing the
+need for explicit prompts, allowing automatic discovery and
+tracking of all entities, including those appearing in later
+frames. We incorporate query-based entity discovery and
+association into SAM 2, inspired by transformer-based object detectors. Specifically, we introduce an entity decoder
+to facilitate inter-object communication and an automatic
+prompt generator using learnable object queries. Additionally, we add a semantic encoder to enhance SAM 2’s semantic awareness, improving segmentation quality. Trained
+on image-level mask annotations without category information from the COCO dataset, EntitySAM demonstrates
+strong generalization on four zero-shot video segmentation
+tasks: Video Entity, Panoptic, Instance, and Semantic Segmentation. Results on six popular benchmarks show that
+*This work was done during an internship at Adobe Research.
+EntitySAM outperforms previous unified video segmentation methods and strong baselines, setting new standards
+for zero-shot video segmentation. Our code and models are
+at github.com/ymq2017/entitysam.
+1. Introduction
+Video segmentation is an essential task for various applications in video scene understanding, including video editing, AR/VR, and robotic perception. There are roughly two
+lines of video segmentation approaches. One line of approaches focuses on selecting semantic thing/stuff from predefined sets [27, 28, 48]. While these methods show strong
+performance in the benchmark, the predictions are limited
+to a pre-defined class set and the training data domain.
+Another line of approaches works by initialing the information about the target object. The most common approach
+in this group is semi-supervised video object segmentation
+(VOS) which tracks a given mask in the first frame. The recent SAM 2 [39] also falls into this group. SAM 2 generalizes the VOS task by taking multiple prompt types, including masks, boxes, and clicks similar to image segmentation
+methods [19, 22], and enables interactive video segmentation. Trained on large-scale training data, SAM 2 shows
+This CVPR paper is the Open Access version, provided by the Computer Vision Foundation.
+Except for this watermark, it is identical to the accepted version;
+the final published version of the proceedings is available on IEEE Xplore.
+24234
+strong zero-shot broad-domain selection capability.
+Despite recent progress, a significant challenge remains
+in selecting and tracking all entities from a video—a task
+we term Video Entity Segmentation , which aims to segment any distinct group with coherent semantic meaning.
+While SAM 2 is an effective model for tracking each individual entity, we identified two limitations in selecting all
+entities: (1) It initializes tracking from user prompts so it
+cannot track unmarked entities and new entities appearing
+in different frames, as shown in Figure 1. (2) It tracks each
+entity independently which is not only inefficient and can
+lead to less optimal results (e.g., mask overlapping).
+In this paper, we propose EntitySAM, an extension of
+SAM 2 for zero-shot video entity segmentation. EntitySAM
+retains the zero-shot potential of SAM 2 while eliminating the need for explicit prompts for each entity and enabling seamless integration of new entities during tracking.
+Inspired by transformer-based object detectors [5, 6, 42],
+we sophisticatedly integrated query-based object discovery
+and association into SAM 2 making minimal changes to the
+original structure. To be specific, we replace the original
+mask decoder with a new entity decoder and introduce an
+automatic prompt generator that generates SAM 2 consumable prompts from learnable object queries. In this way,
+we can preserve most of the pre-trained SAM 2 weights.
+The proposed entity decoder differs from the original SAM
+2 mask decoder in that it enables inter-entity communication to predict multiple entity masks without overlaps. Another notable addition to SAM 2 is a semantic encoder. We
+empirically find that SAM 2 encoder has a weak semantic
+awareness and supplementing semantic information using
+an external feature encoder greatly boosts the performance.
+We train EntitySAM on the COCO dataset [23] without
+using any category annotation and evaluate it on various
+zero-shot video segmentation tasks. First we introduce a
+video entity segmentation task. Video entity segmentation
+is class-agnostic, focusing on the segmentation and tracking of “entities” rather than predefined object categories.
+For this, we re-purpose the video panoptic segmentation
+dataset [28] by removing category annotation. In addition
+to this, we evaluate our method on multiple video instance
+and semantic segmentation benchmarks in zero-shot setting.
+Experimental results show that EntitySAM greatly outperforms previous unified video segmentation models [52] and
+strong baselines that combine an image detector [7] and a
+mask propagator [11]. Moreover, our method can be easily
+adapted to class-specific video panoptic segmentation by integrating state-of-the-art vision-language models [1].
+2. Related Works
+Taxonomy of Video Segmentation Tasks Video segmentation tasks can be broadly categorized into classspecific and class-agnostic paradigms. Class-specific tasks,
+such as Video Instance Segmentation [36, 42, 48], Video
+Semantic Segmentation [30, 40], and Video Panoptic Segmentation [20, 28], operate within a closed vocabulary, segmenting “thing” or “stuff” categories based on predefined
+labels throughout video sequences.
+In contrast, class-agnostic tasks, such as Video Object
+Segmentation (VOS) [34, 46], rely on prompt-based guidance. Unlike image-level prompts, video prompts typically
+require initial mask input in the first frame for temporal
+propagation. Recent work, such as SAM 2 [39], demonstrates that large-scale pre-training can generalize VOS to
+zero-shot applications. However, its reliance on explicit
+prompts becomes inefficient when tracking multiple dense
+objects with frequent occlusions or reappearances.
+Recent advances have expanded video segmentation to
+open-world and open-vocabulary paradigms. The BURST
+dataset [3] introduces annotations across 482 diverse categories with a focus on thing-level segmentation, while
+UVO [13] takes a class-agnostic open-world approach,
+treating all video objects as a single category without predefined labels. Entity Segmentation [26, 37] has shown
+promising generalization to novel categories at the image
+level, but extending this approach to video introduces significant challenges for zero-shot evaluation. To bridge this
+gap, we propose Video Entity Segmentation, a new task
+aimed at segmenting entities across video sequences without relying on predefined categories or explicit prompts.
+This approach extends image-level entity understanding to
+maintain temporal consistency across frames, enabling generalized handling of novel categories in a zero-shot setting.
+By avoiding rigid class definitions, our framework provides
+greater flexibility, particularly beneficial for real-world applications with unknown or fluid category boundaries.
+Query-based Video Segmentation Query-based video
+segmentation models are widely used for dense prediction
+tasks, including video instance [6, 14, 17, 18, 42–44] and
+semantic segmentation [2, 21]. Inspired by detection transformers [5], these methods use queries to represent object
+information and apply cross-attention with image features
+to generate segmentation masks, demonstrating effectiveness in video instance segmentation. Temporal association
+is achieved through either direct query matching [17, 45] or
+additional tracking modules [15]. While effective in controlled scenarios, these query-based methods without explicit memory propagation struggle with long or complex
+video sequences due to challenges in modeling long-term
+temporal dependencies [36].
+Memory-based Video Segmentation Memory-based
+methods [9, 24, 31, 33, 47, 49, 50] are effective in Video Object Segmentation [4, 12, 46, 46], using initial ground truth
+masks as prompts. Memory features are stored in memory
+banks for segmentation in subsequent frames, excelling in
+long-term video tracking [8, 10]. SAM 2 [39] validates the
+24235
+generalizability of memory-based designs but processes objects separately, limiting efficiency and lacking inter-object
+communication. Recent works have attempted to integrate
+query-based and memory mechanisms, such as Cutie [10]
+for object-level VOS and UniVS [29] for multi-task inference. However, joint training of memory and query modules is computationally challenging for long videos. Our
+EntitySAM addresses these issues by leveraging SAM 2’s
+frozen memory encoder and introducing a novel querybased entity decoder for efficient joint training, combining
+the strengths of both approaches.
+3. Method
+We present EntitySAM for Video Entity Segmentation, enabling automatically segmenting and tracking all entities in
+the video sequence. By integrating query and memorybased video segmentation designs, EntitySAM handles
+multi-object tracking with inter-object communication and
+object-level contextual information. In Section 3.1, we first
+introduce the Video Entity Segmentation task, which offers
+improved generalization and reduced annotation complexity compared to other video segmentation tasks, such as
+Video Instance / Panoptic / Object Segmentation. In Section 3.2, we provide an overview of SAM 2’s architecture
+and key characteristics. Section 3.3 details the architectural
+design of our EntitySAM based on SAM 2, highlighting our
+enhanced feature fusion and decoding mechanisms, along
+with comprehensive training and inference protocols.
+3.1. Video Entity Segmentation
+Video Entity Segmentation aims to segment and track all
+entities within video sequences using a class-agnostic approach. In this context, an “entity” encompasses both thing
+and stuff categories, representing any distinct group with
+coherent semantic meaning. The task requires continuous
+tracking and segmentation of these entities through temporal sequences, with annotations represented as tube masks
+that capture the spatial-temporal evolution of each entity.
+Specifically, given an input video sequence I ∈
+RT ×H×W ×3, both annotations and predictions consist of
+N non-overlapping masklets Mi
+N
+i=1, where each masklet
+Mi ∈ 0, 1T ×H×W . For predictions, the task additionally requires a confidence score si ∈ [0, 1] associated with
+each masklet. Under the non-overlapping constraint, these
+N masklets can be merged into a single video sequence
+M ∈ NT ×H×W , where each pixel value represents the corresponding prediction ID.
+For evaluation, we first review traditional Video Panoptic
+Quality (VPQ), which computes metrics per category:
+V P Q = 1
+|C|
+X
+c∈C
+P
+t IoU c,t
+T Pc + 0.5 × F Pc + 0.5 × F Nc
+(1)
+To better evaluate video entity segmentation, we propose
+Table 1. Comparison of Different Video Segmentation Tasks
+Task Category Inference
+Things StuffAutomatic Prompt Cross-Dataset Zero-shot
+Video Instance Seg.✓ ✓ ✓Video Semantic Seg. ✓ ✓ ✓Video Object Seg.✓ ✓ ✓Video Panoptic Seg.✓ ✓ ✓ ✓Video Entity Seg.✓ ✓ ✓ ✓ ✓
+Video Entity Quality (VEQ), a class-agnostic metric that assesses performance across temporal sequences:
+VEQ =
+P
+t IoU t
+T P + 0.5 × F P + 0.5 × F N (2)
+VEQSQ =
+P
+t IoU t
+T P (3)
+VEQRQ =
+P
+t T P
+T P + 0.5 × F P + 0.5 × F N (4)
+where IoU t represents the temporal intersection over union
+across frames, measuring both spatial accuracy and temporal consistency. Here, T P, F P, and F N are computed globally across all entities without category differentiation. For consistency with Video Panoptic Segmentation
+evaluation, we also implement a class-agnostic variant of
+the STQ (Segmentation and Tracking Quality) metric, denoted as STQ EN , which emphasizes tracking consistency
+across frames. The formulation of VEQ provides a more
+direct assessment of video-level segmentation and tracking
+performance while eliminating the complexity of categoryspecific evaluation. Moreover, this class-agnostic approach
+reduces annotation requirements, enables large-scale training, and enhances model generalizability across datasets,
+particularly for open-vocabulary and zero-shot scenarios.
+As illustrated in Table 1, Video Entity Segmentation
+presents distinct advantages compared to existing video
+segmentation paradigms: Unlike Video Object Segmentation, it operates automatically and accommodates multiple
+dynamic objects. In contrast to Video Instance Segmentation, it extends beyond foreground objectness to include
+background entities. Compared to Video Semantic Segmentation, it provides instance-level annotations. Unlike Video
+Panoptic Segmentation, it adopts a class-agnostic approach
+that eliminates the constraint of pre-defined category vocabularies. This unified entity representation allows both thing
+and stuff categories to be learned jointly and subsequently
+classified using external Vision Langua

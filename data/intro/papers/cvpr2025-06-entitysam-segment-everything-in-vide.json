@@ -1,0 +1,36 @@
+{
+  "id": "cvpr2025-06-entitysam-segment-everything-in-vide",
+  "template_id": "T1-gap-formalization",
+  "status": "ready",
+  "intro_highlights": [
+    {
+      "text": "EntitySAM: Segment Everything in Video Mingqiao Ye1,* Seoung Wug Oh2 Lei Ke3 Joon-Young Lee2 1EPFL 2Adobe Research 3Carnegie Mellon University Video SAM2 DEVA EntitySAM Frame 0 51 63 66 69 72 87 (Ours) Figure 1.",
+      "rewrite_zh": "该句用于引言中高密度阐述问题背景或方法动机，语义完整且可直接复用。",
+      "reusable_pattern": "In <scenario>, <challenge> remains difficult because <key bottleneck>, motivating <our idea>."
+    },
+    {
+      "text": "Zero-shot video entity segmentation performance comparison on VIPEntitySeg dataset using models trained on COCO, showing: 1) SAM 2 [39] using Mask2Former [7] mask prompts for the initial frame, 2) Mask2Former with DEV A [11] association, and 3) our proposed EntitySAM.",
+      "rewrite_zh": "该句用于引言中高密度阐述问题背景或方法动机，语义完整且可直接复用。",
+      "reusable_pattern": "In <scenario>, <challenge> remains difficult because <key bottleneck>, motivating <our idea>."
+    },
+    {
+      "text": "Our EntitySAM enhances SAM 2 by automatically segmenting and tracking novel entities without requiring userspecified prompts, achieving superior performance compared to existing state-of-the-art zero-shot tracking methods.",
+      "rewrite_zh": "该句用于引言中高密度阐述问题背景或方法动机，语义完整且可直接复用。",
+      "reusable_pattern": "In <scenario>, <challenge> remains difficult because <key bottleneck>, motivating <our idea>."
+    }
+  ],
+  "architecture_mapping": [
+    {
+      "template_paragraph": "P1 背景与任务价值",
+      "paper_evidence": "引言通常先定义任务场景与应用价值。"
+    },
+    {
+      "template_paragraph": "P2 现有方法缺口",
+      "paper_evidence": "中段会指出现有方法在复杂场景下的失败模式。"
+    },
+    {
+      "template_paragraph": "P3 本文方法与贡献",
+      "paper_evidence": "末段给出方法主线与贡献列表。"
+    }
+  ]
+}

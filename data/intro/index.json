@@ -1,7 +1,7 @@
 {
-  "version": "v0.3.0",
+  "version": "v0.3.1",
   "focus": "Introduction",
-  "updated_at": "2026-03-07T20:00:00+08:00",
+  "updated_at": "2026-03-07T23:54:58+08:00",
   "templates": [
     "T1-gap-formalization",
     "T2-tradeoff-bridge",
@@ -10,75 +10,75 @@
   ],
   "papers": [
     {
-      "id": "01XV5Za56k",
-      "title": "Testing Calibration in Nearly-Linear Time",
-      "template_id": "T1-gap-formalization",
-      "pdf": "https://openreview.net/pdf/57ec61f923ff97b2f5fe22a78242ae6391c4902d.pdf",
-      "status": "ready"
-    },
-    {
-      "id": "0DE1dLMW2b",
-      "title": "Quantum algorithm for large-scale market equilibrium computation",
-      "template_id": "T1-gap-formalization",
-      "pdf": "https://openreview.net/pdf/fd77b25277d5b673393dcea0bc9eca92698b59f8.pdf",
-      "status": "pending"
-    },
-    {
-      "id": "0Gl5WxY6es",
-      "title": "Grounding Multimodal Large Language Models in Actions",
-      "template_id": "T2-tradeoff-bridge",
-      "pdf": "https://openreview.net/pdf/e049d4a2bea8893fcb7487382f651d8e73dc264d.pdf",
-      "status": "ready"
-    },
-    {
-      "id": "0bFXbEMz8e",
-      "title": "FlowLLM: Flow Matching for Material Generation with Large Language Models as Base Distributions",
-      "template_id": "T2-tradeoff-bridge",
-      "pdf": "https://openreview.net/pdf/06957f0399c3faa4bd0ce2ce2f0feeee573c6606.pdf",
-      "status": "ready"
-    },
-    {
-      "id": "0rl5vWOzRU",
-      "title": "Score-Optimal Diffusion Schedules",
-      "template_id": "T1-gap-formalization",
-      "pdf": "https://openreview.net/pdf/37520edacf164e2d99163983c5d52ea2b42bec46.pdf",
-      "status": "pending"
-    },
-    {
-      "id": "0sJBW05a2W",
-      "title": "3D Focusing-and-Matching Network for Multi-Instance Point Cloud Registration",
+      "id": "cvpr2025-01-any3dis-class-agnostic-3d-instance-s",
+      "title": "Any3DIS： Class-Agnostic 3D Instance Segmentation by 2D Mask Tracking",
       "template_id": "T3-pipeline-reframing",
-      "pdf": "https://openreview.net/pdf/54e0b581ea69e4f75dff856a938b3f4ef4482891.pdf",
+      "pdf": "local:///Users/gulucaptain/Downloads/cvpr2025/Any3DIS： Class-Agnostic 3D Instance Segmentation by 2D Mask Tracking.pdf",
       "status": "ready"
     },
     {
-      "id": "0uGlKYS7a2",
-      "title": "Maximizing utility in multi-agent environments by anticipating the behavior of other learners",
-      "template_id": "T1-gap-formalization",
-      "pdf": "https://openreview.net/pdf/9d44235bc1b65c1b1ffa69d5cb4b2dc6095fe32b.pdf",
+      "id": "cvpr2025-02-audio-visual-instance-segmentation",
+      "title": "Audio-Visual Instance Segmentation",
+      "template_id": "T3-pipeline-reframing",
+      "pdf": "local:///Users/gulucaptain/Downloads/cvpr2025/Audio-Visual Instance Segmentation.pdf",
       "status": "ready"
     },
     {
-      "id": "164QnJsYjF",
-      "title": "Dense Associative Memory Through the Lens of Random Features",
-      "template_id": "T1-gap-formalization",
-      "pdf": "https://openreview.net/pdf/672a0279b33ef47beb8cfdb4cb179defba26b551.pdf",
+      "id": "cvpr2025-03-dformerv2-geometry-self-attention-fo",
+      "title": "DFormerv2： Geometry Self-Attention for RGBD Semantic Segmentation",
+      "template_id": "T3-pipeline-reframing",
+      "pdf": "local:///Users/gulucaptain/Downloads/cvpr2025/DFormerv2： Geometry Self-Attention for RGBD Semantic Segmentation.pdf",
       "status": "ready"
     },
     {
-      "id": "168NLzTpw8",
-      "title": "Unleashing Region Understanding in Intermediate Layers for MLLM-based Referring Expression Generation",
-      "template_id": "T2-tradeoff-bridge",
-      "pdf": "https://openreview.net/pdf/29764fb7a9e6be1a9fca7cfebb4983823894acb9.pdf",
-      "status": "ready"
-    },
-    {
-      "id": "1ELFGSNBGC",
-      "title": "Multiview Scene Graph",
+      "id": "cvpr2025-04-declip-decoupled-learning-for-open-v",
+      "title": "DeCLIP： Decoupled Learning for Open-Vocabulary Dense Perception",
       "template_id": "T4-task-benchmark-definition",
-      "pdf": "https://openreview.net/pdf/76424405aaddcb2338e90dee898f99313f054d22.pdf",
+      "pdf": "local:///Users/gulucaptain/Downloads/cvpr2025/DeCLIP： Decoupled Learning for Open-Vocabulary Dense Perception.pdf",
+      "status": "ready"
+    },
+    {
+      "id": "cvpr2025-05-depthsplat-connecting-gaussian-splat",
+      "title": "DepthSplat： Connecting Gaussian Splatting and Depth",
+      "template_id": "T3-pipeline-reframing",
+      "pdf": "local:///Users/gulucaptain/Downloads/cvpr2025/DepthSplat： Connecting Gaussian Splatting and Depth.pdf",
+      "status": "ready"
+    },
+    {
+      "id": "cvpr2025-06-entitysam-segment-everything-in-vide",
+      "title": "EntitySAM： Segment Everything in Video",
+      "template_id": "T1-gap-formalization",
+      "pdf": "local:///Users/gulucaptain/Downloads/cvpr2025/EntitySAM： Segment Everything in Video.pdf",
+      "status": "ready"
+    },
+    {
+      "id": "cvpr2025-07-flash3d-super-scaling-point-transfor",
+      "title": "Flash3D： Super-scaling Point Transformers through Joint Hardware-Geometry Locality",
+      "template_id": "T3-pipeline-reframing",
+      "pdf": "local:///Users/gulucaptain/Downloads/cvpr2025/Flash3D： Super-scaling Point Transformers through Joint Hardware-Geometry Locality.pdf",
+      "status": "ready"
+    },
+    {
+      "id": "cvpr2025-08-focusing-on-tracks-for-online-multi-",
+      "title": "Focusing on Tracks for Online Multi-Object Tracking",
+      "template_id": "T3-pipeline-reframing",
+      "pdf": "local:///Users/gulucaptain/Downloads/cvpr2025/Focusing on Tracks for Online Multi-Object Tracking.pdf",
+      "status": "ready"
+    },
+    {
+      "id": "cvpr2025-09-fractal-calibration-for-long-tailed-",
+      "title": "Fractal Calibration for Long-tailed Object Detection",
+      "template_id": "T3-pipeline-reframing",
+      "pdf": "local:///Users/gulucaptain/Downloads/cvpr2025/Fractal Calibration for Long-tailed Object Detection.pdf",
+      "status": "ready"
+    },
+    {
+      "id": "cvpr2025-10-geodepth-from-point-to-depth-to-plan",
+      "title": "GeoDepth： From Point-to-Depth to Plane-to-Depth Modeling for Self-Supervised Monocular Depth Estimation",
+      "template_id": "T3-pipeline-reframing",
+      "pdf": "local:///Users/gulucaptain/Downloads/cvpr2025/GeoDepth： From Point-to-Depth to Plane-to-Depth Modeling for Self-Supervised Monocular Depth Estimation.pdf",
       "status": "ready"
     }
   ],
-  "papers_file": "data/intro/papers-batch-0001.json"
+  "papers_file": "data/intro/papers-batch-0002.json"
 }

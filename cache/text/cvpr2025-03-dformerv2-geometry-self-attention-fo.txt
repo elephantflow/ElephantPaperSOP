@@ -1,0 +1,238 @@
+DFormerv2: Geometry Self-Attention for RGBD Semantic Segmentation
+Bo-Wen Yin, Jiao-Long Cao, Ming-Ming Cheng, Qibin Hou *
+VCIP, CS, Nankai University
+bowenyin@mail.nankai.edu.cn, houqb@nankai.edu.cn
+Abstract
+Recent advances in scene understanding benefit a lot
+from depth maps because of the 3D geometry information,
+especially in complex conditions ( e.g., low light and overexposed). Existing approaches encode depth maps along
+with RGB images and perform feature fusion between them
+to enable more robust predictions. Taking into account that
+depth can be regarded as a geometry supplement for RGB
+images, a straightforward question arises: Do we really
+need to explicitly encode depth information with neural networks as done for RGB images? Based on this insight, in
+this paper, we investigate a new way to learn RGBD feature
+representations and present DFormerv2, a strong RGBD
+encoder that explicitly uses depth maps as geometry priors rather than encoding depth information with neural networks. Our goal is to extract the geometry clues from the
+depth and spatial distances among all the image patch tokens, which will then be used as geometry priors to allocate
+attention weights in self-attention. Extensive experiments
+demonstrate that DFormerv2 exhibits exceptional performance in various RGBD semantic segmentation benchmarks. Code is available at: https://github.com/VCIPRGBD/DFormer.
+1. Introduction
+Semantic segmentation, aiming at assigning each pixel in
+an image to a specific pre-defined category label, has been
+a fundamental area of research in computer vision due to
+its broad range of applications, such as in intelligent transportation systems and autonomous driving [30]. However, approaches based solely on RGB data often suffer
+significant performance degradation in complex scenarios,
+such as cluttered indoor environments or low-light conditions. In recent years, advancements in 3D modular sensors
+have made depth data more accessible. Integrating RGBD data makes scene understanding more robust and accurate and thus becomes pivotal in advancing high-level vi*Qibin Hou is the corresponding author.
+Encoder
+Fusion
+Encoder
+Decoder
+Unified
+RGBD
+Encoder Decoder
+Dual Encoder with Fusion Modules
+An Unified RGBD Encoder
+Use Depth as Prior
+RGB modality
+Depth modality
+Design focus
+RGB modality
+Depth modality
+Encoder
+RGB modality
+Depth modality Geometry Prior
+Decoder
+(a)
+(b)
+(c)
+Figure 1. Comparisons among the main RGBD segmentation
+pipelines and our approach. (a) Use dual encoders to encode
+RGB and depth respectively and design fusion modules to fusion
+them [28, 61]; (b) Adopt an unified RGBD encoder to extract and
+fuse RGBD features [1, 59]; (c) Our DFormerv2 use depth to form
+a geometry prior of the scene and then enhance the visual features.
+sion tasks. Furthermore, RGB-D data have demonstrated
+remarkable potential, surpassing the RGB-based paradigm
+in various downstream tasks, including autonomous driving [26], SLAM [50], and robotics [36].
+Fig. 1(a) presents the architecture of current mainstream
+RGB-D models. As depicted, it utilizes a dual encoder architecture [61, 62], wherein one encoder extracts features
+from the RGB modality, while the other processes depth information. Meanwhile, a fusion strategy is performed to
+achieve interaction between the information of these two
+modalities during the encoding process. Despite the success, the majority existing RGBD segmentation approaches
+adopt identical backbone architectures to extract features
+from both RGB and depth data for fusion, neglecting the
+inherent differences between the RGB and depth.
+A series of studies have sought to identify optimal methods for processing depth maps and integrating them with
+This CVPR paper is the Open Access version, provided by the Computer Vision Foundation.
+Except for this watermark, it is identical to the accepted version;
+the final published version of the proceedings is available on IEEE Xplore.
+19345
+Input Image Vanilla Attention Window Attention Local Attention Geometry Attention
+Input Image Vanilla Attention Window Attention Local Attention Geometry Attention
+Figure 2. Comparison between geometry self-attention (GSA) and other attention mechanisms, i.e., vanilla attention [10], window attention [9, 35], and local attention [52, 57]. The ‘star’ sign means the current query’s position. In GSA, colors closer to red represent smaller
+decay rates, while colors farer away red represent larger ones. In other attention mechanisms, the bright color means the receptive field.
+RGB data. Asyformer [11] employs a dual-stream asymmetric backbone, i.e., using a more efficient encoder for
+depth data to reduce redundant parameters during feature
+extraction. PrimKD [20] proposes a knowledge distillation
+(KD)-based method to guide multimodal fusion in RGB-D
+semantic segmentation, with an emphasis on leveraging the
+primary RGB modality. Furthermore, as shown in Fig. 1(b),
+DFormer [59] presents an efficient RGB-D model that encodes both RGB and depth data in a unified encoder via
+representation learning manners [23, 47], yet allocates more
+computational resources to processing the RGB data. These
+methods acknowledge that RGB and depth carry distinct
+information, each contributing differently to semantic segmentation. However, they fail to account for the unique
+characteristics of the depth modality fully. In conclusion,
+how to effectively and efficiently utilize depth information
+remains an open question and warrants further exploration.
+In this paper, taking into account the physical meanings
+of depth maps that reflect the geometrical information of the
+given scenes, we consider the way of utilizing depth maps
+from a new perspective. Unlike previous works that use
+neural networks to simultaneously encode RGB images and
+depth maps as shown in Fig. 1, we propose directly employing depth maps as geometry priors and using them to guide
+weight distributions in self-attention, producing a new attention mechanism, called Geometry Self-Attention (GSA).
+An illustration of how the proposed GSA works and its
+differences from other self-attention variants can be found
+in Fig. 2. In each building block, we model the geometric
+and spatial relationships among all the patch tokens based
+on the GSA, a more efficient way to fuse RGB and depth information. Our method requires no extra layers to process
+depth maps and hence needs fewer learnable parameters and
+computations compared to other types of RGBD segmentation methods. In addition, to reduce the computational
+burden of vanilla self-attention, we also adopt an axes decomposition operation that decomposes self-attention along
+both spatial axes of the features.
+Based on Geometry Self-Attention, we construct a powerful RGB-D vision backbone, called DFormerv2. We
+demonstrate the effectiveness of DFormerv2 on popular
+RGB-D semantic segmentation benchmarks, e.g., NYU
+DepthV2 [42], SUNRGBD [43], and Deliver [62]. By
+adding a small decoder head on top of the DFormerv2, our
+approach sets new state-of-the-art records with less computational cost compared to previous methods. Remarkably,
+our base scale model, DFormerv2-B, achieves equal performance with the second-best method Gemnifuision (MiTB5) [28], i.e., 57.7% mIoU on NYU DepthV2, with less
+than half of the computation costs. Meanwhile, our largest
+model DFormerv2-L is able to achieve 58.4% mIoU on
+NYU DepthV2 with 95.5M parameters. Compared with
+other methods, our DFormerv2 achieves the best trade-off
+between segmentation performance and computations.
+Our main contributions can be summarized as follows:
+• To our best knowledge, our work marks the first successful attempt to combine depth information with spatial information as a geometry prior and apply it to the neural
+network.
+• We propose Geometry Self-Attention which introduces
+geometry prior to self-attention, to construct an efficient
+RGB-D encoder, termed DFormerv2.
+• Our method achieves new state-of-the-art performance
+with less than half the computational cost of the best current methods on three popular RGB-D semantic segmentation datasets.
+2. Related Work
+2.1. RGB-D Semantic Segmentation
+Semantic segmentation [64], as one of the core pursuits in
+computer vision, aims to categorize each pixel in an image
+into a specific category. Recently, significant developments
+in deep learning technologies [6, 7, 18, 44, 45] have been
+made in this field. However, some real-world scenes [13,
+27, 32, 33, 56] are still challenging to understand using
+only RGB images, which do not provide sufficient textures,
+especially in low illumination and fast-moving scenarios.
+To address this issue, researchers [63, 65] propose to utilize depth, which contains 3D geometry information for
+the scene, to enhance RGB semantic segmentation, known
+as RGB-D semantic segmentation. Since then, a series of
+works have been proposed to achieve the fusion of RGB-D
+data and leverage the additional information to capture more
+19346
+Depth map
+Depth and Spatial Prior
+Fusion Operation
+𝐷 𝑆
+𝐺
+𝐻𝑊 × 𝐻𝑊
+𝐻𝑊 × 𝐻𝑊𝐻𝑊 × 𝐻𝑊
+(a) Generation of geometry prior (b) Visualization of geometry prior
+Spatial location the current query token
+Geometry Prior
+Figure 3. Illustration of the geometry prior. (a) Generation process of the geometry prior. (b) Some visualization of the geometry prior,
+where the ‘blue star’ means the current query.
+details. Here, we delve into the RGB-D fusion schemes and
+analyze their characteristics.
+The current mainstream methods [25, 39] put a lot of
+effort into designing interaction modules to fuse the RGB
+and depth features encoded by two parallel pretrained backbones. For instance, methods such as CMX [61], TokenFusion [54], GeminiFusion [28] dynamically fuse the RGB-D
+representations from RGB and depth encoders and aggregate them in the decoder. These methods significantly push
+the performance boundaries in the applications of RGBD semantic segmentation. Nevertheless, they still face
+two common issues: (1) Treating RGB and depth maps
+equally with two parallel backbones brings significantly
+higher computational cost compared to methods based on
+RGB data; (2) The used backbones are pretrained with RGB
+images but take an image-depth pair as input during finetuning. The inconsistency between the input causes a huge
+representation distribution shift.
+Recently, DFormer [59] proposed an RGB-D representation learning framework and utilizes a unified backbone that
+pretrained on RGB-D pairs to overcome the two issues. It
+notices the difference in information density between these
+two modalities and observes that depth information only requires a small portion of channels to encode. Although it
+achieves accurate prediction with high efficiency, it overlooks the intrinsic characteristics of depth modality and
+merely allocates depth with lower computation cost. Differently, in this paper, we propose to generate the geometry
+prior via depth from the perspective of data characteristics.
+To the best of our knowledge, this is the first attempt to explicitly use the geometry information of depth without any
+extra encoding layers.
+2.2. Vision Transformer and Prior Knowledge
+Vision Transformer (ViT) [10] was the first to introduce
+transformer architecture to visual tasks, where images are
+split into small, non-overlapped patch sequences. The
+biggest difference from CNNs [22, 24, 34] is that transformers [8, 9, 35, 49] use attention as an alternative to convolution layers to enable global context modeling. However,
+vanilla self-attention incurs a heavy computational burden,
+as it computes pairwise feature affinities across all patches.
+Various sparse attention mechanisms [19, 35, 55, 60, 69]
+have been proposed to alleviate the huge computation cost
+of self-attention. At the same time, researchers have presented many studies [17, 37, 46, 48, 51] to incorporate prior
+knowledge into the transformer model to enhance its representation capacity. The original transformers [10] utilize
+position encoding to provide positional information for each
+token. For vision tasks, swin-transformer [35] proposes to
+use relative positional encoding instead of the original absolute position encoding. In contrast, we propose transferring depth into geometry prior knowledge and introducing
+it into self-attention, termed geometry self-attention. Compared to the position prior, our geometry prior can model
+the relationships in the 3D domain across the whole image.
+3. Methodology
+3.1. Geometry Prior Generation
+In the vision transformer, the 2D input image of size h × w
+is evenly split into HW small patches, where H and W
+are the numbers of patches per row and column, respectively. Each patch denoted as Pij is uniquely positioned
+with a two-dimensional coordinate within the spatial domain, where i and j index the row and column, respectively.
+When the associated depth map is given, the patch in the
+depth map at the corresponding position reflects its distance
+from the camera plane. Based on these two types of priors, we model the geometrical relationships among all the
+patches and embed them into the self-attention mechanism
+to form our geometry self-attention.
+To be specific, for the depth prior, we perform the average pooling operation for all pixels within the depth patch at
+position (i, j) to represent its depth location zij and calculate the distances between each pair of depth patches, which
+can be defined as:
+Dij,i′j′ = |zij − zi′j′|, (1)
+where Dij,i′j′ represents the depth distance between the
+patches at positions (i, j) and (i′, j′). D forms a depth relationship matrix of shape HW × HW .
+The depth relationship matrix D does not contain the
+spatial distance information, which is also vital to form the
+19347
+input feature
+𝑥
+C × 𝐻 × 𝑊
+𝑄𝑥
+𝐺𝑦
+𝐺 𝑥
+𝐻𝑊 × 𝐻𝑊 𝐻 × 𝑊𝑊
+𝑊 × 𝐻𝐻
+𝐺𝑒𝑜𝐴𝑡𝑡𝑛𝑦
+𝐺eo𝐴𝑡𝑡𝑛
+𝐻𝑊 × 𝑊
+𝐻𝑊 × 𝐻 𝐻𝑊 × 𝐻𝑊
+C × 𝐻 × 𝑊
+C × 𝐻 × 𝑊
+𝑥𝑜𝑢𝑡
+(c) Geometry Self-Attention
+Matrix multiplication
+Element-wise multiplication
+Feature Decomposition
+RGB image
+ℎ × 𝑤 × 3
+Patch Embedding
+×𝑁1
+ℎ/4 × 𝑤/4 × 𝐶
+Patch Merging
+RGB-D
+Block

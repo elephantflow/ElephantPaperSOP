@@ -1,0 +1,36 @@
+{
+  "id": "cvpr2025-02-audio-visual-instance-segmentation",
+  "template_id": "T3-pipeline-reframing",
+  "status": "ready",
+  "intro_highlights": [
+    {
+      "text": "To facilitate this research, we introduce a high-quality benchmark named AVISeg, containing over 90K instance masks from 26 semantic categories in 926 long videos.",
+      "rewrite_zh": "该句用于引言中高密度阐述问题背景或方法动机，语义完整且可直接复用。",
+      "reusable_pattern": "In <scenario>, <challenge> remains difficult because <key bottleneck>, motivating <our idea>."
+    },
+    {
+      "text": "Our model first localizes sound source within each frame, and condenses object-specific contexts into concise tokens.",
+      "rewrite_zh": "该句用于引言中高密度阐述问题背景或方法动机，语义完整且可直接复用。",
+      "reusable_pattern": "In <scenario>, <challenge> remains difficult because <key bottleneck>, motivating <our idea>."
+    },
+    {
+      "text": "Then it builds long-range audio-visual dependencies between these tokens using window-based attention, and tracks sounding objects among the entire video sequences.",
+      "rewrite_zh": "该句用于引言中高密度阐述问题背景或方法动机，语义完整且可直接复用。",
+      "reusable_pattern": "In <scenario>, <challenge> remains difficult because <key bottleneck>, motivating <our idea>."
+    }
+  ],
+  "architecture_mapping": [
+    {
+      "template_paragraph": "P1 背景与任务价值",
+      "paper_evidence": "引言通常先定义任务场景与应用价值。"
+    },
+    {
+      "template_paragraph": "P2 现有方法缺口",
+      "paper_evidence": "中段会指出现有方法在复杂场景下的失败模式。"
+    },
+    {
+      "template_paragraph": "P3 本文方法与贡献",
+      "paper_evidence": "末段给出方法主线与贡献列表。"
+    }
+  ]
+}
