@@ -1,8 +1,8 @@
 {
   "schema_version": "index.v1",
-  "version": "v1.0.0",
-  "updated_at": "2026-03-07T16:22:26+00:00",
-  "focus": "Introduction",
+  "version": "v1.1.0",
+  "updated_at": "2026-03-07T16:45:12+00:00",
+  "focus": "multi-section",
   "sections_supported": [
     "introduction",
     "related_work",
@@ -10,7 +10,7 @@
     "experiments",
     "conclusion"
   ],
-  "paper_count": 10,
+  "paper_count": 50,
   "template_count": 4,
   "paths": {
     "papers_dir": "data/v1/papers",
@@ -24,84 +24,404 @@
   ],
   "papers": [
     {
-      "id": "cvpr2025-01-any3dis-class-agnostic-3d-instance-s",
-      "title": "Any3DIS： Class-Agnostic 3D Instance Segmentation by 2D Mask Tracking",
-      "template_id": "T3-pipeline-reframing",
+      "id": "cvpr2025-001-2dmamba-efficient-state-space-model-for-image-repres",
+      "title": "2DMamba： Efficient State Space Model for Image Representation with Applications on Giga-Pixel Whole Slide Image Classification",
+      "template_id": "T2-tradeoff-bridge",
       "status": "ready",
-      "path": "data/v1/papers/cvpr2025-01-any3dis-class-agnostic-3d-instance-s.json",
-      "pdf": "local:///Users/gulucaptain/Downloads/cvpr2025/Any3DIS： Class-Agnostic 3D Instance Segmentation by 2D Mask Tracking.pdf"
+      "path": "data/v1/papers/cvpr2025-001-2dmamba-efficient-state-space-model-for-image-repres.json",
+      "pdf": "local:///Users/gulucaptain/Downloads/cvpr2025/2DMamba： Efficient State Space Model for Image Representation with Applications on Giga-Pixel Whole Slide Image Classification.pdf"
     },
     {
-      "id": "cvpr2025-02-audio-visual-instance-segmentation",
-      "title": "Audio-Visual Instance Segmentation",
+      "id": "cvpr2025-002-3d-convex-splatting-radiance-field-rendering-with-3d",
+      "title": "3D Convex Splatting： Radiance Field Rendering with 3D Smooth Convexes",
       "template_id": "T3-pipeline-reframing",
       "status": "ready",
-      "path": "data/v1/papers/cvpr2025-02-audio-visual-instance-segmentation.json",
-      "pdf": "local:///Users/gulucaptain/Downloads/cvpr2025/Audio-Visual Instance Segmentation.pdf"
+      "path": "data/v1/papers/cvpr2025-002-3d-convex-splatting-radiance-field-rendering-with-3d.json",
+      "pdf": "local:///Users/gulucaptain/Downloads/cvpr2025/3D Convex Splatting： Radiance Field Rendering with 3D Smooth Convexes.pdf"
     },
     {
-      "id": "cvpr2025-03-dformerv2-geometry-self-attention-fo",
-      "title": "DFormerv2： Geometry Self-Attention for RGBD Semantic Segmentation",
+      "id": "cvpr2025-003-3d-dental-model-segmentation-with-geometrical-bounda",
+      "title": "3D Dental Model Segmentation with Geometrical Boundary Preserving",
       "template_id": "T3-pipeline-reframing",
       "status": "ready",
-      "path": "data/v1/papers/cvpr2025-03-dformerv2-geometry-self-attention-fo.json",
-      "pdf": "local:///Users/gulucaptain/Downloads/cvpr2025/DFormerv2： Geometry Self-Attention for RGBD Semantic Segmentation.pdf"
+      "path": "data/v1/papers/cvpr2025-003-3d-dental-model-segmentation-with-geometrical-bounda.json",
+      "pdf": "local:///Users/gulucaptain/Downloads/cvpr2025/3D Dental Model Segmentation with Geometrical Boundary Preserving.pdf"
     },
     {
-      "id": "cvpr2025-04-declip-decoupled-learning-for-open-v",
-      "title": "DeCLIP： Decoupled Learning for Open-Vocabulary Dense Perception",
+      "id": "cvpr2025-004-3d-gaussian-head-avatars-with-expressive-dynamic-app",
+      "title": "3D Gaussian Head Avatars with Expressive Dynamic Appearances by Compact Tensorial Representations",
+      "template_id": "T3-pipeline-reframing",
+      "status": "ready",
+      "path": "data/v1/papers/cvpr2025-004-3d-gaussian-head-avatars-with-expressive-dynamic-app.json",
+      "pdf": "local:///Users/gulucaptain/Downloads/cvpr2025/3D Gaussian Head Avatars with Expressive Dynamic Appearances by Compact Tensorial Representations.pdf"
+    },
+    {
+      "id": "cvpr2025-005-3d-gaussian-inpainting-with-depth-guided-cross-view-",
+      "title": "3D Gaussian Inpainting with Depth-Guided Cross-View Consistency",
+      "template_id": "T3-pipeline-reframing",
+      "status": "ready",
+      "path": "data/v1/papers/cvpr2025-005-3d-gaussian-inpainting-with-depth-guided-cross-view-.json",
+      "pdf": "local:///Users/gulucaptain/Downloads/cvpr2025/3D Gaussian Inpainting with Depth-Guided Cross-View Consistency.pdf"
+    },
+    {
+      "id": "cvpr2025-006-3d-occupancy-prediction-with-low-resolution-queries-",
+      "title": "3D Occupancy Prediction with Low-Resolution Queries via Prototype-aware View Transformation",
+      "template_id": "T3-pipeline-reframing",
+      "status": "ready",
+      "path": "data/v1/papers/cvpr2025-006-3d-occupancy-prediction-with-low-resolution-queries-.json",
+      "pdf": "local:///Users/gulucaptain/Downloads/cvpr2025/3D Occupancy Prediction with Low-Resolution Queries via Prototype-aware View Transformation.pdf"
+    },
+    {
+      "id": "cvpr2025-007-3d-prior-is-all-you-need-cross-task-few-shot-2d-gaze",
+      "title": "3D Prior Is All You Need： Cross-Task Few-shot 2D Gaze Estimation",
       "template_id": "T4-task-benchmark-definition",
       "status": "ready",
-      "path": "data/v1/papers/cvpr2025-04-declip-decoupled-learning-for-open-v.json",
-      "pdf": "local:///Users/gulucaptain/Downloads/cvpr2025/DeCLIP： Decoupled Learning for Open-Vocabulary Dense Perception.pdf"
+      "path": "data/v1/papers/cvpr2025-007-3d-prior-is-all-you-need-cross-task-few-shot-2d-gaze.json",
+      "pdf": "local:///Users/gulucaptain/Downloads/cvpr2025/3D Prior Is All You Need： Cross-Task Few-shot 2D Gaze Estimation.pdf"
     },
     {
-      "id": "cvpr2025-05-depthsplat-connecting-gaussian-splat",
-      "title": "DepthSplat： Connecting Gaussian Splatting and Depth",
+      "id": "cvpr2025-008-3d-student-splatting-and-scooping",
+      "title": "3D Student Splatting and Scooping",
       "template_id": "T3-pipeline-reframing",
       "status": "ready",
-      "path": "data/v1/papers/cvpr2025-05-depthsplat-connecting-gaussian-splat.json",
-      "pdf": "local:///Users/gulucaptain/Downloads/cvpr2025/DepthSplat： Connecting Gaussian Splatting and Depth.pdf"
+      "path": "data/v1/papers/cvpr2025-008-3d-student-splatting-and-scooping.json",
+      "pdf": "local:///Users/gulucaptain/Downloads/cvpr2025/3D Student Splatting and Scooping.pdf"
     },
     {
-      "id": "cvpr2025-06-entitysam-segment-everything-in-vide",
-      "title": "EntitySAM： Segment Everything in Video",
+      "id": "cvpr2025-009-3d-avs-lidar-based-3d-auto-vocabulary-segmentation",
+      "title": "3D-AVS： LiDAR-based 3D Auto-Vocabulary Segmentation",
+      "template_id": "T3-pipeline-reframing",
+      "status": "ready",
+      "path": "data/v1/papers/cvpr2025-009-3d-avs-lidar-based-3d-auto-vocabulary-segmentation.json",
+      "pdf": "local:///Users/gulucaptain/Downloads/cvpr2025/3D-AVS： LiDAR-based 3D Auto-Vocabulary Segmentation.pdf"
+    },
+    {
+      "id": "cvpr2025-010-3d-grand-a-million-scale-dataset-for-3d-llms-with-be",
+      "title": "3D-GRAND： A Million-Scale Dataset for 3D-LLMs with Better Grounding and Less Hallucination",
+      "template_id": "T4-task-benchmark-definition",
+      "status": "ready",
+      "path": "data/v1/papers/cvpr2025-010-3d-grand-a-million-scale-dataset-for-3d-llms-with-be.json",
+      "pdf": "local:///Users/gulucaptain/Downloads/cvpr2025/3D-GRAND： A Million-Scale Dataset for 3D-LLMs with Better Grounding and Less Hallucination.pdf"
+    },
+    {
+      "id": "cvpr2025-011-3d-gsw-3d-gaussian-splatting-for-robust-watermarking",
+      "title": "3D-GSW： 3D Gaussian Splatting for Robust Watermarking",
+      "template_id": "T3-pipeline-reframing",
+      "status": "ready",
+      "path": "data/v1/papers/cvpr2025-011-3d-gsw-3d-gaussian-splatting-for-robust-watermarking.json",
+      "pdf": "local:///Users/gulucaptain/Downloads/cvpr2025/3D-GSW： 3D Gaussian Splatting for Robust Watermarking.pdf"
+    },
+    {
+      "id": "cvpr2025-012-3d-hgs-3d-half-gaussian-splatting",
+      "title": "3D-HGS： 3D Half-Gaussian Splatting",
+      "template_id": "T3-pipeline-reframing",
+      "status": "ready",
+      "path": "data/v1/papers/cvpr2025-012-3d-hgs-3d-half-gaussian-splatting.json",
+      "pdf": "local:///Users/gulucaptain/Downloads/cvpr2025/3D-HGS： 3D Half-Gaussian Splatting.pdf"
+    },
+    {
+      "id": "cvpr2025-013-3d-llava-towards-generalist-3d-lmms-with-omni-superp",
+      "title": "3D-LLaVA： Towards Generalist 3D LMMs with Omni Superpoint Transformer",
+      "template_id": "T3-pipeline-reframing",
+      "status": "ready",
+      "path": "data/v1/papers/cvpr2025-013-3d-llava-towards-generalist-3d-lmms-with-omni-superp.json",
+      "pdf": "local:///Users/gulucaptain/Downloads/cvpr2025/3D-LLaVA： Towards Generalist 3D LMMs with Omni Superpoint Transformer.pdf"
+    },
+    {
+      "id": "cvpr2025-014-3d-mem-3d-scene-memory-for-embodied-exploration-and-",
+      "title": "3D-Mem： 3D Scene Memory for Embodied Exploration and Reasoning",
+      "template_id": "T3-pipeline-reframing",
+      "status": "ready",
+      "path": "data/v1/papers/cvpr2025-014-3d-mem-3d-scene-memory-for-embodied-exploration-and-.json",
+      "pdf": "local:///Users/gulucaptain/Downloads/cvpr2025/3D-Mem： 3D Scene Memory for Embodied Exploration and Reasoning.pdf"
+    },
+    {
+      "id": "cvpr2025-015-3d-mvp-3d-multiview-pretraining-for-manipulation",
+      "title": "3D-MVP： 3D Multiview Pretraining for Manipulation",
+      "template_id": "T3-pipeline-reframing",
+      "status": "ready",
+      "path": "data/v1/papers/cvpr2025-015-3d-mvp-3d-multiview-pretraining-for-manipulation.json",
+      "pdf": "local:///Users/gulucaptain/Downloads/cvpr2025/3D-MVP： 3D Multiview Pretraining for Manipulation.pdf"
+    },
+    {
+      "id": "cvpr2025-016-3d-slnr-a-super-lightweight-neural-representation-fo",
+      "title": "3D-SLNR： A Super Lightweight Neural Representation for Large-scale 3D Mapping",
+      "template_id": "T3-pipeline-reframing",
+      "status": "ready",
+      "path": "data/v1/papers/cvpr2025-016-3d-slnr-a-super-lightweight-neural-representation-fo.json",
+      "pdf": "local:///Users/gulucaptain/Downloads/cvpr2025/3D-SLNR： A Super Lightweight Neural Representation for Large-scale 3D Mapping.pdf"
+    },
+    {
+      "id": "cvpr2025-017-3denhancer-consistent-multi-view-diffusion-for-3d-en",
+      "title": "3DEnhancer： Consistent Multi-View Diffusion for 3D Enhancement",
+      "template_id": "T3-pipeline-reframing",
+      "status": "ready",
+      "path": "data/v1/papers/cvpr2025-017-3denhancer-consistent-multi-view-diffusion-for-3d-en.json",
+      "pdf": "local:///Users/gulucaptain/Downloads/cvpr2025/3DEnhancer： Consistent Multi-View Diffusion for 3D Enhancement.pdf"
+    },
+    {
+      "id": "cvpr2025-018-3dgut-enabling-distorted-cameras-and-secondary-rays-",
+      "title": "3DGUT： Enabling Distorted Cameras and Secondary Rays in Gaussian Splatting",
+      "template_id": "T3-pipeline-reframing",
+      "status": "ready",
+      "path": "data/v1/papers/cvpr2025-018-3dgut-enabling-distorted-cameras-and-secondary-rays-.json",
+      "pdf": "local:///Users/gulucaptain/Downloads/cvpr2025/3DGUT： Enabling Distorted Cameras and Secondary Rays in Gaussian Splatting.pdf"
+    },
+    {
+      "id": "cvpr2025-019-3dtopia-xl-scaling-high-quality-3d-asset-generation-",
+      "title": "3DTopia-XL： Scaling High-quality 3D Asset Generation via Primitive Diffusion",
+      "template_id": "T3-pipeline-reframing",
+      "status": "ready",
+      "path": "data/v1/papers/cvpr2025-019-3dtopia-xl-scaling-high-quality-3d-asset-generation-.json",
+      "pdf": "local:///Users/gulucaptain/Downloads/cvpr2025/3DTopia-XL： Scaling High-quality 3D Asset Generation via Primitive Diffusion.pdf"
+    },
+    {
+      "id": "cvpr2025-020-4d-langsplat-4d-language-gaussian-splatting-via-mult",
+      "title": "4D LangSplat： 4D Language Gaussian Splatting via Multimodal Large Language Models",
+      "template_id": "T3-pipeline-reframing",
+      "status": "ready",
+      "path": "data/v1/papers/cvpr2025-020-4d-langsplat-4d-language-gaussian-splatting-via-mult.json",
+      "pdf": "local:///Users/gulucaptain/Downloads/cvpr2025/4D LangSplat： 4D Language Gaussian Splatting via Multimodal Large Language Models.pdf"
+    },
+    {
+      "id": "cvpr2025-021-4d-fly-fast-4d-reconstruction-from-a-single-monocula",
+      "title": "4D-Fly： Fast 4D Reconstruction from a Single Monocular Video",
+      "template_id": "T2-tradeoff-bridge",
+      "status": "ready",
+      "path": "data/v1/papers/cvpr2025-021-4d-fly-fast-4d-reconstruction-from-a-single-monocula.json",
+      "pdf": "local:///Users/gulucaptain/Downloads/cvpr2025/4D-Fly： Fast 4D Reconstruction from a Single Monocular Video.pdf"
+    },
+    {
+      "id": "cvpr2025-022-4deform-neural-surface-deformation-for-robust-shape-",
+      "title": "4Deform： Neural Surface Deformation for Robust Shape Interpolation",
       "template_id": "T1-gap-formalization",
       "status": "ready",
-      "path": "data/v1/papers/cvpr2025-06-entitysam-segment-everything-in-vide.json",
-      "pdf": "local:///Users/gulucaptain/Downloads/cvpr2025/EntitySAM： Segment Everything in Video.pdf"
+      "path": "data/v1/papers/cvpr2025-022-4deform-neural-surface-deformation-for-robust-shape-.json",
+      "pdf": "local:///Users/gulucaptain/Downloads/cvpr2025/4Deform： Neural Surface Deformation for Robust Shape Interpolation.pdf"
     },
     {
-      "id": "cvpr2025-07-flash3d-super-scaling-point-transfor",
-      "title": "Flash3D： Super-scaling Point Transformers through Joint Hardware-Geometry Locality",
-      "template_id": "T3-pipeline-reframing",
+      "id": "cvpr2025-023-4dgc-rate-aware-4d-gaussian-compression-for-efficien",
+      "title": "4DGC： Rate-Aware 4D Gaussian Compression for Efficient Streamable Free-Viewpoint Video",
+      "template_id": "T2-tradeoff-bridge",
       "status": "ready",
-      "path": "data/v1/papers/cvpr2025-07-flash3d-super-scaling-point-transfor.json",
-      "pdf": "local:///Users/gulucaptain/Downloads/cvpr2025/Flash3D： Super-scaling Point Transformers through Joint Hardware-Geometry Locality.pdf"
+      "path": "data/v1/papers/cvpr2025-023-4dgc-rate-aware-4d-gaussian-compression-for-efficien.json",
+      "pdf": "local:///Users/gulucaptain/Downloads/cvpr2025/4DGC： Rate-Aware 4D Gaussian Compression for Efficient Streamable Free-Viewpoint Video.pdf"
     },
     {
-      "id": "cvpr2025-08-focusing-on-tracks-for-online-multi-",
-      "title": "Focusing on Tracks for Online Multi-Object Tracking",
+      "id": "cvpr2025-024-4dtam-non-rigid-tracking-and-mapping-via-dynamic-sur",
+      "title": "4DTAM： Non-Rigid Tracking and Mapping via Dynamic Surface Gaussians",
       "template_id": "T3-pipeline-reframing",
       "status": "ready",
-      "path": "data/v1/papers/cvpr2025-08-focusing-on-tracks-for-online-multi-.json",
-      "pdf": "local:///Users/gulucaptain/Downloads/cvpr2025/Focusing on Tracks for Online Multi-Object Tracking.pdf"
+      "path": "data/v1/papers/cvpr2025-024-4dtam-non-rigid-tracking-and-mapping-via-dynamic-sur.json",
+      "pdf": "local:///Users/gulucaptain/Downloads/cvpr2025/4DTAM： Non-Rigid Tracking and Mapping via Dynamic Surface Gaussians.pdf"
     },
     {
-      "id": "cvpr2025-09-fractal-calibration-for-long-tailed-",
-      "title": "Fractal Calibration for Long-tailed Object Detection",
+      "id": "cvpr2025-025-4real-video-learning-generalizable-photo-realistic-4",
+      "title": "4Real-Video： Learning Generalizable Photo-Realistic 4D Video Diffusion",
       "template_id": "T3-pipeline-reframing",
       "status": "ready",
-      "path": "data/v1/papers/cvpr2025-09-fractal-calibration-for-long-tailed-.json",
-      "pdf": "local:///Users/gulucaptain/Downloads/cvpr2025/Fractal Calibration for Long-tailed Object Detection.pdf"
+      "path": "data/v1/papers/cvpr2025-025-4real-video-learning-generalizable-photo-realistic-4.json",
+      "pdf": "local:///Users/gulucaptain/Downloads/cvpr2025/4Real-Video： Learning Generalizable Photo-Realistic 4D Video Diffusion.pdf"
     },
     {
-      "id": "cvpr2025-10-geodepth-from-point-to-depth-to-plan",
-      "title": "GeoDepth： From Point-to-Depth to Plane-to-Depth Modeling for Self-Supervised Monocular Depth Estimation",
+      "id": "cvpr2025-026-5-100-breaking-performance-shackles-of-full-fine-tun",
+      "title": "5%＞100%： Breaking Performance Shackles of Full Fine-Tuning on Visual Recognition Tasks",
+      "template_id": "T4-task-benchmark-definition",
+      "status": "ready",
+      "path": "data/v1/papers/cvpr2025-026-5-100-breaking-performance-shackles-of-full-fine-tun.json",
+      "pdf": "local:///Users/gulucaptain/Downloads/cvpr2025/5%＞100%： Breaking Performance Shackles of Full Fine-Tuning on Visual Recognition Tasks.pdf"
+    },
+    {
+      "id": "cvpr2025-027-a-bias-free-training-paradigm-for-more-general-ai-ge",
+      "title": "A Bias-Free Training Paradigm for More General AI-generated Image Detection",
+      "template_id": "T1-gap-formalization",
+      "status": "ready",
+      "path": "data/v1/papers/cvpr2025-027-a-bias-free-training-paradigm-for-more-general-ai-ge.json",
+      "pdf": "local:///Users/gulucaptain/Downloads/cvpr2025/A Bias-Free Training Paradigm for More General AI-generated Image Detection.pdf"
+    },
+    {
+      "id": "cvpr2025-028-a-closer-look-at-time-steps-is-worthy-of-triple-spee",
+      "title": "A Closer Look at Time Steps is Worthy of Triple Speed-Up for Diffusion Model Training",
       "template_id": "T3-pipeline-reframing",
       "status": "ready",
-      "path": "data/v1/papers/cvpr2025-10-geodepth-from-point-to-depth-to-plan.json",
-      "pdf": "local:///Users/gulucaptain/Downloads/cvpr2025/GeoDepth： From Point-to-Depth to Plane-to-Depth Modeling for Self-Supervised Monocular Depth Estimation.pdf"
+      "path": "data/v1/papers/cvpr2025-028-a-closer-look-at-time-steps-is-worthy-of-triple-spee.json",
+      "pdf": "local:///Users/gulucaptain/Downloads/cvpr2025/A Closer Look at Time Steps is Worthy of Triple Speed-Up for Diffusion Model Training.pdf"
+    },
+    {
+      "id": "cvpr2025-029-a-comprehensive-study-of-decoder-only-llms-for-text-",
+      "title": "A Comprehensive Study of Decoder-Only LLMs for Text-to-Image Generation",
+      "template_id": "T1-gap-formalization",
+      "status": "ready",
+      "path": "data/v1/papers/cvpr2025-029-a-comprehensive-study-of-decoder-only-llms-for-text-.json",
+      "pdf": "local:///Users/gulucaptain/Downloads/cvpr2025/A Comprehensive Study of Decoder-Only LLMs for Text-to-Image Generation.pdf"
+    },
+    {
+      "id": "cvpr2025-030-a-data-centric-revisit-of-pre-trained-vision-models-",
+      "title": "A Data-Centric Revisit of Pre-Trained Vision Models for Robot Learning",
+      "template_id": "T1-gap-formalization",
+      "status": "ready",
+      "path": "data/v1/papers/cvpr2025-030-a-data-centric-revisit-of-pre-trained-vision-models-.json",
+      "pdf": "local:///Users/gulucaptain/Downloads/cvpr2025/A Data-Centric Revisit of Pre-Trained Vision Models for Robot Learning.pdf"
+    },
+    {
+      "id": "cvpr2025-031-a-dataset-for-semantic-segmentation-in-the-presence-",
+      "title": "A Dataset for Semantic Segmentation in the Presence of Unknowns",
+      "template_id": "T4-task-benchmark-definition",
+      "status": "ready",
+      "path": "data/v1/papers/cvpr2025-031-a-dataset-for-semantic-segmentation-in-the-presence-.json",
+      "pdf": "local:///Users/gulucaptain/Downloads/cvpr2025/A Dataset for Semantic Segmentation in the Presence of Unknowns.pdf"
+    },
+    {
+      "id": "cvpr2025-032-a-distractor-aware-memory-for-visual-object-tracking",
+      "title": "A Distractor-Aware Memory for Visual Object Tracking with SAM2",
+      "template_id": "T3-pipeline-reframing",
+      "status": "ready",
+      "path": "data/v1/papers/cvpr2025-032-a-distractor-aware-memory-for-visual-object-tracking.json",
+      "pdf": "local:///Users/gulucaptain/Downloads/cvpr2025/A Distractor-Aware Memory for Visual Object Tracking with SAM2.pdf"
+    },
+    {
+      "id": "cvpr2025-033-a-flag-decomposition-for-hierarchical-datasets",
+      "title": "A Flag Decomposition for Hierarchical Datasets",
+      "template_id": "T4-task-benchmark-definition",
+      "status": "ready",
+      "path": "data/v1/papers/cvpr2025-033-a-flag-decomposition-for-hierarchical-datasets.json",
+      "pdf": "local:///Users/gulucaptain/Downloads/cvpr2025/A Flag Decomposition for Hierarchical Datasets.pdf"
+    },
+    {
+      "id": "cvpr2025-034-a-focused-human-body-model-for-accurate-anthropometr",
+      "title": "A Focused Human Body Model for Accurate Anthropometric Measurements Extraction",
+      "template_id": "T1-gap-formalization",
+      "status": "ready",
+      "path": "data/v1/papers/cvpr2025-034-a-focused-human-body-model-for-accurate-anthropometr.json",
+      "pdf": "local:///Users/gulucaptain/Downloads/cvpr2025/A Focused Human Body Model for Accurate Anthropometric Measurements Extraction.pdf"
+    },
+    {
+      "id": "cvpr2025-035-a-general-adaptive-dual-level-weighting-mechanism-fo",
+      "title": "A General Adaptive Dual-level Weighting Mechanism for Remote Sensing Pansharpening",
+      "template_id": "T1-gap-formalization",
+      "status": "ready",
+      "path": "data/v1/papers/cvpr2025-035-a-general-adaptive-dual-level-weighting-mechanism-fo.json",
+      "pdf": "local:///Users/gulucaptain/Downloads/cvpr2025/A General Adaptive Dual-level Weighting Mechanism for Remote Sensing Pansharpening.pdf"
+    },
+    {
+      "id": "cvpr2025-036-a-hubness-perspective-on-representation-learning-for",
+      "title": "A Hubness Perspective on Representation Learning for Graph-Based Multi-View Clustering",
+      "template_id": "T1-gap-formalization",
+      "status": "ready",
+      "path": "data/v1/papers/cvpr2025-036-a-hubness-perspective-on-representation-learning-for.json",
+      "pdf": "local:///Users/gulucaptain/Downloads/cvpr2025/A Hubness Perspective on Representation Learning for Graph-Based Multi-View Clustering.pdf"
+    },
+    {
+      "id": "cvpr2025-037-a-lightweight-udf-learning-framework-for-3d-reconstr",
+      "title": "A Lightweight UDF Learning Framework for 3D Reconstruction Based on Local Shape Functions",
+      "template_id": "T3-pipeline-reframing",
+      "status": "ready",
+      "path": "data/v1/papers/cvpr2025-037-a-lightweight-udf-learning-framework-for-3d-reconstr.json",
+      "pdf": "local:///Users/gulucaptain/Downloads/cvpr2025/A Lightweight UDF Learning Framework for 3D Reconstruction Based on Local Shape Functions.pdf"
+    },
+    {
+      "id": "cvpr2025-038-a-new-statistical-model-of-star-speckles-for-learnin",
+      "title": "A New Statistical Model of Star Speckles for Learning to Detect and Characterize Exoplanets in Direct Imaging Observations",
+      "template_id": "T1-gap-formalization",
+      "status": "ready",
+      "path": "data/v1/papers/cvpr2025-038-a-new-statistical-model-of-star-speckles-for-learnin.json",
+      "pdf": "local:///Users/gulucaptain/Downloads/cvpr2025/A New Statistical Model of Star Speckles for Learning to Detect and Characterize Exoplanets in Direct Imaging Observations.pdf"
+    },
+    {
+      "id": "cvpr2025-039-a-physics-informed-blur-learning-framework-for-imagi",
+      "title": "A Physics-Informed Blur Learning Framework for Imaging Systems",
+      "template_id": "T1-gap-formalization",
+      "status": "ready",
+      "path": "data/v1/papers/cvpr2025-039-a-physics-informed-blur-learning-framework-for-imagi.json",
+      "pdf": "local:///Users/gulucaptain/Downloads/cvpr2025/A Physics-Informed Blur Learning Framework for Imaging Systems.pdf"
+    },
+    {
+      "id": "cvpr2025-040-a-polarization-aided-transformer-for-image-deblurrin",
+      "title": "A Polarization-Aided Transformer for Image Deblurring via Motion Vector Decomposition",
+      "template_id": "T3-pipeline-reframing",
+      "status": "ready",
+      "path": "data/v1/papers/cvpr2025-040-a-polarization-aided-transformer-for-image-deblurrin.json",
+      "pdf": "local:///Users/gulucaptain/Downloads/cvpr2025/A Polarization-Aided Transformer for Image Deblurring via Motion Vector Decomposition.pdf"
+    },
+    {
+      "id": "cvpr2025-041-a-regularization-guided-equivariant-approach-for-ima",
+      "title": "A Regularization-Guided Equivariant Approach for Image Restoration",
+      "template_id": "T1-gap-formalization",
+      "status": "ready",
+      "path": "data/v1/papers/cvpr2025-041-a-regularization-guided-equivariant-approach-for-ima.json",
+      "pdf": "local:///Users/gulucaptain/Downloads/cvpr2025/A Regularization-Guided Equivariant Approach for Image Restoration.pdf"
+    },
+    {
+      "id": "cvpr2025-042-a-selective-re-learning-mechanism-for-hyperspectral-",
+      "title": "A Selective Re-learning Mechanism for Hyperspectral Fusion Imaging",
+      "template_id": "T1-gap-formalization",
+      "status": "ready",
+      "path": "data/v1/papers/cvpr2025-042-a-selective-re-learning-mechanism-for-hyperspectral-.json",
+      "pdf": "local:///Users/gulucaptain/Downloads/cvpr2025/A Selective Re-learning Mechanism for Hyperspectral Fusion Imaging.pdf"
+    },
+    {
+      "id": "cvpr2025-043-a-semantic-knowledge-complementarity-based-decouplin",
+      "title": "A Semantic Knowledge Complementarity based Decoupling Framework for Semi-supervised Class-imbalanced Medical Image Segmentation",
+      "template_id": "T2-tradeoff-bridge",
+      "status": "ready",
+      "path": "data/v1/papers/cvpr2025-043-a-semantic-knowledge-complementarity-based-decouplin.json",
+      "pdf": "local:///Users/gulucaptain/Downloads/cvpr2025/A Semantic Knowledge Complementarity based Decoupling Framework for Semi-supervised Class-imbalanced Medical Image Segmentation.pdf"
+    },
+    {
+      "id": "cvpr2025-044-a-simple-data-augmentation-for-feature-distribution-",
+      "title": "A Simple Data Augmentation for Feature Distribution Skewed Federated Learning",
+      "template_id": "T1-gap-formalization",
+      "status": "ready",
+      "path": "data/v1/papers/cvpr2025-044-a-simple-data-augmentation-for-feature-distribution-.json",
+      "pdf": "local:///Users/gulucaptain/Downloads/cvpr2025/A Simple Data Augmentation for Feature Distribution Skewed Federated Learning.pdf"
+    },
+    {
+      "id": "cvpr2025-045-a-simple-yet-effective-layout-token-in-large-languag",
+      "title": "A Simple yet Effective Layout Token in Large Language Models for Document Understanding",
+      "template_id": "T1-gap-formalization",
+      "status": "ready",
+      "path": "data/v1/papers/cvpr2025-045-a-simple-yet-effective-layout-token-in-large-languag.json",
+      "pdf": "local:///Users/gulucaptain/Downloads/cvpr2025/A Simple yet Effective Layout Token in Large Language Models for Document Understanding.pdf"
+    },
+    {
+      "id": "cvpr2025-046-a-stitch-in-time-saves-nine-small-vlm-is-a-precise-g",
+      "title": "A Stitch in Time Saves Nine： Small VLM is a Precise Guidance for Accelerating Large VLMs",
+      "template_id": "T1-gap-formalization",
+      "status": "ready",
+      "path": "data/v1/papers/cvpr2025-046-a-stitch-in-time-saves-nine-small-vlm-is-a-precise-g.json",
+      "pdf": "local:///Users/gulucaptain/Downloads/cvpr2025/A Stitch in Time Saves Nine： Small VLM is a Precise Guidance for Accelerating Large VLMs.pdf"
+    },
+    {
+      "id": "cvpr2025-047-a-tale-of-two-classes-adapting-supervised-contrastiv",
+      "title": "A Tale of Two Classes： Adapting Supervised Contrastive Learning to Binary Imbalanced Datasets",
+      "template_id": "T4-task-benchmark-definition",
+      "status": "ready",
+      "path": "data/v1/papers/cvpr2025-047-a-tale-of-two-classes-adapting-supervised-contrastiv.json",
+      "pdf": "local:///Users/gulucaptain/Downloads/cvpr2025/A Tale of Two Classes： Adapting Supervised Contrastive Learning to Binary Imbalanced Datasets.pdf"
+    },
+    {
+      "id": "cvpr2025-048-a-theory-of-learning-unified-model-via-knowledge-int",
+      "title": "A Theory of Learning Unified Model via Knowledge Integration from Label Space Varying Domains",
+      "template_id": "T1-gap-formalization",
+      "status": "ready",
+      "path": "data/v1/papers/cvpr2025-048-a-theory-of-learning-unified-model-via-knowledge-int.json",
+      "pdf": "local:///Users/gulucaptain/Downloads/cvpr2025/A Theory of Learning Unified Model via Knowledge Integration from Label Space Varying Domains.pdf"
+    },
+    {
+      "id": "cvpr2025-049-a-unified-approach-to-interpreting-self-supervised-p",
+      "title": "A Unified Approach to Interpreting Self-supervised Pre-training Methods for 3D Point Clouds via Interactions",
+      "template_id": "T3-pipeline-reframing",
+      "status": "ready",
+      "path": "data/v1/papers/cvpr2025-049-a-unified-approach-to-interpreting-self-supervised-p.json",
+      "pdf": "local:///Users/gulucaptain/Downloads/cvpr2025/A Unified Approach to Interpreting Self-supervised Pre-training Methods for 3D Point Clouds via Interactions.pdf"
+    },
+    {
+      "id": "cvpr2025-050-a-unified-framework-for-heterogeneous-semi-supervise",
+      "title": "A Unified Framework for Heterogeneous Semi-supervised Learning",
+      "template_id": "T1-gap-formalization",
+      "status": "ready",
+      "path": "data/v1/papers/cvpr2025-050-a-unified-framework-for-heterogeneous-semi-supervise.json",
+      "pdf": "local:///Users/gulucaptain/Downloads/cvpr2025/A Unified Framework for Heterogeneous Semi-supervised Learning.pdf"
     }
   ]
 }
