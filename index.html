@@ -81,7 +81,7 @@ function app({index,tMap,pMap}){
     const p=pMap[pid];
     const hs = (p.intro_highlights||[]);
     detail.innerHTML=`<h3 class="title">${pMeta.title}</h3><div class="meta">${pid} · ${pMeta.template_id} · ${pMeta.status}</div><div class="meta"><a href="${pMeta.pdf}" target="_blank">打开 PDF</a></div>
-      <div class="sec"><h3>优秀摘抄句</h3>${hs.length?hs.map(h=>`<div class="q">${h.text}<div class="why">为什么好：${h.why_good}</div></div>`).join(''):'<div class="q">待缓存补抓</div>'}</div>
+      <div class="sec"><h3>优秀摘抄句</h3>${hs.length?hs.map(h=>`<div class="q">${h.text}<div class="why">中文改写：${h.rewrite_zh||h.why_good||""}</div><div class="why">可套用：${h.reusable_pattern||""}</div></div>`).join(''):'<div class="q">待缓存补抓</div>'}</div>
       <div class="sec"><h3>模板映射</h3>${(p.architecture_mapping||[]).map(m=>`<div class="map"><b>${m.template_paragraph}</b><br/>${m.paper_evidence}</div>`).join('')}</div>`;
     renderTpl(pMeta.template_id);
   }
