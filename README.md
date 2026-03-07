@@ -4,7 +4,7 @@ v0.3.0（Introduction-first）
 
 ## 这次改动
 
-- 启动本地缓存机制：`cache/pdf` + `cache/text` + `cache/meta/manifest.json`
+- 启动本地缓存机制：`.local_cache/pdf` + `.local_cache/text` + `.local_cache/meta/manifest.json`（仅本地，不入库）
 - 所有内容改为独立 JSON 文件组织，不再把数据塞进 HTML
 - 模板库升级为“完整可套用的 Introduction 行文模板”（含段落级全文）
 - 每篇论文都有独立详情文件：摘抄句 + 模板映射 + 架构对应

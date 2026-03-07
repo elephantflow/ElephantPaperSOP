@@ -7,9 +7,10 @@ from pypdf import PdfReader
 
 ROOT = Path(__file__).resolve().parent.parent
 INDEX_PATH = ROOT / "data/intro/index.json"
-PDF_DIR = ROOT / "cache/pdf"
-TEXT_DIR = ROOT / "cache/text"
-META_DIR = ROOT / "cache/meta"
+# Local-only cache (intentionally excluded from git)
+PDF_DIR = ROOT / ".local_cache/pdf"
+TEXT_DIR = ROOT / ".local_cache/text"
+META_DIR = ROOT / ".local_cache/meta"
 MANIFEST = META_DIR / "manifest.json"
 
 TEXT_DIR.mkdir(parents=True, exist_ok=True)
