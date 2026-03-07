@@ -13,12 +13,7 @@ MANIFEST = META_DIR / "manifest.json"
 
 PDF_DIR.mkdir(parents=True, exist_ok=True)
 META_DIR.mkdir(parents=True, exist_ok=True)
-
-if MANIFEST.exists():
-    manifest = json.loads(MANIFEST.read_text())
-else:
-    manifest = {"updated_at": None, "papers": {}}
-
+manifest = json.loads(MANIFEST.read_text()) if MANIFEST.exists() else {"updated_at": None, "papers": {}}
 index = json.loads(INDEX_PATH.read_text())
 
 for p in index["papers"]:
@@ -26,26 +21,21 @@ for p in index["papers"]:
     url = p.get("pdf")
     if not url:
         continue
-
     target = PDF_DIR / f"{pid}.pdf"
     rec = manifest["papers"].get(pid, {})
-
-    if target.exists() and rec.get("status") == "ok":
+    if target.exists() and target.stat().st_size > 100000 and rec.get("status") == "ok":
         continue
-
     try:
         req = Request(url, headers={"User-Agent": "Mozilla/5.0"})
-        with urlopen(req, timeout=90) as r:
+        with urlopen(req, timeout=25) as r:
             data = r.read()
         target.write_bytes(data)
-
-        sha = hashlib.sha256(data).hexdigest()
         manifest["papers"][pid] = {
             "status": "ok",
             "pdf": str(target.relative_to(ROOT)),
             "pdf_url": url,
             "size": len(data),
-            "sha256": sha,
+            "sha256": hashlib.sha256(data).hexdigest(),
             "fetched_at": int(time.time())
         }
     except Exception as e:
@@ -58,4 +48,4 @@ for p in index["papers"]:
 
 manifest["updated_at"] = int(time.time())
 MANIFEST.write_text(json.dumps(manifest, ensure_ascii=False, indent=2))
-print("manifest updated:", MANIFEST)
+print("manifest updated")
