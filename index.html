@@ -3,40 +3,42 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ElephantPaperSOP - Intro Templates</title>
+  <title>ElephantPaperSOP - Writing KB</title>
   <style>
     :root{--bg:#f4f7f6;--card:#fff;--line:#d9e4e2;--ink:#123;--muted:#577;--brand:#0f766e;--soft:#ccfbf1}
-    *{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--ink);font-family:"Avenir Next","PingFang SC","Noto Sans SC",sans-serif}
-    .wrap{max-width:1400px;margin:0 auto;padding:20px}
-    .head h1{margin:0;font-size:32px}.head p{margin:8px 0 12px;color:var(--muted)}
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);color:var(--ink);font-family:"Avenir Next","PingFang SC","Noto Sans SC",sans-serif}
+    .wrap{max-width:1440px;margin:0 auto;padding:20px}
+    .head h1{margin:0;font-size:30px}.head p{margin:8px 0 12px;color:var(--muted)}
     .chips{display:flex;gap:8px;flex-wrap:wrap}.chip{background:var(--soft);color:#0f766e;padding:5px 9px;border-radius:999px;font-size:12px}
-    .tools{display:grid;grid-template-columns:1.8fr 1fr 1fr;gap:8px;margin:12px 0}
+    .tools{display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:8px;margin:12px 0}
     input,select{width:100%;padding:10px;border:1px solid var(--line);border-radius:10px;background:#fff}
-    .layout{display:grid;grid-template-columns:330px 1fr 390px;gap:10px}
+    .layout{display:grid;grid-template-columns:340px 1fr 410px;gap:10px}
     .panel{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px}
     .panel h2{margin:2px 0 8px;font-size:16px}
     .item{border:1px solid var(--line);border-radius:10px;padding:9px;margin-bottom:8px;cursor:pointer}
     .item.active{border-color:var(--brand);background:#f0fdfa}.item .t{font-size:13px;font-weight:600;line-height:1.35}.item .m{font-size:12px;color:var(--muted);margin-top:4px}
     .title{font-size:20px;margin:0 0 8px}.meta{font-size:13px;color:var(--muted);margin-bottom:6px}
     .sec{margin-top:10px;padding-top:8px;border-top:1px dashed var(--line)} .sec h3{margin:0 0 7px;font-size:14px}
-    .q{margin:6px 0;padding:6px 8px;background:#f8fffe;border-left:3px solid #99f6e4;font-size:13px}
-    .why{font-size:12px;color:#355;margin-top:2px}
-    .map{border:1px solid var(--line);border-radius:8px;padding:7px;margin-bottom:6px;font-size:13px}
+    .q{margin:6px 0;padding:8px;background:#f8fffe;border-left:3px solid #99f6e4;font-size:13px;line-height:1.5}
+    .why{font-size:12px;color:#355;margin-top:4px}
+    .map{border:1px solid var(--line);border-radius:8px;padding:7px;margin-bottom:6px;font-size:13px;line-height:1.45}
     .tpl{border:1px solid var(--line);border-radius:10px;padding:8px;margin-bottom:8px}.tpl h4{margin:0 0 4px;font-size:14px}
     .tpl p{margin:5px 0;font-size:12px;line-height:1.45}.small{font-size:12px;color:var(--muted)}
+    .grid{display:grid;grid-template-columns:1fr 1fr;gap:6px}
     a{color:var(--brand);text-decoration:none}
-    @media (max-width:1200px){.layout,.tools{grid-template-columns:1fr}}
+    @media (max-width:1200px){.layout,.tools{grid-template-columns:1fr}.grid{grid-template-columns:1fr}}
   </style>
 </head>
 <body>
 <div class="wrap">
   <div class="head">
-    <h1>ElephantPaperSOP · Introduction 模板库</h1>
-    <p>按论文展示：优秀摘抄句 + 模板映射 + 组织架构对应。模板以完整可套用行文提供。</p>
+    <h1>ElephantPaperSOP · 论文写作经验库</h1>
+    <p>每篇论文独立 JSON，支持 Introduction 细粒度分析，并预留 Method / Experiments 增量扩展。</p>
   </div>
   <div id="chips" class="chips"></div>
   <div class="tools">
-    <input id="q" placeholder="搜索论文标题 / 模板ID" />
+    <input id="q" placeholder="搜索论文标题 / 模板 ID" />
     <select id="tpl"><option value="">全部模板</option></select>
     <select id="st"><option value="">全部状态</option><option value="ready">ready</option><option value="pending">pending</option></select>
   </div>
@@ -48,20 +50,28 @@
   </div>
 </div>
 <script>
-async function j(path){const r=await fetch(path,{cache:'no-store'});return r.json();}
+async function j(path){const r=await fetch(path,{cache:'no-store'}); if(!r.ok) throw new Error(`load failed: ${path}`); return r.json();}
+
 async function load(){
-  const index = await j('./data/intro/index.json');
+  const index = await j('./data/v1/index.json');
   const tMap = {};
-  for(const tid of index.templates){ tMap[tid] = await j(`./data/intro/templates/${tid}.json`); }
-  const pMap = {};
-  const pBatch = await j(`./${index.papers_file}`);
-  for(const p of pBatch.papers){ pMap[p.id]=p; }
-  return {index,tMap,pMap};
+  for(const tid of index.templates){ tMap[tid] = await j(`./${index.paths.templates_intro_dir}/${tid}.json`); }
+  return {index,tMap,paperCache:{}};
 }
-function app({index,tMap,pMap}){
+
+function app(state){
+  const {index,tMap,paperCache}=state;
   const chips=document.getElementById('chips');
   const ready=index.papers.filter(x=>x.status==='ready').length;
-  chips.innerHTML=[`版本 ${index.version}`,`批次 ${index.papers_file||'N/A'}`,`论文 ${index.papers.length}`,`ready ${ready}`,`pending ${index.papers.length-ready}`,`模板 ${index.templates.length}`].map(x=>`<span class="chip">${x}</span>`).join('');
+  chips.innerHTML=[
+    `schema ${index.schema_version}`,
+    `版本 ${index.version}`,
+    `论文 ${index.paper_count}`,
+    `ready ${ready}`,
+    `pending ${index.paper_count-ready}`,
+    `模板 ${index.template_count}`,
+    `支持章节 ${index.sections_supported.join(', ')}`
+  ].map(x=>`<span class="chip">${x}</span>`).join('');
 
   const tplSel=document.getElementById('tpl');
   for(const tid of index.templates){ tplSel.add(new Option(`${tid} · ${tMap[tid].name}`,tid)); }
@@ -73,38 +83,71 @@ function app({index,tMap,pMap}){
 
   function renderTpl(tid){
     const t=tMap[tid];
-    tplview.innerHTML=`<div class="tpl"><h4>${t.name}</h4><div class="small">适用：${t.best_for.join(' / ')}</div>${t.full_intro_template.map((p,i)=>`<p><b>P${i+1}:</b> ${p}</p>`).join('')}<p><b>Abstract 模板</b></p>${t.abstract_template.map(x=>`<p>${x}</p>`).join('')}<p><b>句式库</b></p>${t.sentence_stems.map(s=>`<p>${s}</p>`).join('')}</div>`;
+    tplview.innerHTML=`<div class="tpl"><h4>${t.name}</h4><div class="small">适用：${(t.best_for||[]).join(' / ')}</div>${(t.full_intro_template||[]).map((p,i)=>`<p><b>P${i+1}:</b> ${p}</p>`).join('')}<p><b>句式库</b></p>${(t.sentence_stems||[]).map(s=>`<p>${s}</p>`).join('')}</div>`;
   }
 
-  function renderDetail(pid){
+  async function loadPaper(pid){
+    if(paperCache[pid]) return paperCache[pid];
+    const meta=index.papers.find(x=>x.id===pid);
+    const p=await j(`./${meta.path}`);
+    paperCache[pid]=p;
+    return p;
+  }
+
+  async function renderDetail(pid){
     const pMeta=index.papers.find(x=>x.id===pid);
-    if(!pMeta){
-      detail.innerHTML='<div class="q">未找到论文元数据，请刷新页面重试。</div>';
-      return;
-    }
-    const p=pMap[pid] || { intro_highlights: [], architecture_mapping: [] };
-    const hs = Array.isArray(p.intro_highlights) ? p.intro_highlights : [];
-    const highlightsHtml = hs.length
-      ? hs.map(h=>`<div class="q">${h.text}<div class="why">中文改写：${h.rewrite_zh||h.why_good||""}</div><div class="why">可套用：${h.reusable_pattern||""}</div></div>`).join('')
-      : (pMeta.status==='pending' ? '<div class="q">待缓存补抓</div>' : '<div class="q">当前论文状态为 ready，但未读到摘抄数据。请刷新页面。</div>');
-    detail.innerHTML=`<h3 class="title">${pMeta.title}</h3><div class="meta">${pid} · ${pMeta.template_id} · ${pMeta.status}</div><div class="meta"><a href="${pMeta.pdf}" target="_blank">打开 PDF</a></div>
-      <div class="sec"><h3>优秀摘抄句</h3>${highlightsHtml}</div>
-      <div class="sec"><h3>模板映射</h3>${(p.architecture_mapping||[]).map(m=>`<div class="map"><b>${m.template_paragraph}</b><br/>${m.paper_evidence}</div>`).join('')}</div>`;
+    if(!pMeta){ detail.innerHTML='<div class="q">未找到论文元数据。</div>'; return; }
+
+    const paper=await loadPaper(pid);
+    const intro=paper.analysis?.introduction || {};
+    const hs=Array.isArray(intro.highlights)?intro.highlights:[];
+    const maps=Array.isArray(intro.template_mapping)?intro.template_mapping:[];
+    const sec=paper.content?.sections||{};
+    const ft=paper.content?.fulltext||{};
+
+    const hHtml = hs.length
+      ? hs.map(h=>`<div class="q">${h.text||''}<div class="why">中文改写：${h.rewrite_zh||''}</div><div class="why">可套用：${h.reusable_pattern||''}</div></div>`).join('')
+      : '<div class="q">暂无摘抄句</div>';
+
+    const secRows=['introduction','related_work','method','experiments','conclusion']
+      .map(k=>`<div class="map"><b>${k}</b><br/>${sec[k]?.status||'pending'} · ${sec[k]?.chars||0} chars</div>`).join('');
+
+    const pdf = (pMeta.pdf||'').startsWith('local:///') ? pMeta.pdf.replace('local://','') : pMeta.pdf;
+
+    detail.innerHTML=`
+      <h3 class="title">${pMeta.title}</h3>
+      <div class="meta">${pid} · ${pMeta.template_id} · ${pMeta.status}</div>
+      <div class="meta">PDF: ${pdf ? `<a href="${pMeta.pdf||'#'}" target="_blank">${pdf}</a>` : 'N/A'}</div>
+      <div class="grid">
+        <div class="map"><b>全文字符数</b><br/>${ft.raw_chars||0}</div>
+        <div class="map"><b>压缩比</b><br/>${ft.compression_ratio||0}</div>
+        <div class="map"><b>提取状态</b><br/>${paper.content?.extraction?.status||'unknown'}</div>
+        <div class="map"><b>模板匹配</b><br/>${pMeta.template_id}</div>
+      </div>
+      <div class="sec"><h3>优秀摘抄句（Introduction）</h3>${hHtml}</div>
+      <div class="sec"><h3>模板映射（Introduction）</h3>${maps.map(m=>`<div class="map"><b>${m.template_paragraph||''}</b><br/>${m.paper_evidence||''}</div>`).join('')||'<div class="map">暂无映射</div>'}</div>
+      <div class="sec"><h3>章节解析状态</h3>${secRows}</div>
+    `;
+
     renderTpl(pMeta.template_id);
   }
 
   function renderList(){
     const q=document.getElementById('q').value.trim().toLowerCase();
-    const tid=tplSel.value; const st=document.getElementById('st').value;
+    const tid=tplSel.value;
+    const st=document.getElementById('st').value;
+
     const arr=index.papers.filter(p=>{
       const txt=(p.title+' '+p.template_id).toLowerCase();
       return (!q||txt.includes(q))&&(!tid||p.template_id===tid)&&(!st||p.status===st);
     });
+
     if(!arr.length){list.innerHTML='<div class="map">无匹配论文</div>';detail.innerHTML='';tplview.innerHTML='';return;}
     if(!arr.find(x=>x.id===active)) active=arr[0].id;
+
     list.innerHTML=arr.map(p=>`<div class="item ${p.id===active?'active':''}" data-id="${p.id}"><div class="t">${p.title}</div><div class="m">${p.template_id} · ${p.status}</div></div>`).join('');
     [...list.querySelectorAll('.item')].forEach(n=>n.onclick=()=>{active=n.dataset.id;renderList();});
-    renderDetail(active);
+    renderDetail(active).catch(e=>{detail.innerHTML=`<div class="q">${String(e)}</div>`;});
   }
 
   document.getElementById('q').addEventListener('input',renderList);
@@ -112,6 +155,7 @@ function app({index,tMap,pMap}){
   document.getElementById('st').addEventListener('change',renderList);
   renderList();
 }
+
 load().then(app).catch(e=>{document.body.innerHTML=`<pre>${e}</pre>`});
 </script>
 </body>
