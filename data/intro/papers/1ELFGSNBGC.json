@@ -1,0 +1,27 @@
+{
+  "id": "1ELFGSNBGC",
+  "template_id": "T4-task-benchmark-definition",
+  "status": "ready",
+  "intro_highlights": [
+    {
+      "type": "sentence",
+      "text": "Can we equip AI models with similar spatial intelligence?",
+      "why_good": "以提问式开场建立动机。"
+    },
+    {
+      "type": "sentence",
+      "text": "To facilitate this task, we curate a dataset and design new metrics.",
+      "why_good": "任务论文核心贡献句式。"
+    }
+  ],
+  "architecture_mapping": [
+    {
+      "template_paragraph": "P1 动机",
+      "paper_evidence": "认知地图类比切入。"
+    },
+    {
+      "template_paragraph": "P4 数据与指标",
+      "paper_evidence": "数据集 + 指标 + baseline。"
+    }
+  ]
+}

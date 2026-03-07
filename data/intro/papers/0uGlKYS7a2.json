@@ -1,0 +1,27 @@
+{
+  "id": "0uGlKYS7a2",
+  "template_id": "T1-gap-formalization",
+  "status": "ready",
+  "intro_highlights": [
+    {
+      "type": "sentence",
+      "text": "It is natural to ask: what is the optimal strategy in repeated interactions?",
+      "why_good": "问题驱动型引言中的“核心问题句”。"
+    },
+    {
+      "type": "sentence",
+      "text": "Can such an optimal strategy be computed efficiently?",
+      "why_good": "将研究问题自然转化为可计算性问题。"
+    }
+  ],
+  "architecture_mapping": [
+    {
+      "template_paragraph": "P1-P2 动机与问题",
+      "paper_evidence": "多智能体现实场景引出最优策略问题。"
+    },
+    {
+      "template_paragraph": "P5 主结果",
+      "paper_evidence": "正结果与负结果并行陈述。"
+    }
+  ]
+}

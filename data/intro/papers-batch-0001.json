@@ -1,0 +1,269 @@
+{
+  "version": "v0.3.0",
+  "batch_id": "batch-0001",
+  "papers": [
+    {
+      "id": "01XV5Za56k",
+      "template_id": "T1-gap-formalization",
+      "status": "ready",
+      "intro_highlights": [
+        {
+          "type": "sentence",
+          "text": "Probabilistic predictions are at the heart of modern data science.",
+          "why_good": "开场句把任务价值直接抬到领域核心，适合作为高密度背景句。"
+        },
+        {
+          "type": "sentence",
+          "text": "We initiate the algorithmic study of calibration testing through the lens of property testing.",
+          "why_good": "“initiate ... through the lens of ...”是经典方法论定位句式。"
+        },
+        {
+          "type": "sentence",
+          "text": "To our knowledge, we are the first to formalize the calibration testing problem.",
+          "why_good": "首创性表达清晰、语气克制。"
+        },
+        {
+          "type": "sentence",
+          "text": "Our first algorithmic contribution is a nearly-linear time algorithm.",
+          "why_good": "贡献句直接给结果级别，避免空泛。"
+        }
+      ],
+      "architecture_mapping": [
+        {
+          "template_paragraph": "P1 背景价值",
+          "paper_evidence": "先讲校准在预测决策中的中心地位。"
+        },
+        {
+          "template_paragraph": "P2 问题定义",
+          "paper_evidence": "定义 distribution-level calibration testing。"
+        },
+        {
+          "template_paragraph": "P3 现有缺口",
+          "paper_evidence": "指出现有度量和黑盒求解器效率问题。"
+        },
+        {
+          "template_paragraph": "P4-P5 主方法与结果",
+          "paper_evidence": "LP到min-cost flow重写，并给复杂度优势。"
+        }
+      ]
+    },
+    {
+      "id": "0DE1dLMW2b",
+      "template_id": "T1-gap-formalization",
+      "status": "pending",
+      "intro_highlights": [],
+      "architecture_mapping": [
+        {
+          "template_paragraph": "N/A",
+          "paper_evidence": "待缓存抓取后补齐。"
+        }
+      ]
+    },
+    {
+      "id": "0Gl5WxY6es",
+      "template_id": "T2-tradeoff-bridge",
+      "status": "ready",
+      "intro_highlights": [
+        {
+          "type": "sentence",
+          "text": "A key and open challenge is the gap between natural language and action space.",
+          "why_good": "一句话定义了该类工作的结构性难点。"
+        },
+        {
+          "type": "sentence",
+          "text": "There has not been a systematic study of these designs across diverse embodiments.",
+          "why_good": "研究空白表述精准，不夸张。"
+        },
+        {
+          "type": "sentence",
+          "text": "For continuous action spaces ..., while for discrete actions ....",
+          "why_good": "并列句式天然适合写“分场景结论”。"
+        }
+      ],
+      "architecture_mapping": [
+        {
+          "template_paragraph": "P1 进展",
+          "paper_evidence": "先肯定 MLLM 能力边界。"
+        },
+        {
+          "template_paragraph": "P2 核心冲突",
+          "paper_evidence": "自然语言与动作空间错配。"
+        },
+        {
+          "template_paragraph": "P4-P6 机制与结果",
+          "paper_evidence": "按连续/离散动作分策略并给系统实验。"
+        }
+      ]
+    },
+    {
+      "id": "0bFXbEMz8e",
+      "template_id": "T2-tradeoff-bridge",
+      "status": "ready",
+      "intro_highlights": [
+        {
+          "type": "sentence",
+          "text": "To harness the strengths of both paradigms, we introduce FlowLLM.",
+          "why_good": "桥接式表达，适合混合范式论文。"
+        },
+        {
+          "type": "sentence",
+          "text": "This synergistic approach bridges discrete and continuous modeling.",
+          "why_good": "总结句可直接复用到方法贡献段。"
+        }
+      ],
+      "architecture_mapping": [
+        {
+          "template_paragraph": "P2-P4 冲突与桥接",
+          "paper_evidence": "LLM离散优势 + RFM连续优势形成互补。"
+        }
+      ]
+    },
+    {
+      "id": "0rl5vWOzRU",
+      "template_id": "T1-gap-formalization",
+      "status": "pending",
+      "intro_highlights": [],
+      "architecture_mapping": [
+        {
+          "template_paragraph": "N/A",
+          "paper_evidence": "待缓存抓取后补齐。"
+        }
+      ]
+    },
+    {
+      "id": "0sJBW05a2W",
+      "template_id": "T3-pipeline-reframing",
+      "status": "ready",
+      "intro_highlights": [
+        {
+          "type": "sentence",
+          "text": "Existing pipelines can be roughly divided into two-stage and one-stage methods.",
+          "why_good": "相关工作归类句，便于自然过渡到缺点。"
+        },
+        {
+          "type": "sentence",
+          "text": "The core idea is to decompose one-to-many registration into multiple one-to-one registrations.",
+          "why_good": "方法核心一句到位，适合摘要和引言复用。"
+        }
+      ],
+      "architecture_mapping": [
+        {
+          "template_paragraph": "P2 方法谱系",
+          "paper_evidence": "先按pipeline类型分组。"
+        },
+        {
+          "template_paragraph": "P4 重构策略",
+          "paper_evidence": "先focus再matching。"
+        }
+      ]
+    },
+    {
+      "id": "0uGlKYS7a2",
+      "template_id": "T1-gap-formalization",
+      "status": "ready",
+      "intro_highlights": [
+        {
+          "type": "sentence",
+          "text": "It is natural to ask: what is the optimal strategy in repeated interactions?",
+          "why_good": "问题驱动型引言中的“核心问题句”。"
+        },
+        {
+          "type": "sentence",
+          "text": "Can such an optimal strategy be computed efficiently?",
+          "why_good": "将研究问题自然转化为可计算性问题。"
+        }
+      ],
+      "architecture_mapping": [
+        {
+          "template_paragraph": "P1-P2 动机与问题",
+          "paper_evidence": "多智能体现实场景引出最优策略问题。"
+        },
+        {
+          "template_paragraph": "P5 主结果",
+          "paper_evidence": "正结果与负结果并行陈述。"
+        }
+      ]
+    },
+    {
+      "id": "164QnJsYjF",
+      "template_id": "T1-gap-formalization",
+      "status": "ready",
+      "intro_highlights": [
+        {
+          "type": "sentence",
+          "text": "Hopfield network of associative memory is an elegant mathematical model.",
+          "why_good": "经典工作定位句，语义紧凑。"
+        },
+        {
+          "type": "sentence",
+          "text": "Adding new memories does not change the size of the memory tensor.",
+          "why_good": "亮点句直接传达方法价值。"
+        }
+      ],
+      "architecture_mapping": [
+        {
+          "template_paragraph": "P3 缺口",
+          "paper_evidence": "指出新增模式导致参数增长。"
+        },
+        {
+          "template_paragraph": "P4 方法",
+          "paper_evidence": "随机特征替代表达保持参数规模。"
+        }
+      ]
+    },
+    {
+      "id": "168NLzTpw8",
+      "template_id": "T2-tradeoff-bridge",
+      "status": "ready",
+      "intro_highlights": [
+        {
+          "type": "sentence",
+          "text": "There exists a trade-off between detailedness and correctness.",
+          "why_good": "冲突定义简洁、可复用。"
+        },
+        {
+          "type": "sentence",
+          "text": "To address this issue, we propose a training-free framework.",
+          "why_good": "“to address ... we propose ...”是标准且高效的过渡句。"
+        }
+      ],
+      "architecture_mapping": [
+        {
+          "template_paragraph": "P2 核心冲突",
+          "paper_evidence": "细节充分性与正确性冲突。"
+        },
+        {
+          "template_paragraph": "P4-P5 机制与效率",
+          "paper_evidence": "unleash-then-eliminate + probing降算力。"
+        }
+      ]
+    },
+    {
+      "id": "1ELFGSNBGC",
+      "template_id": "T4-task-benchmark-definition",
+      "status": "ready",
+      "intro_highlights": [
+        {
+          "type": "sentence",
+          "text": "Can we equip AI models with similar spatial intelligence?",
+          "why_good": "以提问式开场建立动机。"
+        },
+        {
+          "type": "sentence",
+          "text": "To facilitate this task, we curate a dataset and design new metrics.",
+          "why_good": "任务论文核心贡献句式。"
+        }
+      ],
+      "architecture_mapping": [
+        {
+          "template_paragraph": "P1 动机",
+          "paper_evidence": "认知地图类比切入。"
+        },
+        {
+          "template_paragraph": "P4 数据与指标",
+          "paper_evidence": "数据集 + 指标 + baseline。"
+        }
+      ]
+    }
+  ]
+}

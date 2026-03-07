@@ -1,0 +1,36 @@
+{
+  "id": "0Gl5WxY6es",
+  "template_id": "T2-tradeoff-bridge",
+  "status": "ready",
+  "intro_highlights": [
+    {
+      "type": "sentence",
+      "text": "A key and open challenge is the gap between natural language and action space.",
+      "why_good": "一句话定义了该类工作的结构性难点。"
+    },
+    {
+      "type": "sentence",
+      "text": "There has not been a systematic study of these designs across diverse embodiments.",
+      "why_good": "研究空白表述精准，不夸张。"
+    },
+    {
+      "type": "sentence",
+      "text": "For continuous action spaces ..., while for discrete actions ....",
+      "why_good": "并列句式天然适合写“分场景结论”。"
+    }
+  ],
+  "architecture_mapping": [
+    {
+      "template_paragraph": "P1 进展",
+      "paper_evidence": "先肯定 MLLM 能力边界。"
+    },
+    {
+      "template_paragraph": "P2 核心冲突",
+      "paper_evidence": "自然语言与动作空间错配。"
+    },
+    {
+      "template_paragraph": "P4-P6 机制与结果",
+      "paper_evidence": "按连续/离散动作分策略并给系统实验。"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "id": "0sJBW05a2W",
+  "template_id": "T3-pipeline-reframing",
+  "status": "ready",
+  "intro_highlights": [
+    {
+      "type": "sentence",
+      "text": "Existing pipelines can be roughly divided into two-stage and one-stage methods.",
+      "why_good": "相关工作归类句，便于自然过渡到缺点。"
+    },
+    {
+      "type": "sentence",
+      "text": "The core idea is to decompose one-to-many registration into multiple one-to-one registrations.",
+      "why_good": "方法核心一句到位，适合摘要和引言复用。"
+    }
+  ],
+  "architecture_mapping": [
+    {
+      "template_paragraph": "P2 方法谱系",
+      "paper_evidence": "先按pipeline类型分组。"
+    },
+    {
+      "template_paragraph": "P4 重构策略",
+      "paper_evidence": "先focus再matching。"
+    }
+  ]
+}

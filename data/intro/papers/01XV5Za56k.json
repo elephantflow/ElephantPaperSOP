@@ -1,0 +1,45 @@
+{
+  "id": "01XV5Za56k",
+  "template_id": "T1-gap-formalization",
+  "status": "ready",
+  "intro_highlights": [
+    {
+      "type": "sentence",
+      "text": "Probabilistic predictions are at the heart of modern data science.",
+      "why_good": "开场句把任务价值直接抬到领域核心，适合作为高密度背景句。"
+    },
+    {
+      "type": "sentence",
+      "text": "We initiate the algorithmic study of calibration testing through the lens of property testing.",
+      "why_good": "“initiate ... through the lens of ...”是经典方法论定位句式。"
+    },
+    {
+      "type": "sentence",
+      "text": "To our knowledge, we are the first to formalize the calibration testing problem.",
+      "why_good": "首创性表达清晰、语气克制。"
+    },
+    {
+      "type": "sentence",
+      "text": "Our first algorithmic contribution is a nearly-linear time algorithm.",
+      "why_good": "贡献句直接给结果级别，避免空泛。"
+    }
+  ],
+  "architecture_mapping": [
+    {
+      "template_paragraph": "P1 背景价值",
+      "paper_evidence": "先讲校准在预测决策中的中心地位。"
+    },
+    {
+      "template_paragraph": "P2 问题定义",
+      "paper_evidence": "定义 distribution-level calibration testing。"
+    },
+    {
+      "template_paragraph": "P3 现有缺口",
+      "paper_evidence": "指出现有度量和黑盒求解器效率问题。"
+    },
+    {
+      "template_paragraph": "P4-P5 主方法与结果",
+      "paper_evidence": "LP到min-cost flow重写，并给复杂度优势。"
+    }
+  ]
+}

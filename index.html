@@ -3,7 +3,109 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ElephantPaperSOP - Introduction Lab</title>
-  <style>:root{--bg:#f2f6f4;--surface:#fff;--ink:#102a2a;--muted:#54706f;--line:#d7e3e1;--brand:#0d9488;--brand-soft:#ccfbf1;--accent:#155e75}*{box-sizing:border-box}body{margin:0;color:var(--ink);font-family:"Avenir Next","PingFang SC","Noto Sans SC",sans-serif;background:radial-gradient(circle at 8% 8%,#dcfce7 0,transparent 30%),radial-gradient(circle at 92% 12%,#cffafe 0,transparent 28%),linear-gradient(180deg,#f8fbfa 0%,#eef4f3 100%)}.container{max-width:1380px;margin:0 auto;padding:24px 20px 34px}.hero h1{margin:0;font-size:34px;letter-spacing:.2px}.hero p{margin:8px 0 14px;color:var(--muted)}.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}.chip{background:var(--brand-soft);color:#0f766e;border-radius:999px;padding:6px 10px;font-size:12px}.toolbar{display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:8px;margin-bottom:12px}input,select{border:1px solid var(--line);border-radius:10px;padding:10px 12px;background:#fff;width:100%;color:var(--ink)}.layout{display:grid;grid-template-columns:340px 1fr 360px;gap:12px}.panel{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:12px;box-shadow:0 8px 28px rgba(16,42,42,.05);min-height:300px}.panel h2{margin:4px 0 10px;font-size:17px}.paper-item{border:1px solid var(--line);border-radius:10px;padding:10px;margin-bottom:8px;cursor:pointer;transition:.15s ease;background:#fff}.paper-item:hover{border-color:#98c9c5;transform:translateY(-1px)}.paper-item.active{border-color:var(--brand);background:#f0fdfa}.paper-item .t{font-size:13px;font-weight:600;line-height:1.35}.paper-item .m{color:var(--muted);font-size:12px;margin-top:5px}.title{font-size:20px;line-height:1.35;margin:0 0 8px}.meta{color:var(--muted);font-size:13px;margin-bottom:8px}.tagline{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px}.tag{font-size:12px;border:1px solid #b7cecb;color:#155e75;background:#ecfeff;border-radius:999px;padding:3px 8px}.sec{border-top:1px dashed var(--line);margin-top:10px;padding-top:10px}.sec h3{margin:0 0 8px;font-size:15px}.q{border-left:3px solid #99f6e4;margin:7px 0;padding:5px 8px;background:#f8fffe;font-size:13px;line-height:1.45}.map-row{border:1px solid var(--line);border-radius:8px;padding:7px 8px;margin-bottom:6px;font-size:13px;background:#fff}.map-row b{color:#0f766e}.tpl{border:1px solid var(--line);border-radius:10px;padding:9px;margin-bottom:9px;background:#fff}.tpl h4{margin:0 0 4px;font-size:14px}.tpl .sub{color:var(--muted);font-size:12px;margin-bottom:6px}.mini{font-size:12px;line-height:1.4;color:#224}.list{margin:6px 0 0 16px;padding:0;font-size:12px}.list li{margin:3px 0}a{color:var(--brand);text-decoration:none}@media (max-width:1180px){.layout{grid-template-columns:1fr}.toolbar{grid-template-columns:1fr}}</style>
+  <title>ElephantPaperSOP - Intro Templates</title>
+  <style>
+    :root{--bg:#f4f7f6;--card:#fff;--line:#d9e4e2;--ink:#123;--muted:#577;--brand:#0f766e;--soft:#ccfbf1}
+    *{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--ink);font-family:"Avenir Next","PingFang SC","Noto Sans SC",sans-serif}
+    .wrap{max-width:1400px;margin:0 auto;padding:20px}
+    .head h1{margin:0;font-size:32px}.head p{margin:8px 0 12px;color:var(--muted)}
+    .chips{display:flex;gap:8px;flex-wrap:wrap}.chip{background:var(--soft);color:#0f766e;padding:5px 9px;border-radius:999px;font-size:12px}
+    .tools{display:grid;grid-template-columns:1.8fr 1fr 1fr;gap:8px;margin:12px 0}
+    input,select{width:100%;padding:10px;border:1px solid var(--line);border-radius:10px;background:#fff}
+    .layout{display:grid;grid-template-columns:330px 1fr 390px;gap:10px}
+    .panel{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px}
+    .panel h2{margin:2px 0 8px;font-size:16px}
+    .item{border:1px solid var(--line);border-radius:10px;padding:9px;margin-bottom:8px;cursor:pointer}
+    .item.active{border-color:var(--brand);background:#f0fdfa}.item .t{font-size:13px;font-weight:600;line-height:1.35}.item .m{font-size:12px;color:var(--muted);margin-top:4px}
+    .title{font-size:20px;margin:0 0 8px}.meta{font-size:13px;color:var(--muted);margin-bottom:6px}
+    .sec{margin-top:10px;padding-top:8px;border-top:1px dashed var(--line)} .sec h3{margin:0 0 7px;font-size:14px}
+    .q{margin:6px 0;padding:6px 8px;background:#f8fffe;border-left:3px solid #99f6e4;font-size:13px}
+    .why{font-size:12px;color:#355;margin-top:2px}
+    .map{border:1px solid var(--line);border-radius:8px;padding:7px;margin-bottom:6px;font-size:13px}
+    .tpl{border:1px solid var(--line);border-radius:10px;padding:8px;margin-bottom:8px}.tpl h4{margin:0 0 4px;font-size:14px}
+    .tpl p{margin:5px 0;font-size:12px;line-height:1.45}.small{font-size:12px;color:var(--muted)}
+    a{color:var(--brand);text-decoration:none}
+    @media (max-width:1200px){.layout,.tools{grid-template-columns:1fr}}
+  </style>
 </head>
-<body><div class="container"><div class="hero"><h1>ElephantPaperSOP · Introduction Lab</h1><p>目标：每篇论文可查看 Introduction 摘抄句、模板映射、组织架构对应；同时沉淀跨论文可复用模板。</p></div><div class="chips" id="topStats"></div><div class="toolbar"><input id="q" placeholder="搜索论文标题、任务类型、模板家族" /><select id="family"><option value="">全部模板家族</option></select><select id="status"><option value="">全部状态</option><option value="ready">可查看摘抄</option><option value="pending">待补抓</option></select></div><div class="layout"><section class="panel"><h2>论文列表（10）</h2><div id="paperList"></div></section><section class="panel"><h2>论文详情</h2><div id="paperDetail"></div></section><section class="panel"><h2>Introduction 模板库</h2><div id="templateList"></div></section></div></div><script>async function loadData(){const[templatesData,papersData]=await Promise.all([fetch('./data/intro/intro-templates-v2.json').then(r=>r.json()),fetch('./data/intro/papers-intro-batch-0001.json').then(r=>r.json())]);return{templatesData,papersData}}function byId(arr){const m={};arr.forEach(x=>{m[x.id]=x});return m}function renderTemplatePanel(templates){const el=document.getElementById('templateList');el.innerHTML=templates.map(t=>`<div class="tpl"><h4>${t.name}</h4><div class="sub">适用：${t.best_for.join(' / ')}</div><div class="mini"><b>Abstract 结构（推荐 4 段）</b></div><ol class="list">${t.abstract_blueprint.map(p=>`<li>P${p.p}：${p.goal}</li>`).join('')}</ol><div class="mini"><b>Introduction 结构（推荐 5 段）</b></div><ol class="list">${t.introduction_blueprint.map(p=>`<li>P${p.p}：${p.goal}</li>`).join('')}</ol><div class="mini"><b>可复用句式</b></div><ul class="list">${t.reusable_sentence_stems.map(s=>`<li>${s}</li>`).join('')}</ul></div>`).join('')}function renderDetail(paper,tpl){const d=document.getElementById('paperDetail');const hasQuotes=paper.intro_excerpts&&paper.intro_excerpts.length>0;d.innerHTML=`<h3 class="title">${paper.title}</h3><div class="meta">ID: ${paper.id}</div><div class="tagline"><span class="tag">模板家族：${tpl?tpl.name:paper.template_family_id}</span><span class="tag">状态：${hasQuotes?'ready':'pending'}</span></div><div class="meta"><a href="${paper.pdf}" target="_blank">查看原文 PDF</a></div><div class="sec"><h3>1) Introduction 优秀摘抄句</h3>${hasQuotes?paper.intro_excerpts.map(q=>`<div class="q">${q}</div>`).join(''):'<div class="q">本轮未成功提取到 Introduction 句子，已标记待重试。</div>'}</div><div class="sec"><h3>2) 该论文如何映射到模板</h3>${paper.structure_mapping.map(m=>`<div class="map-row"><b>${m.step}</b>：${m.evidence}</div>`).join('')}</div><div class="sec"><h3>3) 组织架构与模板对应关系</h3>${tpl?tpl.introduction_blueprint.map(p=>`<div class="map-row"><b>P${p.p} ${p.goal}</b><br/>可套用：${p.pattern}</div>`).join(''):'<div class="map-row">暂无模板详情</div>'}</div>`}function initApp({templatesData,papersData}){const templates=templatesData.template_families;const papers=papersData.papers;const tMap=byId(templates);const statsEl=document.getElementById('topStats');const readyCount=papers.filter(p=>p.intro_excerpts&&p.intro_excerpts.length).length;statsEl.innerHTML=[`批次：${papersData.batch_id}`,`论文总数：${papers.length}`,`可查看摘抄：${readyCount}`,`待补抓：${papers.length-readyCount}`,`模板家族：${templates.length}`].map(s=>`<span class="chip">${s}</span>`).join('');const familySel=document.getElementById('family');templates.forEach(t=>familySel.add(new Option(t.name,t.id)));const listEl=document.getElementById('paperList');let activeId=papers[0]?.id;function filtered(){const q=document.getElementById('q').value.trim().toLowerCase();const family=familySel.value;const status=document.getElementById('status').value;return papers.filter(p=>{const hasQuotes=p.intro_excerpts&&p.intro_excerpts.length>0;const okStatus=!status||(status==='ready'?hasQuotes:!hasQuotes);const okFamily=!family||p.template_family_id===family;const txt=`${p.title} ${p.template_family_id}`.toLowerCase();const okQ=!q||txt.includes(q);return okStatus&&okFamily&&okQ})}function renderList(){const arr=filtered();if(!arr.length){listEl.innerHTML='<div class="map-row">无匹配论文</div>';document.getElementById('paperDetail').innerHTML='';return}if(!arr.find(x=>x.id===activeId))activeId=arr[0].id;listEl.innerHTML=arr.map(p=>{const tpl=tMap[p.template_family_id];const hasQuotes=p.intro_excerpts&&p.intro_excerpts.length>0;return `<div class="paper-item ${p.id===activeId?'active':''}" data-id="${p.id}"><div class="t">${p.title}</div><div class="m">${tpl?tpl.name:p.template_family_id}</div><div class="m">${hasQuotes?'ready':'pending'} · 摘抄 ${p.intro_excerpts.length}</div></div>`}).join('');listEl.querySelectorAll('.paper-item').forEach(node=>{node.addEventListener('click',()=>{activeId=node.dataset.id;renderList()})});const p=arr.find(x=>x.id===activeId);renderDetail(p,tMap[p.template_family_id])}document.getElementById('q').addEventListener('input',renderList);familySel.addEventListener('change',renderList);document.getElementById('status').addEventListener('change',renderList);renderTemplatePanel(templates);renderList()}loadData().then(initApp).catch(err=>{document.body.innerHTML=`<pre style="padding:16px">加载失败: ${err}</pre>`});</script></body></html>
+<body>
+<div class="wrap">
+  <div class="head">
+    <h1>ElephantPaperSOP · Introduction 模板库</h1>
+    <p>按论文展示：优秀摘抄句 + 模板映射 + 组织架构对应。模板以完整可套用行文提供。</p>
+  </div>
+  <div id="chips" class="chips"></div>
+  <div class="tools">
+    <input id="q" placeholder="搜索论文标题 / 模板ID" />
+    <select id="tpl"><option value="">全部模板</option></select>
+    <select id="st"><option value="">全部状态</option><option value="ready">ready</option><option value="pending">pending</option></select>
+  </div>
+
+  <div class="layout">
+    <section class="panel"><h2>论文</h2><div id="list"></div></section>
+    <section class="panel"><h2>论文详情</h2><div id="detail"></div></section>
+    <section class="panel"><h2>模板全文</h2><div id="tplview"></div></section>
+  </div>
+</div>
+<script>
+async function j(path){const r=await fetch(path);return r.json();}
+async function load(){
+  const index = await j('./data/intro/index.json');
+  const tMap = {};
+  for(const tid of index.templates){ tMap[tid] = await j(`./data/intro/templates/${tid}.json`); }
+  const pMap = {};
+  const pBatch = await j('./data/intro/papers-batch-0001.json');
+  for(const p of pBatch.papers){ pMap[p.id]=p; }
+  return {index,tMap,pMap};
+}
+function app({index,tMap,pMap}){
+  const chips=document.getElementById('chips');
+  const ready=index.papers.filter(x=>x.status==='ready').length;
+  chips.innerHTML=[`版本 ${index.version}`,`论文 ${index.papers.length}`,`ready ${ready}`,`pending ${index.papers.length-ready}`,`模板 ${index.templates.length}`].map(x=>`<span class="chip">${x}</span>`).join('');
+
+  const tplSel=document.getElementById('tpl');
+  for(const tid of index.templates){ tplSel.add(new Option(`${tid} · ${tMap[tid].name}`,tid)); }
+
+  let active=index.papers[0]?.id;
+  const list=document.getElementById('list');
+  const detail=document.getElementById('detail');
+  const tplview=document.getElementById('tplview');
+
+  function renderTpl(tid){
+    const t=tMap[tid];
+    tplview.innerHTML=`<div class="tpl"><h4>${t.name}</h4><div class="small">适用：${t.best_for.join(' / ')}</div>${t.full_intro_template.map((p,i)=>`<p><b>P${i+1}:</b> ${p}</p>`).join('')}<p><b>Abstract 模板</b></p>${t.abstract_template.map(x=>`<p>${x}</p>`).join('')}<p><b>句式库</b></p>${t.sentence_stems.map(s=>`<p>${s}</p>`).join('')}</div>`;
+  }
+
+  function renderDetail(pid){
+    const pMeta=index.papers.find(x=>x.id===pid);
+    const p=pMap[pid];
+    const hs = (p.intro_highlights||[]);
+    detail.innerHTML=`<h3 class="title">${pMeta.title}</h3><div class="meta">${pid} · ${pMeta.template_id} · ${pMeta.status}</div><div class="meta"><a href="${pMeta.pdf}" target="_blank">打开 PDF</a></div>
+      <div class="sec"><h3>优秀摘抄句</h3>${hs.length?hs.map(h=>`<div class="q">${h.text}<div class="why">为什么好：${h.why_good}</div></div>`).join(''):'<div class="q">待缓存补抓</div>'}</div>
+      <div class="sec"><h3>模板映射</h3>${(p.architecture_mapping||[]).map(m=>`<div class="map"><b>${m.template_paragraph}</b><br/>${m.paper_evidence}</div>`).join('')}</div>`;
+    renderTpl(pMeta.template_id);
+  }
+
+  function renderList(){
+    const q=document.getElementById('q').value.trim().toLowerCase();
+    const tid=tplSel.value; const st=document.getElementById('st').value;
+    const arr=index.papers.filter(p=>{
+      const txt=(p.title+' '+p.template_id).toLowerCase();
+      return (!q||txt.includes(q))&&(!tid||p.template_id===tid)&&(!st||p.status===st);
+    });
+    if(!arr.length){list.innerHTML='<div class="map">无匹配论文</div>';detail.innerHTML='';tplview.innerHTML='';return;}
+    if(!arr.find(x=>x.id===active)) active=arr[0].id;
+    list.innerHTML=arr.map(p=>`<div class="item ${p.id===active?'active':''}" data-id="${p.id}"><div class="t">${p.title}</div><div class="m">${p.template_id} · ${p.status}</div></div>`).join('');
+    [...list.querySelectorAll('.item')].forEach(n=>n.onclick=()=>{active=n.dataset.id;renderList();});
+    renderDetail(active);
+  }
+
+  document.getElementById('q').addEventListener('input',renderList);
+  tplSel.addEventListener('change',renderList);
+  document.getElementById('st').addEventListener('change',renderList);
+  renderList();
+}
+load().then(app).catch(e=>{document.body.innerHTML=`<pre>${e}</pre>`});
+</script>
+</body>
+</html>
