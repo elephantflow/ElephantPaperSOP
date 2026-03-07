@@ -48,20 +48,20 @@
   </div>
 </div>
 <script>
-async function j(path){const r=await fetch(path);return r.json();}
+async function j(path){const r=await fetch(path,{cache:'no-store'});return r.json();}
 async function load(){
   const index = await j('./data/intro/index.json');
   const tMap = {};
   for(const tid of index.templates){ tMap[tid] = await j(`./data/intro/templates/${tid}.json`); }
   const pMap = {};
-  const pBatch = await j('./data/intro/papers-batch-0001.json');
+  const pBatch = await j(`./${index.papers_file}`);
   for(const p of pBatch.papers){ pMap[p.id]=p; }
   return {index,tMap,pMap};
 }
 function app({index,tMap,pMap}){
   const chips=document.getElementById('chips');
   const ready=index.papers.filter(x=>x.status==='ready').length;
-  chips.innerHTML=[`版本 ${index.version}`,`论文 ${index.papers.length}`,`ready ${ready}`,`pending ${index.papers.length-ready}`,`模板 ${index.templates.length}`].map(x=>`<span class="chip">${x}</span>`).join('');
+  chips.innerHTML=[`版本 ${index.version}`,`批次 ${index.papers_file||'N/A'}`,`论文 ${index.papers.length}`,`ready ${ready}`,`pending ${index.papers.length-ready}`,`模板 ${index.templates.length}`].map(x=>`<span class="chip">${x}</span>`).join('');
 
   const tplSel=document.getElementById('tpl');
   for(const tid of index.templates){ tplSel.add(new Option(`${tid} · ${tMap[tid].name}`,tid)); }
@@ -84,8 +84,11 @@ function app({index,tMap,pMap}){
     }
     const p=pMap[pid] || { intro_highlights: [], architecture_mapping: [] };
     const hs = Array.isArray(p.intro_highlights) ? p.intro_highlights : [];
+    const highlightsHtml = hs.length
+      ? hs.map(h=>`<div class="q">${h.text}<div class="why">中文改写：${h.rewrite_zh||h.why_good||""}</div><div class="why">可套用：${h.reusable_pattern||""}</div></div>`).join('')
+      : (pMeta.status==='pending' ? '<div class="q">待缓存补抓</div>' : '<div class="q">当前论文状态为 ready，但未读到摘抄数据。请刷新页面。</div>');
     detail.innerHTML=`<h3 class="title">${pMeta.title}</h3><div class="meta">${pid} · ${pMeta.template_id} · ${pMeta.status}</div><div class="meta"><a href="${pMeta.pdf}" target="_blank">打开 PDF</a></div>
-      <div class="sec"><h3>优秀摘抄句</h3>${hs.length?hs.map(h=>`<div class="q">${h.text}<div class="why">中文改写：${h.rewrite_zh||h.why_good||""}</div><div class="why">可套用：${h.reusable_pattern||""}</div></div>`).join(''):'<div class="q">待缓存补抓</div>'}</div>
+      <div class="sec"><h3>优秀摘抄句</h3>${highlightsHtml}</div>
       <div class="sec"><h3>模板映射</h3>${(p.architecture_mapping||[]).map(m=>`<div class="map"><b>${m.template_paragraph}</b><br/>${m.paper_evidence}</div>`).join('')}</div>`;
     renderTpl(pMeta.template_id);
   }
