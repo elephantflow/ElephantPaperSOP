@@ -1,5 +1,5 @@
 {
-  "schema_version": "template.intro.v2",
+  "schema_version": "template.intro.v3",
   "id": "TPL-3D-A",
   "name": "3D Vision · Decomposition Variant",
   "domain": "3d_vision",
@@ -50,14 +50,14 @@
     "E3: Include failure taxonomy and representative counter-example."
   ],
   "falsifiable_claims": [
-    "If <core mechanism> is removed, performance on <hard subset> should drop by at least <delta>.",
-    "Under matched compute budget, <our method> should outperform <strong baseline> on <metric>."
+    "If <core module> is removed, performance on <hard subset> should decrease by >= <delta>.",
+    "Under matched training/inference budget, <our method> should outperform <strong baseline> on <metric>."
   ],
-  "delta_vs_strongest_baseline": "Compared with <strong baseline>, we add <new mechanism> and gain <delta> under matched budget.",
-  "limitations_or_failure_cases": "We analyze failure cases under <scenario> and discuss why the method is not dominant there.",
+  "delta_vs_strongest_baseline": "Compared with <strong baseline>, we add <mechanism> and obtain <delta> under matched budget and protocol.",
+  "limitations_or_failure_cases": "We explicitly analyze failure cases under <scenario> and report why the method is not dominant there.",
   "contribution_schema": [
     "Contribution: <type=theory|method|benchmark|analysis|system> | Evidence: <Theorem/Table/Ablation/Open-source>",
-    "Contribution: <type> | Evidence: <verifiable artifact>"
+    "Contribution: <type> | Evidence: <verifiable artifact> | Risk/Boundary: <where it may fail>"
   ],
   "failure_modes": [
     "geometry ambiguity",
@@ -86,5 +86,309 @@
       "In closing"
     ]
   },
-  "updated_at": "2026-03-07T17:09:38+00:00"
+  "updated_at": "2026-03-07T17:19:37+00:00",
+  "paragraph_cards": [
+    {
+      "id": "P1",
+      "purpose": "Context and practical motivation",
+      "template": "P1 Context: <3D task> is critical for <application>, but real scenes contain <occlusion / pose variation / sparse views>.",
+      "must_include": [
+        "one falsifiable claim",
+        "one explicit boundary condition",
+        "one evidence pointer (table/theorem/ablation)",
+        "failure taxonomy (geometry/occlusion/temporal)",
+        "stage-wise error propagation note"
+      ],
+      "forbidden_claims": [
+        "state-of-the-art performance",
+        "the first work that",
+        "robust in all scenarios",
+        "consistently superior without exception"
+      ],
+      "evidence_hook": "Link this paragraph to a concrete artifact: Table/Figure/Theorem/Ablation.",
+      "slot_examples": [
+        "3D task",
+        "application",
+        "occlusion / pose variation / sparse views"
+      ],
+      "anti_pattern_examples": [
+        {
+          "bad": "We achieve SOTA on all benchmarks.",
+          "better": "Under matched training/inference budgets, we outperform strong baselines on <metric> over <subset>."
+        },
+        {
+          "bad": "This is the first work to study <task>.",
+          "better": "To the best of our knowledge, this is one of the first unified treatments under <assumptions>."
+        },
+        {
+          "bad": "Our method is robust.",
+          "better": "We quantify robustness on <stress test> and report failure cases on <hard subset>."
+        }
+      ]
+    },
+    {
+      "id": "P2",
+      "purpose": "Gap or failure diagnosis",
+      "template": "P2 Failure diagnosis: Existing <global or monolithic> methods accumulate errors because <coupled subproblem> is solved at once.",
+      "must_include": [
+        "one falsifiable claim",
+        "one explicit boundary condition",
+        "one evidence pointer (table/theorem/ablation)",
+        "failure taxonomy (geometry/occlusion/temporal)",
+        "stage-wise error propagation note"
+      ],
+      "forbidden_claims": [
+        "state-of-the-art performance",
+        "the first work that",
+        "robust in all scenarios",
+        "consistently superior without exception"
+      ],
+      "evidence_hook": "Link this paragraph to a concrete artifact: Table/Figure/Theorem/Ablation.",
+      "slot_examples": [
+        "global or monolithic",
+        "coupled subproblem"
+      ],
+      "anti_pattern_examples": [
+        {
+          "bad": "We achieve SOTA on all benchmarks.",
+          "better": "Under matched training/inference budgets, we outperform strong baselines on <metric> over <subset>."
+        },
+        {
+          "bad": "This is the first work to study <task>.",
+          "better": "To the best of our knowledge, this is one of the first unified treatments under <assumptions>."
+        },
+        {
+          "bad": "Our method is robust.",
+          "better": "We quantify robustness on <stress test> and report failure cases on <hard subset>."
+        }
+      ]
+    },
+    {
+      "id": "P3",
+      "purpose": "Problem setup and core claim",
+      "template": "P3 Reframing: We decompose the problem into <stage-1> and <stage-2>, reducing global ambiguity into local verifiable steps.",
+      "must_include": [
+        "one falsifiable claim",
+        "one explicit boundary condition",
+        "one evidence pointer (table/theorem/ablation)",
+        "failure taxonomy (geometry/occlusion/temporal)",
+        "stage-wise error propagation note"
+      ],
+      "forbidden_claims": [
+        "state-of-the-art performance",
+        "the first work that",
+        "robust in all scenarios",
+        "consistently superior without exception"
+      ],
+      "evidence_hook": "Link this paragraph to a concrete artifact: Table/Figure/Theorem/Ablation.",
+      "slot_examples": [
+        "stage-1",
+        "stage-2"
+      ],
+      "anti_pattern_examples": [
+        {
+          "bad": "We achieve SOTA on all benchmarks.",
+          "better": "Under matched training/inference budgets, we outperform strong baselines on <metric> over <subset>."
+        },
+        {
+          "bad": "This is the first work to study <task>.",
+          "better": "To the best of our knowledge, this is one of the first unified treatments under <assumptions>."
+        },
+        {
+          "bad": "Our method is robust.",
+          "better": "We quantify robustness on <stress test> and report failure cases on <hard subset>."
+        }
+      ]
+    },
+    {
+      "id": "P4",
+      "purpose": "Method framing and mechanism",
+      "template": "P4 Method core: Our design introduces <module> to model <geometry/consistency>, and <refinement module> to correct residual mismatch.",
+      "must_include": [
+        "one falsifiable claim",
+        "one explicit boundary condition",
+        "one evidence pointer (table/theorem/ablation)",
+        "failure taxonomy (geometry/occlusion/temporal)",
+        "stage-wise error propagation note"
+      ],
+      "forbidden_claims": [
+        "state-of-the-art performance",
+        "the first work that",
+        "robust in all scenarios",
+        "consistently superior without exception"
+      ],
+      "evidence_hook": "Link this paragraph to a concrete artifact: Table/Figure/Theorem/Ablation.",
+      "slot_examples": [
+        "module",
+        "geometry/consistency",
+        "refinement module"
+      ],
+      "anti_pattern_examples": [
+        {
+          "bad": "We achieve SOTA on all benchmarks.",
+          "better": "Under matched training/inference budgets, we outperform strong baselines on <metric> over <subset>."
+        },
+        {
+          "bad": "This is the first work to study <task>.",
+          "better": "To the best of our knowledge, this is one of the first unified treatments under <assumptions>."
+        },
+        {
+          "bad": "Our method is robust.",
+          "better": "We quantify robustness on <stress test> and report failure cases on <hard subset>."
+        }
+      ]
+    },
+    {
+      "id": "P5",
+      "purpose": "Evidence and matched-budget comparison",
+      "template": "P5 Evidence promise: Under matched budgets, we target gains on <metric1/metric2> and analyze per-stage error propagation.",
+      "must_include": [
+        "one falsifiable claim",
+        "one explicit boundary condition",
+        "one evidence pointer (table/theorem/ablation)",
+        "failure taxonomy (geometry/occlusion/temporal)",
+        "stage-wise error propagation note"
+      ],
+      "forbidden_claims": [
+        "state-of-the-art performance",
+        "the first work that",
+        "robust in all scenarios",
+        "consistently superior without exception"
+      ],
+      "evidence_hook": "Link this paragraph to a concrete artifact: Table/Figure/Theorem/Ablation.",
+      "slot_examples": [
+        "metric1/metric2"
+      ],
+      "anti_pattern_examples": [
+        {
+          "bad": "We achieve SOTA on all benchmarks.",
+          "better": "Under matched training/inference budgets, we outperform strong baselines on <metric> over <subset>."
+        },
+        {
+          "bad": "This is the first work to study <task>.",
+          "better": "To the best of our knowledge, this is one of the first unified treatments under <assumptions>."
+        },
+        {
+          "bad": "Our method is robust.",
+          "better": "We quantify robustness on <stress test> and report failure cases on <hard subset>."
+        }
+      ]
+    },
+    {
+      "id": "P6",
+      "purpose": "Limitation / boundary / failure case",
+      "template": "P6 Limitation hint: We also report failure cases under <extreme sparsity / topology change>.",
+      "must_include": [
+        "one falsifiable claim",
+        "one explicit boundary condition",
+        "one evidence pointer (table/theorem/ablation)",
+        "failure taxonomy (geometry/occlusion/temporal)",
+        "stage-wise error propagation note"
+      ],
+      "forbidden_claims": [
+        "state-of-the-art performance",
+        "the first work that",
+        "robust in all scenarios",
+        "consistently superior without exception"
+      ],
+      "evidence_hook": "Link this paragraph to a concrete artifact: Table/Figure/Theorem/Ablation.",
+      "slot_examples": [
+        "extreme sparsity / topology change"
+      ],
+      "anti_pattern_examples": [
+        {
+          "bad": "We achieve SOTA on all benchmarks.",
+          "better": "Under matched training/inference budgets, we outperform strong baselines on <metric> over <subset>."
+        },
+        {
+          "bad": "This is the first work to study <task>.",
+          "better": "To the best of our knowledge, this is one of the first unified treatments under <assumptions>."
+        },
+        {
+          "bad": "Our method is robust.",
+          "better": "We quantify robustness on <stress test> and report failure cases on <hard subset>."
+        }
+      ]
+    },
+    {
+      "id": "P7",
+      "purpose": "Contribution-evidence binding summary",
+      "template": "P7 Contributions: (i) decomposition, (ii) mechanism, (iii) empirical validation with ablation and diagnostics.",
+      "must_include": [
+        "one falsifiable claim",
+        "one explicit boundary condition",
+        "one evidence pointer (table/theorem/ablation)",
+        "failure taxonomy (geometry/occlusion/temporal)",
+        "stage-wise error propagation note"
+      ],
+      "forbidden_claims": [
+        "state-of-the-art performance",
+        "the first work that",
+        "robust in all scenarios",
+        "consistently superior without exception"
+      ],
+      "evidence_hook": "Link this paragraph to a concrete artifact: Table/Figure/Theorem/Ablation.",
+      "slot_examples": [],
+      "anti_pattern_examples": [
+        {
+          "bad": "We achieve SOTA on all benchmarks.",
+          "better": "Under matched training/inference budgets, we outperform strong baselines on <metric> over <subset>."
+        },
+        {
+          "bad": "This is the first work to study <task>.",
+          "better": "To the best of our knowledge, this is one of the first unified treatments under <assumptions>."
+        },
+        {
+          "bad": "Our method is robust.",
+          "better": "We quantify robustness on <stress test> and report failure cases on <hard subset>."
+        }
+      ]
+    }
+  ],
+  "statistical_reliability_requirements": [
+    "Report mean±std over >=3 random seeds when stochastic training is used.",
+    "State whether significance testing was performed and which test was used."
+  ],
+  "cost_disclosure_requirements": [
+    "Report at least one cost metric from: latency, GPU memory, FLOPs.",
+    "Compare cost under matched hardware/batch settings."
+  ],
+  "reorder_profiles": [
+    {
+      "id": "standard",
+      "description": "context -> gap -> idea -> evidence -> limitation -> contributions",
+      "blocks": [
+        "context",
+        "gap",
+        "idea",
+        "evidence",
+        "limitation_hint",
+        "contribution"
+      ]
+    },
+    {
+      "id": "evidence_first",
+      "description": "context -> evidence -> gap -> idea -> limitation -> contributions",
+      "blocks": [
+        "context",
+        "evidence",
+        "gap",
+        "idea",
+        "limitation_hint",
+        "contribution"
+      ]
+    },
+    {
+      "id": "benchmark_first",
+      "description": "context -> protocol -> gap -> idea -> evidence -> contributions",
+      "blocks": [
+        "context",
+        "resource_cost_disclosure",
+        "gap",
+        "idea",
+        "evidence",
+        "contribution"
+      ]
+    }
+  ]
 }

@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-03-07T17:12:00.952406Z",
+  "updated_at": "2026-03-07T17:20:57.261388Z",
   "template_count": 10,
   "by_domain": {
     "3d_vision": [
@@ -9,24 +9,10 @@
         "domain": "3d_vision",
         "variant": "A",
         "strategy": "pipeline_reframing",
-        "best_for": [
-          "3D reconstruction",
-          "3D generation",
-          "Gaussian Splatting"
-        ],
-        "core_blocks": [
-          "context",
-          "gap",
-          "idea",
-          "evidence",
-          "contribution"
-        ],
-        "optional_blocks": [
-          "theory_practice_alignment",
-          "failure_taxonomy",
-          "limitation_hint",
-          "resource_cost_disclosure"
-        ]
+        "schema_version": "template.intro.v3",
+        "intro_paragraphs": 7,
+        "paragraph_cards": 7,
+        "reorder_profiles": 3
       },
       {
         "id": "TPL-3D-B",
@@ -34,23 +20,10 @@
         "domain": "3d_vision",
         "variant": "B",
         "strategy": "tradeoff_bridge",
-        "best_for": [
-          "real-time 3D",
-          "mobile or low-memory setting"
-        ],
-        "core_blocks": [
-          "context",
-          "gap",
-          "idea",
-          "evidence",
-          "contribution"
-        ],
-        "optional_blocks": [
-          "theory_practice_alignment",
-          "failure_taxonomy",
-          "limitation_hint",
-          "resource_cost_disclosure"
-        ]
+        "schema_version": "template.intro.v3",
+        "intro_paragraphs": 7,
+        "paragraph_cards": 7,
+        "reorder_profiles": 3
       }
     ],
     "benchmark_task": [
@@ -60,24 +33,10 @@
         "domain": "benchmark_task",
         "variant": "A",
         "strategy": "task_benchmark_definition",
-        "best_for": [
-          "new task",
-          "new benchmark",
-          "dataset papers"
-        ],
-        "core_blocks": [
-          "context",
-          "gap",
-          "idea",
-          "evidence",
-          "contribution"
-        ],
-        "optional_blocks": [
-          "theory_practice_alignment",
-          "failure_taxonomy",
-          "limitation_hint",
-          "resource_cost_disclosure"
-        ]
+        "schema_version": "template.intro.v3",
+        "intro_paragraphs": 6,
+        "paragraph_cards": 6,
+        "reorder_profiles": 3
       },
       {
         "id": "TPL-BENCH-B",
@@ -85,22 +44,10 @@
         "domain": "benchmark_task",
         "variant": "B",
         "strategy": "theory_formalization",
-        "best_for": [
-          "evaluation protocol design"
-        ],
-        "core_blocks": [
-          "context",
-          "gap",
-          "idea",
-          "evidence",
-          "contribution"
-        ],
-        "optional_blocks": [
-          "theory_practice_alignment",
-          "failure_taxonomy",
-          "limitation_hint",
-          "resource_cost_disclosure"
-        ]
+        "schema_version": "template.intro.v3",
+        "intro_paragraphs": 5,
+        "paragraph_cards": 5,
+        "reorder_profiles": 3
       }
     ],
     "medical_imaging": [
@@ -110,23 +57,10 @@
         "domain": "medical_imaging",
         "variant": "A",
         "strategy": "tradeoff_bridge",
-        "best_for": [
-          "pathology",
-          "medical segmentation/classification"
-        ],
-        "core_blocks": [
-          "context",
-          "gap",
-          "idea",
-          "evidence",
-          "contribution"
-        ],
-        "optional_blocks": [
-          "theory_practice_alignment",
-          "failure_taxonomy",
-          "limitation_hint",
-          "resource_cost_disclosure"
-        ]
+        "schema_version": "template.intro.v3",
+        "intro_paragraphs": 6,
+        "paragraph_cards": 6,
+        "reorder_profiles": 3
       }
     ],
     "seg_track": [
@@ -136,24 +70,10 @@
         "domain": "seg_track",
         "variant": "A",
         "strategy": "pipeline_reframing",
-        "best_for": [
-          "segmentation",
-          "tracking",
-          "detection"
-        ],
-        "core_blocks": [
-          "context",
-          "gap",
-          "idea",
-          "evidence",
-          "contribution"
-        ],
-        "optional_blocks": [
-          "theory_practice_alignment",
-          "failure_taxonomy",
-          "limitation_hint",
-          "resource_cost_disclosure"
-        ]
+        "schema_version": "template.intro.v3",
+        "intro_paragraphs": 7,
+        "paragraph_cards": 7,
+        "reorder_profiles": 3
       },
       {
         "id": "TPL-SEG-B",
@@ -161,22 +81,10 @@
         "domain": "seg_track",
         "variant": "B",
         "strategy": "efficiency_first",
-        "best_for": [
-          "end-to-end perception systems"
-        ],
-        "core_blocks": [
-          "context",
-          "gap",
-          "idea",
-          "evidence",
-          "contribution"
-        ],
-        "optional_blocks": [
-          "theory_practice_alignment",
-          "failure_taxonomy",
-          "limitation_hint",
-          "resource_cost_disclosure"
-        ]
+        "schema_version": "template.intro.v3",
+        "intro_paragraphs": 7,
+        "paragraph_cards": 7,
+        "reorder_profiles": 3
       }
     ],
     "efficiency_system": [
@@ -186,23 +94,10 @@
         "domain": "efficiency_system",
         "variant": "A",
         "strategy": "theory_formalization",
-        "best_for": [
-          "theory-backed system design",
-          "efficiency analysis"
-        ],
-        "core_blocks": [
-          "context",
-          "gap",
-          "idea",
-          "evidence",
-          "contribution"
-        ],
-        "optional_blocks": [
-          "theory_practice_alignment",
-          "failure_taxonomy",
-          "limitation_hint",
-          "resource_cost_disclosure"
-        ]
+        "schema_version": "template.intro.v3",
+        "intro_paragraphs": 6,
+        "paragraph_cards": 6,
+        "reorder_profiles": 3
       }
     ],
     "vlm_multimodal": [
@@ -212,24 +107,10 @@
         "domain": "vlm_multimodal",
         "variant": "A",
         "strategy": "tradeoff_bridge",
-        "best_for": [
-          "multimodal grounding",
-          "retrieval",
-          "reasoning"
-        ],
-        "core_blocks": [
-          "context",
-          "gap",
-          "idea",
-          "evidence",
-          "contribution"
-        ],
-        "optional_blocks": [
-          "theory_practice_alignment",
-          "failure_taxonomy",
-          "limitation_hint",
-          "resource_cost_disclosure"
-        ]
+        "schema_version": "template.intro.v3",
+        "intro_paragraphs": 7,
+        "paragraph_cards": 7,
+        "reorder_profiles": 3
       },
       {
         "id": "TPL-VLM-B",
@@ -237,22 +118,10 @@
         "domain": "vlm_multimodal",
         "variant": "B",
         "strategy": "task_benchmark_definition",
-        "best_for": [
-          "new multimodal tasks and benchmarks"
-        ],
-        "core_blocks": [
-          "context",
-          "gap",
-          "idea",
-          "evidence",
-          "contribution"
-        ],
-        "optional_blocks": [
-          "theory_practice_alignment",
-          "failure_taxonomy",
-          "limitation_hint",
-          "resource_cost_disclosure"
-        ]
+        "schema_version": "template.intro.v3",
+        "intro_paragraphs": 6,
+        "paragraph_cards": 6,
+        "reorder_profiles": 3
       }
     ]
   }

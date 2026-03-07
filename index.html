@@ -43,6 +43,10 @@
     .tpl-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
     .tpl-card{border:1px solid var(--line);border-radius:10px;padding:9px;font-size:13px;cursor:pointer;background:#fff}
     .tpl-card.active{border-color:var(--brand);background:#eefcf9}
+    .pcard{border:1px solid #d8e8e4;border-radius:10px;padding:10px;margin:8px 0;background:#fff}
+    .pcard h4{margin:0 0 6px;font-size:14px}
+    .pcard .meta{font-size:12px;margin:3px 0;color:var(--muted)}
+    .mini{font-size:12px;color:#355;line-height:1.5}
     a{color:var(--brand);text-decoration:none}
     body.focus-template .layout{grid-template-columns:1fr} body.focus-template #listPanel,body.focus-template #detailPanel{display:none}
     @media (max-width:1280px){.layout,.tools{grid-template-columns:1fr}.grid,.tpl-grid{grid-template-columns:1fr}}
@@ -116,6 +120,17 @@ function app(state){
     else if(tab==='experiments') content=blockRows(t?.experiments_template,'E',phr);
     else content=blockRows(t?.conclusion_template||[],'C',phr);
 
+    const cards = (t?.paragraph_cards||[]).map(c=>`
+      <div class="pcard">
+        <h4>${esc(c.id)} · ${esc(c.purpose||'')}</h4>
+        <div class="mini"><b>template:</b> ${withVariants(c.template||'',phr)}</div>
+        <div class="mini"><b>must_include:</b> ${(c.must_include||[]).map(x=>esc(x)).join(' ; ')||'N/A'}</div>
+        <div class="mini"><b>forbidden_claims:</b> ${(c.forbidden_claims||[]).map(x=>esc(x)).join(' ; ')||'N/A'}</div>
+        <div class="mini"><b>evidence_hook:</b> ${esc(c.evidence_hook||'N/A')}</div>
+        <div class="mini"><b>slot_examples:</b> ${(c.slot_examples||[]).map(x=>`&lt;${esc(x)}&gt;`).join(' , ')||'N/A'}</div>
+        <div class="mini"><b>anti_patterns:</b><br/>${(c.anti_pattern_examples||[]).map(x=>`bad: ${esc(x.bad||'')}<br/>better: ${esc(x.better||'')}`).join('<br/>')||'N/A'}</div>
+      </div>`).join('');
+
     tplview.innerHTML=`
       <div class="tpl">
         <h3 style="margin:0 0 6px">${esc(t?.name||tid)}</h3>
@@ -124,12 +139,16 @@ function app(state){
           ${Object.keys(SECTION_LABELS).map(k=>`<button class="tab-btn ${k===tab?'active':''}" data-tab="${k}">${SECTION_LABELS[k]}</button>`).join('')}
         </div>
         ${content}
+        <div class="sec"><h3>段落卡片规范（Reviewer 要求）</h3>${cards||'<div class="map">暂无段落卡片</div>'}</div>
         <div class="sec"><h3>审稿约束字段</h3>
           <div class="map"><b>falsifiable_claims</b><br/>${(t?.falsifiable_claims||[]).map(x=>esc(x)).join('<br/>')||'N/A'}</div>
           <div class="map"><b>delta_vs_strongest_baseline</b><br/>${esc(t?.delta_vs_strongest_baseline||'N/A')}</div>
           <div class="map"><b>limitations_or_failure_cases</b><br/>${esc(t?.limitations_or_failure_cases||'N/A')}</div>
           <div class="map"><b>contribution_schema</b><br/>${(t?.contribution_schema||[]).map(x=>esc(x)).join('<br/>')||'N/A'}</div>
           <div class="map"><b>core_blocks / optional_blocks / reorderable</b><br/>${esc((t?.core_blocks||[]).join(', '))}<br/>${esc((t?.optional_blocks||[]).join(', '))}<br/>reorderable=${esc(t?.reorderable)}</div>
+          <div class="map"><b>statistical_reliability_requirements</b><br/>${(t?.statistical_reliability_requirements||[]).map(x=>esc(x)).join('<br/>')||'N/A'}</div>
+          <div class="map"><b>cost_disclosure_requirements</b><br/>${(t?.cost_disclosure_requirements||[]).map(x=>esc(x)).join('<br/>')||'N/A'}</div>
+          <div class="map"><b>reorder_profiles</b><br/>${(t?.reorder_profiles||[]).map(x=>`${esc(x.id)}: ${esc(x.description)} | blocks=${esc((x.blocks||[]).join(' > '))}`).join('<br/>')||'N/A'}</div>
         </div>
         <div class="sec"><h3>同领域模板变体</h3>
           <div class="tpl-grid">

@@ -1,5 +1,5 @@
 {
-  "schema_version": "template.intro.v2",
+  "schema_version": "template.intro.v3",
   "id": "TPL-BENCH-A",
   "name": "Task/Benchmark · Data-Governance Variant",
   "domain": "benchmark_task",
@@ -32,18 +32,31 @@
     "P5 Benchmark findings and strongest baseline gap.",
     "P6 Future benchmark longevity strategy."
   ],
-  "abstract_template": [],
-  "method_template": [],
-  "experiments_template": [],
-  "falsifiable_claims": [
-    "If <core mechanism> is removed, performance on <hard subset> should drop by at least <delta>.",
-    "Under matched compute budget, <our method> should outperform <strong baseline> on <metric>."
+  "abstract_template": [
+    "A1: Define task and deployment setting with one measurable constraint.",
+    "A2: State precise gap and why prior work fails in that regime.",
+    "A3: Present method/protocol and strongest baseline delta under matched budget.",
+    "A4: Add uncertainty (mean±std/significance) and one limitation boundary."
   ],
-  "delta_vs_strongest_baseline": "Compared with <strong baseline>, we add <new mechanism> and gain <delta> under matched budget.",
-  "limitations_or_failure_cases": "We analyze failure cases under <scenario> and discuss why the method is not dominant there.",
+  "method_template": [
+    "M1: Define input-output contract and module decomposition.",
+    "M2: Explain core mechanism and expected causal effect on target metric.",
+    "M3: Provide complexity/memory/runtime cost against strongest baseline."
+  ],
+  "experiments_template": [
+    "E1: Report matched-budget baselines and protocol details (seeds, scripts, hardware).",
+    "E2: Report mean±std or confidence intervals and significance where applicable.",
+    "E3: Provide failure taxonomy and at least one counter-example scenario."
+  ],
+  "falsifiable_claims": [
+    "If <core module> is removed, performance on <hard subset> should decrease by >= <delta>.",
+    "Under matched training/inference budget, <our method> should outperform <strong baseline> on <metric>."
+  ],
+  "delta_vs_strongest_baseline": "Compared with <strong baseline>, we add <mechanism> and obtain <delta> under matched budget and protocol.",
+  "limitations_or_failure_cases": "We explicitly analyze failure cases under <scenario> and report why the method is not dominant there.",
   "contribution_schema": [
     "Contribution: <type=theory|method|benchmark|analysis|system> | Evidence: <Theorem/Table/Ablation/Open-source>",
-    "Contribution: <type> | Evidence: <verifiable artifact>"
+    "Contribution: <type> | Evidence: <verifiable artifact> | Risk/Boundary: <where it may fail>"
   ],
   "failure_modes": [
     "geometry ambiguity",
@@ -72,5 +85,257 @@
       "In closing"
     ]
   },
-  "updated_at": "2026-03-07T17:09:38+00:00"
+  "updated_at": "2026-03-07T17:19:37+00:00",
+  "paragraph_cards": [
+    {
+      "id": "P1",
+      "purpose": "Context and practical motivation",
+      "template": "P1 User-side pain point with measurable evidence.",
+      "must_include": [
+        "one falsifiable claim",
+        "one explicit boundary condition",
+        "one evidence pointer (table/theorem/ablation)",
+        "data governance (dedup/leakage/license)",
+        "baseline protocol disclosure"
+      ],
+      "forbidden_claims": [
+        "state-of-the-art performance",
+        "the first work that",
+        "robust in all scenarios",
+        "consistently superior without exception"
+      ],
+      "evidence_hook": "Link this paragraph to a concrete artifact: Table/Figure/Theorem/Ablation.",
+      "slot_examples": [],
+      "anti_pattern_examples": [
+        {
+          "bad": "We achieve SOTA on all benchmarks.",
+          "better": "Under matched training/inference budgets, we outperform strong baselines on <metric> over <subset>."
+        },
+        {
+          "bad": "This is the first work to study <task>.",
+          "better": "To the best of our knowledge, this is one of the first unified treatments under <assumptions>."
+        },
+        {
+          "bad": "Our method is robust.",
+          "better": "We quantify robustness on <stress test> and report failure cases on <hard subset>."
+        }
+      ]
+    },
+    {
+      "id": "P2",
+      "purpose": "Gap or failure diagnosis",
+      "template": "P2 Task and evaluation target formalization.",
+      "must_include": [
+        "one falsifiable claim",
+        "one explicit boundary condition",
+        "one evidence pointer (table/theorem/ablation)",
+        "data governance (dedup/leakage/license)",
+        "baseline protocol disclosure"
+      ],
+      "forbidden_claims": [
+        "state-of-the-art performance",
+        "the first work that",
+        "robust in all scenarios",
+        "consistently superior without exception"
+      ],
+      "evidence_hook": "Link this paragraph to a concrete artifact: Table/Figure/Theorem/Ablation.",
+      "slot_examples": [],
+      "anti_pattern_examples": [
+        {
+          "bad": "We achieve SOTA on all benchmarks.",
+          "better": "Under matched training/inference budgets, we outperform strong baselines on <metric> over <subset>."
+        },
+        {
+          "bad": "This is the first work to study <task>.",
+          "better": "To the best of our knowledge, this is one of the first unified treatments under <assumptions>."
+        },
+        {
+          "bad": "Our method is robust.",
+          "better": "We quantify robustness on <stress test> and report failure cases on <hard subset>."
+        }
+      ]
+    },
+    {
+      "id": "P3",
+      "purpose": "Problem setup and core claim",
+      "template": "P3 Data governance: dedup, license, leakage, ethics.",
+      "must_include": [
+        "one falsifiable claim",
+        "one explicit boundary condition",
+        "one evidence pointer (table/theorem/ablation)",
+        "data governance (dedup/leakage/license)",
+        "baseline protocol disclosure"
+      ],
+      "forbidden_claims": [
+        "state-of-the-art performance",
+        "the first work that",
+        "robust in all scenarios",
+        "consistently superior without exception"
+      ],
+      "evidence_hook": "Link this paragraph to a concrete artifact: Table/Figure/Theorem/Ablation.",
+      "slot_examples": [],
+      "anti_pattern_examples": [
+        {
+          "bad": "We achieve SOTA on all benchmarks.",
+          "better": "Under matched training/inference budgets, we outperform strong baselines on <metric> over <subset>."
+        },
+        {
+          "bad": "This is the first work to study <task>.",
+          "better": "To the best of our knowledge, this is one of the first unified treatments under <assumptions>."
+        },
+        {
+          "bad": "Our method is robust.",
+          "better": "We quantify robustness on <stress test> and report failure cases on <hard subset>."
+        }
+      ]
+    },
+    {
+      "id": "P4",
+      "purpose": "Method framing and mechanism",
+      "template": "P4 Baseline protocol and reproducibility checklist.",
+      "must_include": [
+        "one falsifiable claim",
+        "one explicit boundary condition",
+        "one evidence pointer (table/theorem/ablation)",
+        "data governance (dedup/leakage/license)",
+        "baseline protocol disclosure"
+      ],
+      "forbidden_claims": [
+        "state-of-the-art performance",
+        "the first work that",
+        "robust in all scenarios",
+        "consistently superior without exception"
+      ],
+      "evidence_hook": "Link this paragraph to a concrete artifact: Table/Figure/Theorem/Ablation.",
+      "slot_examples": [],
+      "anti_pattern_examples": [
+        {
+          "bad": "We achieve SOTA on all benchmarks.",
+          "better": "Under matched training/inference budgets, we outperform strong baselines on <metric> over <subset>."
+        },
+        {
+          "bad": "This is the first work to study <task>.",
+          "better": "To the best of our knowledge, this is one of the first unified treatments under <assumptions>."
+        },
+        {
+          "bad": "Our method is robust.",
+          "better": "We quantify robustness on <stress test> and report failure cases on <hard subset>."
+        }
+      ]
+    },
+    {
+      "id": "P5",
+      "purpose": "Evidence and matched-budget comparison",
+      "template": "P5 Benchmark findings and strongest baseline gap.",
+      "must_include": [
+        "one falsifiable claim",
+        "one explicit boundary condition",
+        "one evidence pointer (table/theorem/ablation)",
+        "data governance (dedup/leakage/license)",
+        "baseline protocol disclosure"
+      ],
+      "forbidden_claims": [
+        "state-of-the-art performance",
+        "the first work that",
+        "robust in all scenarios",
+        "consistently superior without exception"
+      ],
+      "evidence_hook": "Link this paragraph to a concrete artifact: Table/Figure/Theorem/Ablation.",
+      "slot_examples": [],
+      "anti_pattern_examples": [
+        {
+          "bad": "We achieve SOTA on all benchmarks.",
+          "better": "Under matched training/inference budgets, we outperform strong baselines on <metric> over <subset>."
+        },
+        {
+          "bad": "This is the first work to study <task>.",
+          "better": "To the best of our knowledge, this is one of the first unified treatments under <assumptions>."
+        },
+        {
+          "bad": "Our method is robust.",
+          "better": "We quantify robustness on <stress test> and report failure cases on <hard subset>."
+        }
+      ]
+    },
+    {
+      "id": "P6",
+      "purpose": "Limitation / boundary / failure case",
+      "template": "P6 Future benchmark longevity strategy.",
+      "must_include": [
+        "one falsifiable claim",
+        "one explicit boundary condition",
+        "one evidence pointer (table/theorem/ablation)",
+        "data governance (dedup/leakage/license)",
+        "baseline protocol disclosure"
+      ],
+      "forbidden_claims": [
+        "state-of-the-art performance",
+        "the first work that",
+        "robust in all scenarios",
+        "consistently superior without exception"
+      ],
+      "evidence_hook": "Link this paragraph to a concrete artifact: Table/Figure/Theorem/Ablation.",
+      "slot_examples": [],
+      "anti_pattern_examples": [
+        {
+          "bad": "We achieve SOTA on all benchmarks.",
+          "better": "Under matched training/inference budgets, we outperform strong baselines on <metric> over <subset>."
+        },
+        {
+          "bad": "This is the first work to study <task>.",
+          "better": "To the best of our knowledge, this is one of the first unified treatments under <assumptions>."
+        },
+        {
+          "bad": "Our method is robust.",
+          "better": "We quantify robustness on <stress test> and report failure cases on <hard subset>."
+        }
+      ]
+    }
+  ],
+  "statistical_reliability_requirements": [
+    "Report mean±std over >=3 random seeds when stochastic training is used.",
+    "State whether significance testing was performed and which test was used."
+  ],
+  "cost_disclosure_requirements": [
+    "Report at least one cost metric from: annotation cost, evaluation runtime.",
+    "Compare cost under matched hardware/batch settings."
+  ],
+  "reorder_profiles": [
+    {
+      "id": "standard",
+      "description": "context -> gap -> idea -> evidence -> limitation -> contributions",
+      "blocks": [
+        "context",
+        "gap",
+        "idea",
+        "evidence",
+        "limitation_hint",
+        "contribution"
+      ]
+    },
+    {
+      "id": "evidence_first",
+      "description": "context -> evidence -> gap -> idea -> limitation -> contributions",
+      "blocks": [
+        "context",
+        "evidence",
+        "gap",
+        "idea",
+        "limitation_hint",
+        "contribution"
+      ]
+    },
+    {
+      "id": "benchmark_first",
+      "description": "context -> protocol -> gap -> idea -> evidence -> contributions",
+      "blocks": [
+        "context",
+        "resource_cost_disclosure",
+        "gap",
+        "idea",
+        "evidence",
+        "contribution"
+      ]
+    }
+  ]
 }
