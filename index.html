@@ -26,6 +26,9 @@
     .chip{background:var(--soft);color:#0d625c;padding:7px 11px;border-radius:999px;font-size:13px;font-weight:600}
 
     .tools{display:grid;grid-template-columns:1.7fr 1fr 1fr;gap:10px;margin:14px 0}
+    .tool-row{display:flex;gap:10px;align-items:center}
+    .focus-btn{border:1px solid var(--line);background:#fff;border-radius:12px;padding:10px 14px;font-size:14px;cursor:pointer;white-space:nowrap}
+    .focus-btn.active{background:var(--soft);border-color:#94d9cc;color:#0c5f58;font-weight:700}
     input,select{width:100%;padding:12px 13px;border:1px solid var(--line);border-radius:12px;background:#fff;font-size:15px;color:var(--ink)}
 
     .layout{display:grid;grid-template-columns:300px 1fr 620px;gap:12px}
@@ -69,6 +72,12 @@
 
     a{color:var(--brand);text-decoration:none}
 
+    body.focus-template .layout{grid-template-columns:1fr}
+    body.focus-template #listPanel,
+    body.focus-template #detailPanel{display:none}
+    body.focus-template #tplPanel{min-height:calc(100vh - 220px)}
+    body.focus-template .wrap{max-width:1100px}
+
     @media (max-width:1280px){
       .layout,.tools{grid-template-columns:1fr}
       .grid{grid-template-columns:1fr}
@@ -82,6 +91,9 @@
     <p>高亮摘抄 + 模板映射 + 分层模板（Abstract / Introduction / Method / Experiments / Conclusion）</p>
   </div>
   <div id="chips" class="chips"></div>
+  <div class="tool-row">
+    <button id="focusBtn" class="focus-btn" type="button">专注模板模式</button>
+  </div>
   <div class="tools">
     <input id="q" placeholder="搜索论文标题 / 模板 ID" />
     <select id="tpl"><option value="">全部模板</option></select>
@@ -89,9 +101,9 @@
   </div>
 
   <div class="layout">
-    <section class="panel"><h2>论文列表</h2><div id="list"></div></section>
-    <section class="panel"><h2>论文详情</h2><div id="detail"></div></section>
-    <section class="panel"><h2>模板工作台</h2><div id="tplview"></div></section>
+    <section id="listPanel" class="panel"><h2>论文列表</h2><div id="list"></div></section>
+    <section id="detailPanel" class="panel"><h2>论文详情</h2><div id="detail"></div></section>
+    <section id="tplPanel" class="panel"><h2>模板工作台</h2><div id="tplview"></div></section>
   </div>
 </div>
 
@@ -184,6 +196,7 @@ function app(state){
   ].map(x=>`<span class="chip">${esc(x)}</span>`).join('');
 
   const tplSel=document.getElementById('tpl');
+  const focusBtn = document.getElementById('focusBtn');
   for(const tid of index.templates){ tplSel.add(new Option(`${tid} · ${tMap[tid].name}`,tid)); }
 
   let active=index.papers[0]?.id;
@@ -334,6 +347,12 @@ function app(state){
   document.getElementById('q').addEventListener('input',renderList);
   tplSel.addEventListener('change',renderList);
   document.getElementById('st').addEventListener('change',renderList);
+  focusBtn.addEventListener('click',()=>{
+    document.body.classList.toggle('focus-template');
+    const active = document.body.classList.contains('focus-template');
+    focusBtn.classList.toggle('active', active);
+    focusBtn.textContent = active ? '退出专注模板' : '专注模板模式';
+  });
   renderList();
 }
 
