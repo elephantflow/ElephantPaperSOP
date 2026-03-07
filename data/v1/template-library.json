@@ -1,0 +1,259 @@
+{
+  "updated_at": "2026-03-07T17:12:00.952406Z",
+  "template_count": 10,
+  "by_domain": {
+    "3d_vision": [
+      {
+        "id": "TPL-3D-A",
+        "name": "3D Vision · Decomposition Variant",
+        "domain": "3d_vision",
+        "variant": "A",
+        "strategy": "pipeline_reframing",
+        "best_for": [
+          "3D reconstruction",
+          "3D generation",
+          "Gaussian Splatting"
+        ],
+        "core_blocks": [
+          "context",
+          "gap",
+          "idea",
+          "evidence",
+          "contribution"
+        ],
+        "optional_blocks": [
+          "theory_practice_alignment",
+          "failure_taxonomy",
+          "limitation_hint",
+          "resource_cost_disclosure"
+        ]
+      },
+      {
+        "id": "TPL-3D-B",
+        "name": "3D Vision · Efficiency-Accuracy Variant",
+        "domain": "3d_vision",
+        "variant": "B",
+        "strategy": "tradeoff_bridge",
+        "best_for": [
+          "real-time 3D",
+          "mobile or low-memory setting"
+        ],
+        "core_blocks": [
+          "context",
+          "gap",
+          "idea",
+          "evidence",
+          "contribution"
+        ],
+        "optional_blocks": [
+          "theory_practice_alignment",
+          "failure_taxonomy",
+          "limitation_hint",
+          "resource_cost_disclosure"
+        ]
+      }
+    ],
+    "benchmark_task": [
+      {
+        "id": "TPL-BENCH-A",
+        "name": "Task/Benchmark · Data-Governance Variant",
+        "domain": "benchmark_task",
+        "variant": "A",
+        "strategy": "task_benchmark_definition",
+        "best_for": [
+          "new task",
+          "new benchmark",
+          "dataset papers"
+        ],
+        "core_blocks": [
+          "context",
+          "gap",
+          "idea",
+          "evidence",
+          "contribution"
+        ],
+        "optional_blocks": [
+          "theory_practice_alignment",
+          "failure_taxonomy",
+          "limitation_hint",
+          "resource_cost_disclosure"
+        ]
+      },
+      {
+        "id": "TPL-BENCH-B",
+        "name": "Task/Benchmark · Protocol-Driven Variant",
+        "domain": "benchmark_task",
+        "variant": "B",
+        "strategy": "theory_formalization",
+        "best_for": [
+          "evaluation protocol design"
+        ],
+        "core_blocks": [
+          "context",
+          "gap",
+          "idea",
+          "evidence",
+          "contribution"
+        ],
+        "optional_blocks": [
+          "theory_practice_alignment",
+          "failure_taxonomy",
+          "limitation_hint",
+          "resource_cost_disclosure"
+        ]
+      }
+    ],
+    "medical_imaging": [
+      {
+        "id": "TPL-MED-A",
+        "name": "Medical CV · Evidence-Risk Balanced Variant",
+        "domain": "medical_imaging",
+        "variant": "A",
+        "strategy": "tradeoff_bridge",
+        "best_for": [
+          "pathology",
+          "medical segmentation/classification"
+        ],
+        "core_blocks": [
+          "context",
+          "gap",
+          "idea",
+          "evidence",
+          "contribution"
+        ],
+        "optional_blocks": [
+          "theory_practice_alignment",
+          "failure_taxonomy",
+          "limitation_hint",
+          "resource_cost_disclosure"
+        ]
+      }
+    ],
+    "seg_track": [
+      {
+        "id": "TPL-SEG-A",
+        "name": "Segmentation/Tracking · Failure-Taxonomy Variant",
+        "domain": "seg_track",
+        "variant": "A",
+        "strategy": "pipeline_reframing",
+        "best_for": [
+          "segmentation",
+          "tracking",
+          "detection"
+        ],
+        "core_blocks": [
+          "context",
+          "gap",
+          "idea",
+          "evidence",
+          "contribution"
+        ],
+        "optional_blocks": [
+          "theory_practice_alignment",
+          "failure_taxonomy",
+          "limitation_hint",
+          "resource_cost_disclosure"
+        ]
+      },
+      {
+        "id": "TPL-SEG-B",
+        "name": "Segmentation/Tracking · End-to-End Variant",
+        "domain": "seg_track",
+        "variant": "B",
+        "strategy": "efficiency_first",
+        "best_for": [
+          "end-to-end perception systems"
+        ],
+        "core_blocks": [
+          "context",
+          "gap",
+          "idea",
+          "evidence",
+          "contribution"
+        ],
+        "optional_blocks": [
+          "theory_practice_alignment",
+          "failure_taxonomy",
+          "limitation_hint",
+          "resource_cost_disclosure"
+        ]
+      }
+    ],
+    "efficiency_system": [
+      {
+        "id": "TPL-TH-A",
+        "name": "Theory/Optimization · Condition-Result-Regime Variant",
+        "domain": "efficiency_system",
+        "variant": "A",
+        "strategy": "theory_formalization",
+        "best_for": [
+          "theory-backed system design",
+          "efficiency analysis"
+        ],
+        "core_blocks": [
+          "context",
+          "gap",
+          "idea",
+          "evidence",
+          "contribution"
+        ],
+        "optional_blocks": [
+          "theory_practice_alignment",
+          "failure_taxonomy",
+          "limitation_hint",
+          "resource_cost_disclosure"
+        ]
+      }
+    ],
+    "vlm_multimodal": [
+      {
+        "id": "TPL-VLM-A",
+        "name": "VLM/MMLM · Tradeoff-Grounded Variant",
+        "domain": "vlm_multimodal",
+        "variant": "A",
+        "strategy": "tradeoff_bridge",
+        "best_for": [
+          "multimodal grounding",
+          "retrieval",
+          "reasoning"
+        ],
+        "core_blocks": [
+          "context",
+          "gap",
+          "idea",
+          "evidence",
+          "contribution"
+        ],
+        "optional_blocks": [
+          "theory_practice_alignment",
+          "failure_taxonomy",
+          "limitation_hint",
+          "resource_cost_disclosure"
+        ]
+      },
+      {
+        "id": "TPL-VLM-B",
+        "name": "VLM/MMLM · Benchmark-Protocol Variant",
+        "domain": "vlm_multimodal",
+        "variant": "B",
+        "strategy": "task_benchmark_definition",
+        "best_for": [
+          "new multimodal tasks and benchmarks"
+        ],
+        "core_blocks": [
+          "context",
+          "gap",
+          "idea",
+          "evidence",
+          "contribution"
+        ],
+        "optional_blocks": [
+          "theory_practice_alignment",
+          "failure_taxonomy",
+          "limitation_hint",
+          "resource_cost_disclosure"
+        ]
+      }
+    ]
+  }
+}

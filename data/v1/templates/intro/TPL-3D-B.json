@@ -1,0 +1,81 @@
+{
+  "schema_version": "template.intro.v2",
+  "id": "TPL-3D-B",
+  "name": "3D Vision · Efficiency-Accuracy Variant",
+  "domain": "3d_vision",
+  "variant": "B",
+  "narrative_strategy": "tradeoff_bridge",
+  "best_for": [
+    "real-time 3D",
+    "mobile or low-memory setting"
+  ],
+  "reorderable": true,
+  "core_blocks": [
+    "context",
+    "gap",
+    "idea",
+    "evidence",
+    "contribution"
+  ],
+  "optional_blocks": [
+    "theory_practice_alignment",
+    "failure_taxonomy",
+    "limitation_hint",
+    "resource_cost_disclosure"
+  ],
+  "full_intro_template": [
+    "P1 Context: <task> must satisfy both <quality objective> and <runtime/memory objective> in <deployment>.",
+    "P2 Operational tradeoff: We define A=<quality metric> and B=<resource metric>, and require joint reporting on the same benchmark.",
+    "P3 Gap: Prior methods improve A by increasing B, or reduce B with significant A degradation.",
+    "P4 Bridge idea: We propose <framework> to preserve <critical representation> while controlling <compute path>.",
+    "P5 Verifiable claim: Under <dataset/regime>, A improves by <margin> while B drops by <margin> against strongest baseline.",
+    "P6 Robustness note: We report variance (mean±std) and unstable cases under <hard subset>.",
+    "P7 Contributions with evidence binding."
+  ],
+  "abstract_template": [
+    "A1: Define A/B metrics explicitly.",
+    "A2: Present bridge mechanism.",
+    "A3: Give A and B deltas vs strongest baseline.",
+    "A4: Add confidence interval and limitation."
+  ],
+  "method_template": [],
+  "experiments_template": [],
+  "falsifiable_claims": [
+    "If <core mechanism> is removed, performance on <hard subset> should drop by at least <delta>.",
+    "Under matched compute budget, <our method> should outperform <strong baseline> on <metric>."
+  ],
+  "delta_vs_strongest_baseline": "Compared with <strong baseline>, we add <new mechanism> and gain <delta> under matched budget.",
+  "limitations_or_failure_cases": "We analyze failure cases under <scenario> and discuss why the method is not dominant there.",
+  "contribution_schema": [
+    "Contribution: <type=theory|method|benchmark|analysis|system> | Evidence: <Theorem/Table/Ablation/Open-source>",
+    "Contribution: <type> | Evidence: <verifiable artifact>"
+  ],
+  "failure_modes": [
+    "geometry ambiguity",
+    "long-tail occlusion",
+    "temporal inconsistency",
+    "domain shift"
+  ],
+  "operational_definition": {
+    "A": "primary quality metric on benchmark",
+    "B": "resource or reliability metric reported jointly"
+  },
+  "phrase_alternatives": {
+    "However": [
+      "Nevertheless",
+      "Yet",
+      "Despite these advances"
+    ],
+    "We propose": [
+      "We introduce",
+      "We present",
+      "We develop"
+    ],
+    "In summary": [
+      "Overall",
+      "Taken together",
+      "In closing"
+    ]
+  },
+  "updated_at": "2026-03-07T17:09:38+00:00"
+}

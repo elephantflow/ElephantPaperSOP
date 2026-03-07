@@ -1,0 +1,19 @@
+{
+  "updated_at": "2026-03-07T17:09:38+00:00",
+  "paper_count": 50,
+  "template_count": 10,
+  "domain_distribution": {
+    "benchmark_task": 7,
+    "3d_vision": 23,
+    "seg_track": 10,
+    "efficiency_system": 6,
+    "vlm_multimodal": 4
+  },
+  "strategy_distribution": {
+    "theory_formalization": 8,
+    "efficiency_first": 12,
+    "tradeoff_bridge": 14,
+    "pipeline_reframing": 7,
+    "task_benchmark_definition": 9
+  }
+}

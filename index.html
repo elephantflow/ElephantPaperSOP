@@ -3,359 +3,209 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ElephantPaperSOP - Writing KB</title>
+  <title>ElephantPaperSOP - Reviewer Guided</title>
   <style>
-    :root{
-      --bg:#eef4f2;
-      --card:#ffffff;
-      --line:#c7dad5;
-      --ink:#0f2a28;
-      --muted:#486663;
-      --brand:#0f766e;
-      --soft:#d6f5ee;
-      --mark:#fff2b8;
-      --blank:#ffe4d1;
-    }
+    :root{--bg:#eef4f2;--card:#fff;--line:#c7dad5;--ink:#0f2a28;--muted:#486663;--brand:#0f766e;--soft:#d6f5ee;--mark:#fff2b8;--blank:#ffe4d1}
     *{box-sizing:border-box}
     body{margin:0;background:radial-gradient(circle at 0% 0%,#f7fffc 0,#eef4f2 45%,#e8f0ee 100%);color:var(--ink);font-family:"Avenir Next","PingFang SC","Noto Sans SC",sans-serif}
-    .wrap{max-width:1600px;margin:0 auto;padding:22px}
-    .head h1{margin:0;font-size:36px;letter-spacing:.2px}
-    .head p{margin:10px 0 14px;color:var(--muted);font-size:16px;line-height:1.5}
-
-    .chips{display:flex;gap:10px;flex-wrap:wrap}
-    .chip{background:var(--soft);color:#0d625c;padding:7px 11px;border-radius:999px;font-size:13px;font-weight:600}
-
-    .tools{display:grid;grid-template-columns:1.7fr 1fr 1fr;gap:10px;margin:14px 0}
-    .tool-row{display:flex;gap:10px;align-items:center}
-    .focus-btn{border:1px solid var(--line);background:#fff;border-radius:12px;padding:10px 14px;font-size:14px;cursor:pointer;white-space:nowrap}
+    .wrap{max-width:1640px;margin:0 auto;padding:22px}
+    .head h1{margin:0;font-size:34px}.head p{margin:10px 0 14px;color:var(--muted);font-size:16px;line-height:1.5}
+    .chips{display:flex;gap:10px;flex-wrap:wrap}.chip{background:var(--soft);color:#0d625c;padding:7px 11px;border-radius:999px;font-size:13px;font-weight:600}
+    .tool-row{display:flex;gap:10px;align-items:center;margin:12px 0 0}
+    .focus-btn{border:1px solid var(--line);background:#fff;border-radius:12px;padding:10px 14px;font-size:14px;cursor:pointer}
     .focus-btn.active{background:var(--soft);border-color:#94d9cc;color:#0c5f58;font-weight:700}
+    .tools{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:10px;margin:10px 0 14px}
     input,select{width:100%;padding:12px 13px;border:1px solid var(--line);border-radius:12px;background:#fff;font-size:15px;color:var(--ink)}
-
-    .layout{display:grid;grid-template-columns:300px 1fr 620px;gap:12px}
+    .layout{display:grid;grid-template-columns:300px 1fr 680px;gap:12px}
     .panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px;box-shadow:0 2px 16px rgba(9,44,36,.04)}
     .panel h2{margin:2px 0 10px;font-size:18px}
-
     .item{border:1px solid var(--line);border-radius:11px;padding:10px 11px;margin-bottom:9px;cursor:pointer;transition:all .16s ease}
-    .item:hover{transform:translateY(-1px);box-shadow:0 4px 12px rgba(9,44,36,.06)}
-    .item.active{border-color:var(--brand);background:#eefcf9}
-    .item .t{font-size:15px;font-weight:700;line-height:1.45}
-    .item .m{font-size:13px;color:var(--muted);margin-top:6px}
-
-    .title{font-size:24px;margin:0 0 10px;line-height:1.35}
-    .meta{font-size:14px;color:var(--muted);margin-bottom:8px;line-height:1.5;word-break:break-all}
-    .sec{margin-top:14px;padding-top:10px;border-top:1px dashed var(--line)}
-    .sec h3{margin:0 0 10px;font-size:17px}
-
+    .item.active{border-color:var(--brand);background:#eefcf9}.item .t{font-size:15px;font-weight:700;line-height:1.45}.item .m{font-size:13px;color:var(--muted);margin-top:6px}
+    .title{font-size:23px;margin:0 0 10px;line-height:1.35}.meta{font-size:14px;color:var(--muted);margin-bottom:8px;line-height:1.5;word-break:break-all}
+    .sec{margin-top:14px;padding-top:10px;border-top:1px dashed var(--line)} .sec h3{margin:0 0 10px;font-size:17px}
     .grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
     .map{border:1px solid var(--line);border-radius:10px;padding:9px;margin-bottom:7px;font-size:14px;line-height:1.55;background:#fbfefd}
-
     .quote-card{position:relative;margin:8px 0;padding:12px;border:1px solid #f1d988;border-left:5px solid #d3a800;border-radius:10px;background:linear-gradient(180deg,#fff9de 0,#fffdf3 100%);font-size:15px;line-height:1.65;cursor:help}
-    .quote-card:hover{box-shadow:0 4px 14px rgba(171,138,0,.12)}
     .tip{display:none;position:absolute;left:12px;right:12px;bottom:calc(100% + 8px);z-index:50;background:#0f2f2c;color:#ecfffb;padding:10px 11px;border-radius:10px;border:1px solid #1e4a46;font-size:13px;line-height:1.55;white-space:pre-wrap}
     .quote-card:hover .tip{display:block}
-
-    .tpl{border:1px solid var(--line);border-radius:11px;padding:11px;background:#fbfefd}
-    .tpl h4{margin:0 0 6px;font-size:17px}
-    .small{font-size:13px;color:var(--muted);line-height:1.45}
-
     .tabs{display:flex;gap:7px;flex-wrap:wrap;margin:10px 0}
     .tab-btn{border:1px solid var(--line);background:#fff;border-radius:999px;padding:7px 11px;font-size:13px;cursor:pointer}
     .tab-btn.active{background:var(--soft);border-color:#94d9cc;color:#0c5f58;font-weight:700}
-    .section-tab{margin:8px 0 10px}
-
+    .pill{display:inline-block;margin:4px 6px 0 0;padding:6px 10px;border-radius:999px;border:1px solid var(--line);background:#fff;font-size:13px;cursor:pointer}
+    .pill.active{background:var(--soft);border-color:#94d9cc;font-weight:700}
+    .tpl{border:1px solid var(--line);border-radius:11px;padding:11px;background:#fbfefd}
     .para{margin:8px 0;padding:10px;border-radius:9px;background:#fff;border:1px dashed #d8e8e4;font-size:14px;line-height:1.66}
+    .small{font-size:13px;color:var(--muted);line-height:1.45}
     .blank-slot{background:var(--blank);padding:1px 4px;border-radius:5px;border:1px solid #f3c29f;font-weight:700;color:#8a3d00}
-
     .variant{position:relative;background:var(--mark);border-bottom:2px dotted #b79300;padding:0 3px;border-radius:3px;cursor:pointer}
-    .variant .tip{left:0;right:auto;min-width:260px;max-width:390px}
+    .variant .tip{left:0;right:auto;min-width:240px;max-width:420px}
     .variant:hover .tip{display:block}
-
+    .tpl-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+    .tpl-card{border:1px solid var(--line);border-radius:10px;padding:9px;font-size:13px;cursor:pointer;background:#fff}
+    .tpl-card.active{border-color:var(--brand);background:#eefcf9}
     a{color:var(--brand);text-decoration:none}
-
-    body.focus-template .layout{grid-template-columns:1fr}
-    body.focus-template #listPanel,
-    body.focus-template #detailPanel{display:none}
-    body.focus-template #tplPanel{min-height:calc(100vh - 220px)}
-    body.focus-template .wrap{max-width:1100px}
-
-    @media (max-width:1280px){
-      .layout,.tools{grid-template-columns:1fr}
-      .grid{grid-template-columns:1fr}
-    }
+    body.focus-template .layout{grid-template-columns:1fr} body.focus-template #listPanel,body.focus-template #detailPanel{display:none}
+    @media (max-width:1280px){.layout,.tools{grid-template-columns:1fr}.grid,.tpl-grid{grid-template-columns:1fr}}
   </style>
 </head>
 <body>
 <div class="wrap">
   <div class="head">
-    <h1>ElephantPaperSOP · 论文写作经验库</h1>
-    <p>高亮摘抄 + 模板映射 + 分层模板（Abstract / Introduction / Method / Experiments / Conclusion）</p>
+    <h1>ElephantPaperSOP · Reviewer-Guided 模板库</h1>
+    <p>支持同领域多模板变体、章节化摘抄、可证伪承诺与失败案例约束。</p>
   </div>
   <div id="chips" class="chips"></div>
-  <div class="tool-row">
-    <button id="focusBtn" class="focus-btn" type="button">专注模板模式</button>
-  </div>
+  <div class="tool-row"><button id="focusBtn" class="focus-btn" type="button">专注模板模式</button></div>
   <div class="tools">
     <input id="q" placeholder="搜索论文标题 / 模板 ID" />
     <select id="tpl"><option value="">全部模板</option></select>
+    <select id="domain"><option value="">全部领域</option></select>
     <select id="st"><option value="">全部状态</option><option value="ready">ready</option><option value="pending">pending</option></select>
   </div>
-
   <div class="layout">
     <section id="listPanel" class="panel"><h2>论文列表</h2><div id="list"></div></section>
     <section id="detailPanel" class="panel"><h2>论文详情</h2><div id="detail"></div></section>
     <section id="tplPanel" class="panel"><h2>模板工作台</h2><div id="tplview"></div></section>
   </div>
 </div>
-
 <script>
-const SECTION_LABELS = {
-  abstract:'Abstract',
-  introduction:'Introduction',
-  method:'Method',
-  experiments:'Experiments',
-  conclusion:'Conclusion'
-};
-
-const DISCOURSE_VARIANTS = {
-  'However':'However / Nevertheless / Yet / Despite these advances',
-  'In particular':'In particular / Concretely / More specifically',
-  'To address this gap':'To address this gap / To overcome this limitation / To tackle this issue',
-  'In summary':'In summary / Overall / Taken together',
-  'We propose':'We propose / We introduce / We present',
-  'Our main result':'Our main result / Our key finding / Our central claim'
-};
-
-const METHOD_TEMPLATE = [
-  'Paragraph 1 (Method overview): We propose <method_name>, a <architecture_type> designed for <task>. The method consists of <module_1>, <module_2>, and <module_3>.',
-  'Paragraph 2 (Core module): The key component is <core_module>, which models <interaction or structure> through <mechanism>. Compared with prior designs, it improves <property>.',
-  'Paragraph 3 (Optimization and training): We optimize the model with <loss_terms> and train on <dataset/split>. This allows stable convergence under <constraint>.',
-  'Paragraph 4 (Complexity and practicality): The method introduces <complexity_change> while preserving <efficiency_property>. It is practical for <deployment setting>.'
-];
-
-const EXP_TEMPLATE = [
-  'Paragraph 1 (Setup): We evaluate on <benchmarks> under <metrics>. Baselines include <strong_baselines> and recent SOTA methods.',
-  'Paragraph 2 (Main results): Our method achieves <main_number> on <primary_metric>, outperforming prior work by <margin>.',
-  'Paragraph 3 (Ablation): We ablate <components> and show each contributes to <observed_gain>.',
-  'Paragraph 4 (Analysis): We provide qualitative/diagnostic analysis on <failure cases> and discuss robustness under <shift/noise>.'
-];
-
-const CONC_TEMPLATE = [
-  'We studied <task> and identified <core_gap>.',
-  'By introducing <method_or_framework>, we achieved <main_outcome> across <benchmarks/settings>.',
-  'Future work will investigate <next direction> to improve <limitation>.'
-];
-
-async function j(path){
-  const r = await fetch(path,{cache:'no-store'});
-  if(!r.ok) throw new Error(`load failed: ${path}`);
-  return r.json();
-}
-
-function esc(s){
-  return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
-}
-
-function withBlankSlots(text){
-  return esc(text).replace(/&lt;([^&]+)&gt;/g,'<span class="blank-slot">&lt;$1&gt;</span>');
-}
-
-function withVariants(text){
-  let html = withBlankSlots(text);
-  for(const [k,v] of Object.entries(DISCOURSE_VARIANTS)){
-    const re = new RegExp(`\\b${k.replace(/[.*+?^${}()|[\\]\\]/g,'\\\\$&')}\\b`,'g');
-    html = html.replace(re, `<span class="variant">${k}<span class="tip">可替代表达:\n${esc(v)}</span></span>`);
-  }
-  return html;
-}
-
-function sectionTabHtml(active){
-  const keys=['abstract','introduction','method','experiments','conclusion'];
-  return `<div class="tabs">${keys.map(k=>`<button class="tab-btn ${k===active?'active':''}" data-tab="${k}">${SECTION_LABELS[k]}</button>`).join('')}</div>`;
-}
+const SECTION_LABELS={abstract:'Abstract',introduction:'Introduction',method:'Method',experiments:'Experiments',conclusion:'Conclusion'};
+async function j(path){const r=await fetch(path,{cache:'no-store'}); if(!r.ok) throw new Error(`load failed: ${path}`); return r.json();}
+function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');}
+function withBlankSlots(text){return esc(text).replace(/&lt;([^&]+)&gt;/g,'<span class="blank-slot">&lt;$1&gt;</span>');}
+function withVariants(text,phr){let html=withBlankSlots(text); for(const [k,v] of Object.entries(phr||{})){const re=new RegExp(`\\b${k.replace(/[.*+?^${}()|[\\]\\]/g,'\\\\$&')}\\b`,'g'); html=html.replace(re,`<span class="variant">${esc(k)}<span class="tip">可替代表达:\n${esc((v||[]).join(' / '))}</span></span>`);} return html;}
+function blockRows(arr,prefix,phr){return (arr||[]).map((x,i)=>`<div class="para"><b>${prefix}${i+1}:</b> ${withVariants(x,phr)}</div>`).join('')||'<div class="map">暂无</div>';}
 
 async function load(){
-  const index = await j('./data/v1/index.json');
-  const tMap = {};
-  for(const tid of index.templates){
-    tMap[tid] = await j(`./${index.paths.templates_intro_dir}/${tid}.json`);
-  }
-  return {index,tMap,paperCache:{}, activeTplTab:'introduction', activeDetailTab:'introduction'};
+  const index=await j('./data/v1/index.json');
+  const tMap={};
+  for(const tid of index.templates){tMap[tid]=await j(`./${index.paths.templates_intro_dir}/${tid}.json`);}
+  return {index,tMap,paperCache:{},activeTplTab:'introduction',activeDetailTab:'introduction',activeTemplateId:null};
 }
 
 function app(state){
   const {index,tMap,paperCache}=state;
   const chips=document.getElementById('chips');
   const ready=index.papers.filter(x=>x.status==='ready').length;
-  chips.innerHTML=[
-    `schema ${index.schema_version}`,
-    `版本 ${index.version}`,
-    `论文 ${index.paper_count}`,
-    `ready ${ready}`,
-    `模板 ${index.template_count}`,
-    `支持章节 ${index.sections_supported.join(', ')}`
-  ].map(x=>`<span class="chip">${esc(x)}</span>`).join('');
+  chips.innerHTML=[`schema ${index.schema_version}`,`版本 ${index.version}`,`论文 ${index.paper_count}`,`模板 ${index.template_count}`,`ready ${ready}`,`focus ${index.focus}`].map(x=>`<span class="chip">${esc(x)}</span>`).join('');
 
   const tplSel=document.getElementById('tpl');
-  const focusBtn = document.getElementById('focusBtn');
-  for(const tid of index.templates){ tplSel.add(new Option(`${tid} · ${tMap[tid].name}`,tid)); }
+  const domainSel=document.getElementById('domain');
+  const focusBtn=document.getElementById('focusBtn');
+  const domains=[...new Set(index.papers.map(p=>p.domain).filter(Boolean))].sort();
+  domains.forEach(d=>domainSel.add(new Option(d,d)));
+  index.templates.forEach(tid=>tplSel.add(new Option(`${tid} · ${tMap[tid]?.name||tid}`,tid)));
 
   let active=index.papers[0]?.id;
   const list=document.getElementById('list');
   const detail=document.getElementById('detail');
   const tplview=document.getElementById('tplview');
 
-  async function loadPaper(pid){
-    if(paperCache[pid]) return paperCache[pid];
-    const meta=index.papers.find(x=>x.id===pid);
-    const p=await j(`./${meta.path}`);
-    paperCache[pid]=p;
-    return p;
-  }
+  async function loadPaper(pid){if(paperCache[pid]) return paperCache[pid]; const m=index.papers.find(x=>x.id===pid); const p=await j(`./${m.path}`); paperCache[pid]=p; return p;}
 
-  function renderTpl(tid){
+  function renderTpl(tid, currentPaper){
     const t=tMap[tid];
-    const tab = state.activeTplTab || 'introduction';
+    const tab=state.activeTplTab||'introduction';
+    const phr=t?.phrase_alternatives||{};
+    const sameDomain=index.templates.filter(x=>tMap[x]?.domain===t?.domain);
 
-    let content = '';
-    if(tab==='abstract'){
-      const rows = Array.isArray(t.abstract_template) ? t.abstract_template : [];
-      content = rows.length
-        ? rows.map((p,i)=>`<div class="para"><b>A${i+1}:</b> ${withVariants(p)}</div>`).join('')
-        : '<div class="map">暂无 Abstract 模板</div>';
-    }else if(tab==='introduction'){
-      const rows = Array.isArray(t.full_intro_template) ? t.full_intro_template : [];
-      content = rows.length
-        ? rows.map((p,i)=>`<div class="para"><b>P${i+1}:</b> ${withVariants(p)}</div>`).join('')
-        : '<div class="map">暂无 Introduction 模板</div>';
-      content += `<div class="sec"><h3>句式备选池</h3>${(t.sentence_stems||[]).map(s=>`<div class="para">${withVariants(s)}</div>`).join('')||'<div class="map">暂无</div>'}</div>`;
-    }else if(tab==='method'){
-      content = METHOD_TEMPLATE.map((p,i)=>`<div class="para"><b>M${i+1}:</b> ${withVariants(p)}</div>`).join('');
-      content += '<div class="map">说明：当前 Method 为可扩展模板骨架，后续会按新论文自动替换为高质量实模版。</div>';
-    }else if(tab==='experiments'){
-      content = EXP_TEMPLATE.map((p,i)=>`<div class="para"><b>E${i+1}:</b> ${withVariants(p)}</div>`).join('');
-      content += '<div class="map">说明：当前 Experiments 为可扩展模板骨架，后续会引入指标叙事与消融表达库。</div>';
-    }else{
-      content = CONC_TEMPLATE.map((p,i)=>`<div class="para"><b>C${i+1}:</b> ${withVariants(p)}</div>`).join('');
-    }
+    let content='';
+    if(tab==='abstract') content=blockRows(t?.abstract_template,'A',phr);
+    else if(tab==='introduction') content=blockRows(t?.full_intro_template,'P',phr);
+    else if(tab==='method') content=blockRows(t?.method_template,'M',phr);
+    else if(tab==='experiments') content=blockRows(t?.experiments_template,'E',phr);
+    else content=blockRows(t?.conclusion_template||[],'C',phr);
 
-    tplview.innerHTML = `
+    tplview.innerHTML=`
       <div class="tpl">
-        <h4>${esc(t.name||tid)}</h4>
-        <div class="small">模板ID: ${esc(t.id||tid)} | 适用: ${esc((t.best_for||[]).join(' / ')||'N/A')}</div>
-        ${sectionTabHtml(tab)}
+        <h3 style="margin:0 0 6px">${esc(t?.name||tid)}</h3>
+        <div class="small">${esc(tid)} | domain=${esc(t?.domain||'N/A')} | variant=${esc(t?.variant||'N/A')} | strategy=${esc(t?.narrative_strategy||'N/A')}</div>
+        <div class="tabs">
+          ${Object.keys(SECTION_LABELS).map(k=>`<button class="tab-btn ${k===tab?'active':''}" data-tab="${k}">${SECTION_LABELS[k]}</button>`).join('')}
+        </div>
         ${content}
-      </div>
-    `;
+        <div class="sec"><h3>审稿约束字段</h3>
+          <div class="map"><b>falsifiable_claims</b><br/>${(t?.falsifiable_claims||[]).map(x=>esc(x)).join('<br/>')||'N/A'}</div>
+          <div class="map"><b>delta_vs_strongest_baseline</b><br/>${esc(t?.delta_vs_strongest_baseline||'N/A')}</div>
+          <div class="map"><b>limitations_or_failure_cases</b><br/>${esc(t?.limitations_or_failure_cases||'N/A')}</div>
+          <div class="map"><b>contribution_schema</b><br/>${(t?.contribution_schema||[]).map(x=>esc(x)).join('<br/>')||'N/A'}</div>
+          <div class="map"><b>core_blocks / optional_blocks / reorderable</b><br/>${esc((t?.core_blocks||[]).join(', '))}<br/>${esc((t?.optional_blocks||[]).join(', '))}<br/>reorderable=${esc(t?.reorderable)}</div>
+        </div>
+        <div class="sec"><h3>同领域模板变体</h3>
+          <div class="tpl-grid">
+            ${sameDomain.map(x=>`<div class="tpl-card ${x===tid?'active':''}" data-tpl-card="${esc(x)}"><b>${esc(x)}</b><br/>${esc(tMap[x]?.name||'')}<br/><span class="small">strategy=${esc(tMap[x]?.narrative_strategy||'')}</span></div>`).join('')||'<div class="map">无同领域变体</div>'}
+          </div>
+        </div>
+      </div>`;
 
-    tplview.querySelectorAll('.tab-btn').forEach(btn=>{
-      btn.addEventListener('click',()=>{
-        state.activeTplTab = btn.dataset.tab;
-        renderTpl(tid);
-      });
-    });
+    tplview.querySelectorAll('[data-tab]').forEach(b=>b.onclick=()=>{state.activeTplTab=b.dataset.tab; renderTpl(tid,currentPaper);});
+    tplview.querySelectorAll('[data-tpl-card]').forEach(b=>b.onclick=()=>{state.activeTemplateId=b.dataset.tplCard; renderTpl(state.activeTemplateId,currentPaper);});
   }
 
   async function renderDetail(pid){
-    const pMeta=index.papers.find(x=>x.id===pid);
-    if(!pMeta){ detail.innerHTML='<div class="map">未找到论文元数据。</div>'; return; }
-
+    const pMeta=index.papers.find(x=>x.id===pid); if(!pMeta){detail.innerHTML='<div class="map">未找到论文元数据</div>';return;}
     const paper=await loadPaper(pid);
-    const tab = state.activeDetailTab || 'introduction';
-    const secAnalysis = paper.analysis?.[tab] || {};
+    const tab=state.activeDetailTab||'introduction';
+    const secAnalysis=paper.analysis?.[tab]||{};
     const hs=Array.isArray(secAnalysis.highlights)?secAnalysis.highlights:[];
     const maps=Array.isArray(secAnalysis.template_mapping)?secAnalysis.template_mapping:[];
-    const sec=paper.content?.sections||{};
-    const ft=paper.content?.fulltext||{};
+    const sec=paper.content?.sections||{}; const ft=paper.content?.fulltext||{};
 
-    const quoteHtml = hs.length
-      ? hs.map(h=>{
-          const tip = `中文改写: ${h.rewrite_zh||'暂无'}\n\n可套用句式: ${h.reusable_pattern||'暂无'}`;
-          return `<div class="quote-card">${esc(h.text||'')}<div class="tip">${esc(tip)}</div></div>`;
-        }).join('')
-      : '<div class="map">该章节暂无摘抄句（后续批次会增量补充）。</div>';
+    if(!state.activeTemplateId){state.activeTemplateId=paper.paper?.template_id||pMeta.template_id;}
+    const candidates=(paper.paper?.template_candidates||pMeta.template_candidates||[paper.paper?.template_id||pMeta.template_id]).filter(Boolean);
 
-    const secRows=['introduction','related_work','method','experiments','conclusion']
-      .map(k=>`<div class="map"><b>${k}</b><br/>${esc(sec[k]?.status||'pending')} · ${esc(sec[k]?.chars||0)} chars</div>`).join('');
-
-    const pdf = (pMeta.pdf||'').startsWith('local:///') ? pMeta.pdf.replace('local://','') : pMeta.pdf;
+    const hHtml=hs.length?hs.map(h=>`<div class="quote-card">${esc(h.text||'')}<div class="tip">中文改写: ${esc(h.rewrite_zh||'暂无')}\n\n可套用句式: ${esc(h.reusable_pattern||'暂无')}</div></div>`).join(''):'<div class="map">该章节暂无摘抄句</div>';
+    const secRows=['introduction','related_work','method','experiments','conclusion'].map(k=>`<div class="map"><b>${k}</b><br/>${esc(sec[k]?.status||'pending')} · ${esc(sec[k]?.chars||0)} chars</div>`).join('');
+    const pdf=(pMeta.pdf||'').startsWith('local:///')?pMeta.pdf.replace('local://',''):pMeta.pdf;
 
     detail.innerHTML=`
       <h3 class="title">${esc(pMeta.title)}</h3>
-      <div class="meta">${esc(pid)} · ${esc(pMeta.template_id)} · ${esc(pMeta.status)}</div>
-      <div class="meta">PDF: ${pdf ? `<a href="${esc(pMeta.pdf||'#')}" target="_blank">${esc(pdf)}</a>` : 'N/A'}</div>
-
+      <div class="meta">${esc(pid)} · ${esc(pMeta.status)} · domain=${esc(pMeta.domain||paper.paper?.domain||'N/A')} · strategy=${esc(pMeta.narrative_strategy||paper.paper?.narrative_strategy||'N/A')}</div>
+      <div class="meta">PDF: ${pdf?`<a href="${esc(pMeta.pdf||'#')}" target="_blank">${esc(pdf)}</a>`:'N/A'}</div>
+      <div class="meta"><b>模板候选：</b>${candidates.map(t=>`<span class="pill ${t===state.activeTemplateId?'active':''}" data-cand="${esc(t)}">${esc(t)}</span>`).join('')}</div>
       <div class="grid">
         <div class="map"><b>全文字符数</b><br/>${esc(ft.raw_chars||0)}</div>
         <div class="map"><b>压缩比</b><br/>${esc(ft.compression_ratio||0)}</div>
         <div class="map"><b>提取状态</b><br/>${esc(paper.content?.extraction?.status||'unknown')}</div>
-        <div class="map"><b>模板匹配</b><br/>${esc(pMeta.template_id)}</div>
+        <div class="map"><b>主模板</b><br/>${esc(paper.paper?.template_id||pMeta.template_id)}</div>
       </div>
-
-      <div class="sec">
-        <h3>优秀摘抄（按章节）</h3>
-        <div class="tabs section-tab">
-          <button class="tab-btn ${tab==='introduction'?'active':''}" data-detail-tab="introduction">Introduction</button>
-          <button class="tab-btn ${tab==='method'?'active':''}" data-detail-tab="method">Method</button>
-          <button class="tab-btn ${tab==='experiments'?'active':''}" data-detail-tab="experiments">Experiments</button>
-          <button class="tab-btn ${tab==='conclusion'?'active':''}" data-detail-tab="conclusion">Conclusion</button>
-        </div>
-        ${quoteHtml}
+      <div class="sec"><h3>优秀摘抄（按章节）</h3>
+        <div class="tabs">
+          ${['introduction','method','experiments','conclusion'].map(k=>`<button class="tab-btn ${k===tab?'active':''}" data-detail-tab="${k}">${SECTION_LABELS[k]}</button>`).join('')}
+        </div>${hHtml}
       </div>
       <div class="sec"><h3>模板映射（${esc(SECTION_LABELS[tab]||tab)}）</h3>${maps.map(m=>`<div class="map"><b>${esc(m.template_paragraph||'')}</b><br/>${esc(m.paper_evidence||'')}</div>`).join('')||'<div class="map">该章节暂无映射</div>'}</div>
       <div class="sec"><h3>章节解析状态</h3>${secRows}</div>
-    `;
+      <div class="sec"><h3>审稿约束（论文侧）</h3>
+        <div class="map"><b>falsifiable_claims</b><br/>${(paper.analysis?.introduction?.falsifiable_claims||[]).map(x=>esc(x)).join('<br/>')||'N/A'}</div>
+        <div class="map"><b>delta_vs_strongest_baseline</b><br/>${esc(paper.analysis?.introduction?.delta_vs_strongest_baseline||'N/A')}</div>
+        <div class="map"><b>limitations_or_failure_cases</b><br/>${esc(paper.analysis?.introduction?.limitations_or_failure_cases||'N/A')}</div>
+      </div>`;
 
-    detail.querySelectorAll('[data-detail-tab]').forEach(btn=>{
-      btn.addEventListener('click',()=>{
-        state.activeDetailTab = btn.dataset.detailTab;
-        if (state.activeDetailTab === 'method' || state.activeDetailTab === 'experiments' || state.activeDetailTab === 'conclusion') {
-          state.activeTplTab = state.activeDetailTab;
-        } else {
-          state.activeTplTab = 'introduction';
-        }
-        renderDetail(pid).catch(e=>{detail.innerHTML=`<div class="map">${esc(String(e))}</div>`;});
-      });
-    });
+    detail.querySelectorAll('[data-detail-tab]').forEach(b=>b.onclick=()=>{state.activeDetailTab=b.dataset.detailTab; if(['method','experiments','conclusion'].includes(state.activeDetailTab)){state.activeTplTab=state.activeDetailTab;} else {state.activeTplTab='introduction';} renderDetail(pid).catch(e=>detail.innerHTML=`<div class='map'>${esc(String(e))}</div>`);});
+    detail.querySelectorAll('[data-cand]').forEach(b=>b.onclick=()=>{state.activeTemplateId=b.dataset.cand; renderDetail(pid).catch(e=>detail.innerHTML=`<div class='map'>${esc(String(e))}</div>`);});
 
-    renderTpl(pMeta.template_id);
+    renderTpl(state.activeTemplateId,paper);
   }
 
   function renderList(){
     const q=document.getElementById('q').value.trim().toLowerCase();
-    const tid=tplSel.value;
-    const st=document.getElementById('st').value;
-
+    const tid=tplSel.value; const st=document.getElementById('st').value; const dm=domainSel.value;
     const arr=index.papers.filter(p=>{
-      const txt=(p.title+' '+p.template_id).toLowerCase();
-      return (!q||txt.includes(q))&&(!tid||p.template_id===tid)&&(!st||p.status===st);
+      const txt=(p.title+' '+(p.template_id||'')+' '+(p.domain||'')).toLowerCase();
+      return (!q||txt.includes(q))&&(!tid||p.template_id===tid||((p.template_candidates||[]).includes(tid)))&&(!st||p.status===st)&&(!dm||p.domain===dm);
     });
-
-    if(!arr.length){
-      list.innerHTML='<div class="map">无匹配论文</div>';
-      detail.innerHTML='';
-      tplview.innerHTML='';
-      return;
-    }
-
+    if(!arr.length){list.innerHTML='<div class="map">无匹配论文</div>'; detail.innerHTML=''; tplview.innerHTML=''; return;}
     if(!arr.find(x=>x.id===active)) active=arr[0].id;
-
-    list.innerHTML=arr.map(p=>`<div class="item ${p.id===active?'active':''}" data-id="${esc(p.id)}"><div class="t">${esc(p.title)}</div><div class="m">${esc(p.template_id)} · ${esc(p.status)}</div></div>`).join('');
-    [...list.querySelectorAll('.item')].forEach(n=>n.onclick=()=>{active=n.dataset.id;renderList();});
-    renderDetail(active).catch(e=>{detail.innerHTML=`<div class="map">${esc(String(e))}</div>`;});
+    list.innerHTML=arr.map(p=>`<div class="item ${p.id===active?'active':''}" data-id="${esc(p.id)}"><div class="t">${esc(p.title)}</div><div class="m">${esc(p.template_id)} · ${esc(p.domain||'N/A')} · ${esc(p.narrative_strategy||'N/A')}</div></div>`).join('');
+    [...list.querySelectorAll('.item')].forEach(n=>n.onclick=()=>{active=n.dataset.id; state.activeTemplateId=null; renderList();});
+    renderDetail(active).catch(e=>{detail.innerHTML=`<div class='map'>${esc(String(e))}</div>`;});
   }
 
-  document.getElementById('q').addEventListener('input',renderList);
-  tplSel.addEventListener('change',renderList);
-  document.getElementById('st').addEventListener('change',renderList);
-  focusBtn.addEventListener('click',()=>{
-    document.body.classList.toggle('focus-template');
-    const active = document.body.classList.contains('focus-template');
-    focusBtn.classList.toggle('active', active);
-    focusBtn.textContent = active ? '退出专注模板' : '专注模板模式';
-  });
+  document.getElementById('q').addEventListener('input',renderList); tplSel.addEventListener('change',renderList); document.getElementById('st').addEventListener('change',renderList); domainSel.addEventListener('change',renderList);
+  focusBtn.addEventListener('click',()=>{document.body.classList.toggle('focus-template'); const a=document.body.classList.contains('focus-template'); focusBtn.classList.toggle('active',a); focusBtn.textContent=a?'退出专注模板':'专注模板模式';});
   renderList();
 }
-
 load().then(app).catch(e=>{document.body.innerHTML=`<pre>${esc(String(e))}</pre>`});
 </script>
 </body>

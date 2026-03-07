@@ -1,0 +1,75 @@
+{
+  "schema_version": "template.intro.v2",
+  "id": "TPL-MED-A",
+  "name": "Medical CV · Evidence-Risk Balanced Variant",
+  "domain": "medical_imaging",
+  "variant": "A",
+  "narrative_strategy": "tradeoff_bridge",
+  "best_for": [
+    "pathology",
+    "medical segmentation/classification"
+  ],
+  "reorderable": true,
+  "core_blocks": [
+    "context",
+    "gap",
+    "idea",
+    "evidence",
+    "contribution"
+  ],
+  "optional_blocks": [
+    "theory_practice_alignment",
+    "failure_taxonomy",
+    "limitation_hint",
+    "resource_cost_disclosure"
+  ],
+  "full_intro_template": [
+    "P1 Clinical significance and deployment risk.",
+    "P2 Data heterogeneity and domain-shift challenge.",
+    "P3 Method that balances predictive gain and reliability evidence.",
+    "P4 Report matched-budget gains with uncertainty estimates.",
+    "P5 Explicit failure cases and clinical non-applicability boundaries.",
+    "P6 Contribution-evidence list with reproducibility constraints."
+  ],
+  "abstract_template": [],
+  "method_template": [],
+  "experiments_template": [],
+  "falsifiable_claims": [
+    "If <core mechanism> is removed, performance on <hard subset> should drop by at least <delta>.",
+    "Under matched compute budget, <our method> should outperform <strong baseline> on <metric>."
+  ],
+  "delta_vs_strongest_baseline": "Compared with <strong baseline>, we add <new mechanism> and gain <delta> under matched budget.",
+  "limitations_or_failure_cases": "We analyze failure cases under <scenario> and discuss why the method is not dominant there.",
+  "contribution_schema": [
+    "Contribution: <type=theory|method|benchmark|analysis|system> | Evidence: <Theorem/Table/Ablation/Open-source>",
+    "Contribution: <type> | Evidence: <verifiable artifact>"
+  ],
+  "failure_modes": [
+    "geometry ambiguity",
+    "long-tail occlusion",
+    "temporal inconsistency",
+    "domain shift"
+  ],
+  "operational_definition": {
+    "A": "primary quality metric on benchmark",
+    "B": "resource or reliability metric reported jointly"
+  },
+  "phrase_alternatives": {
+    "However": [
+      "Nevertheless",
+      "Yet",
+      "Despite these advances"
+    ],
+    "We propose": [
+      "We introduce",
+      "We present",
+      "We develop"
+    ],
+    "In summary": [
+      "Overall",
+      "Taken together",
+      "In closing"
+    ]
+  },
+  "updated_at": "2026-03-07T17:09:38+00:00"
+}

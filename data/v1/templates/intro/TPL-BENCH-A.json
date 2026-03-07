@@ -1,0 +1,76 @@
+{
+  "schema_version": "template.intro.v2",
+  "id": "TPL-BENCH-A",
+  "name": "Task/Benchmark · Data-Governance Variant",
+  "domain": "benchmark_task",
+  "variant": "A",
+  "narrative_strategy": "task_benchmark_definition",
+  "best_for": [
+    "new task",
+    "new benchmark",
+    "dataset papers"
+  ],
+  "reorderable": true,
+  "core_blocks": [
+    "context",
+    "gap",
+    "idea",
+    "evidence",
+    "contribution"
+  ],
+  "optional_blocks": [
+    "theory_practice_alignment",
+    "failure_taxonomy",
+    "limitation_hint",
+    "resource_cost_disclosure"
+  ],
+  "full_intro_template": [
+    "P1 User-side pain point with measurable evidence.",
+    "P2 Task and evaluation target formalization.",
+    "P3 Data governance: dedup, license, leakage, ethics.",
+    "P4 Baseline protocol and reproducibility checklist.",
+    "P5 Benchmark findings and strongest baseline gap.",
+    "P6 Future benchmark longevity strategy."
+  ],
+  "abstract_template": [],
+  "method_template": [],
+  "experiments_template": [],
+  "falsifiable_claims": [
+    "If <core mechanism> is removed, performance on <hard subset> should drop by at least <delta>.",
+    "Under matched compute budget, <our method> should outperform <strong baseline> on <metric>."
+  ],
+  "delta_vs_strongest_baseline": "Compared with <strong baseline>, we add <new mechanism> and gain <delta> under matched budget.",
+  "limitations_or_failure_cases": "We analyze failure cases under <scenario> and discuss why the method is not dominant there.",
+  "contribution_schema": [
+    "Contribution: <type=theory|method|benchmark|analysis|system> | Evidence: <Theorem/Table/Ablation/Open-source>",
+    "Contribution: <type> | Evidence: <verifiable artifact>"
+  ],
+  "failure_modes": [
+    "geometry ambiguity",
+    "long-tail occlusion",
+    "temporal inconsistency",
+    "domain shift"
+  ],
+  "operational_definition": {
+    "A": "primary quality metric on benchmark",
+    "B": "resource or reliability metric reported jointly"
+  },
+  "phrase_alternatives": {
+    "However": [
+      "Nevertheless",
+      "Yet",
+      "Despite these advances"
+    ],
+    "We propose": [
+      "We introduce",
+      "We present",
+      "We develop"
+    ],
+    "In summary": [
+      "Overall",
+      "Taken together",
+      "In closing"
+    ]
+  },
+  "updated_at": "2026-03-07T17:09:38+00:00"
+}

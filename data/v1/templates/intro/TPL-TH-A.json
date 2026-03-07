@@ -1,0 +1,75 @@
+{
+  "schema_version": "template.intro.v2",
+  "id": "TPL-TH-A",
+  "name": "Theory/Optimization · Condition-Result-Regime Variant",
+  "domain": "efficiency_system",
+  "variant": "A",
+  "narrative_strategy": "theory_formalization",
+  "best_for": [
+    "theory-backed system design",
+    "efficiency analysis"
+  ],
+  "reorderable": true,
+  "core_blocks": [
+    "context",
+    "gap",
+    "idea",
+    "evidence",
+    "contribution"
+  ],
+  "optional_blocks": [
+    "theory_practice_alignment",
+    "failure_taxonomy",
+    "limitation_hint",
+    "resource_cost_disclosure"
+  ],
+  "full_intro_template": [
+    "P1 Problem setup with concrete operational constraints.",
+    "P2 Formalization and assumptions A1-A3.",
+    "P3 Main result in condition-result-regime form.",
+    "P4 Delta vs strongest baseline and complexity disclosure.",
+    "P5 Theory-to-practice alignment and lower-bound/barrier note.",
+    "P6 Limitation and failure-case commitment."
+  ],
+  "abstract_template": [],
+  "method_template": [],
+  "experiments_template": [],
+  "falsifiable_claims": [
+    "If <core mechanism> is removed, performance on <hard subset> should drop by at least <delta>.",
+    "Under matched compute budget, <our method> should outperform <strong baseline> on <metric>."
+  ],
+  "delta_vs_strongest_baseline": "Compared with <strong baseline>, we add <new mechanism> and gain <delta> under matched budget.",
+  "limitations_or_failure_cases": "We analyze failure cases under <scenario> and discuss why the method is not dominant there.",
+  "contribution_schema": [
+    "Contribution: <type=theory|method|benchmark|analysis|system> | Evidence: <Theorem/Table/Ablation/Open-source>",
+    "Contribution: <type> | Evidence: <verifiable artifact>"
+  ],
+  "failure_modes": [
+    "geometry ambiguity",
+    "long-tail occlusion",
+    "temporal inconsistency",
+    "domain shift"
+  ],
+  "operational_definition": {
+    "A": "primary quality metric on benchmark",
+    "B": "resource or reliability metric reported jointly"
+  },
+  "phrase_alternatives": {
+    "However": [
+      "Nevertheless",
+      "Yet",
+      "Despite these advances"
+    ],
+    "We propose": [
+      "We introduce",
+      "We present",
+      "We develop"
+    ],
+    "In summary": [
+      "Overall",
+      "Taken together",
+      "In closing"
+    ]
+  },
+  "updated_at": "2026-03-07T17:09:38+00:00"
+}

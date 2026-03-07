@@ -1,0 +1,75 @@
+{
+  "schema_version": "template.intro.v2",
+  "id": "TPL-SEG-B",
+  "name": "Segmentation/Tracking · End-to-End Variant",
+  "domain": "seg_track",
+  "variant": "B",
+  "narrative_strategy": "efficiency_first",
+  "best_for": [
+    "end-to-end perception systems"
+  ],
+  "reorderable": true,
+  "core_blocks": [
+    "context",
+    "gap",
+    "idea",
+    "evidence",
+    "contribution"
+  ],
+  "optional_blocks": [
+    "theory_practice_alignment",
+    "failure_taxonomy",
+    "limitation_hint",
+    "resource_cost_disclosure"
+  ],
+  "full_intro_template": [
+    "P1 Introduce end-to-end requirement in production pipeline.",
+    "P2 Explain why multi-stage heuristics hurt stability/latency.",
+    "P3 Present unified model with explicit failure monitoring head.",
+    "P4 Show computational profile and convergence behavior.",
+    "P5 Report matched-budget gains and seed variance.",
+    "P6 Discuss non-dominant scenarios where decomposition may still win.",
+    "P7 Evidence-bound contributions."
+  ],
+  "abstract_template": [],
+  "method_template": [],
+  "experiments_template": [],
+  "falsifiable_claims": [
+    "If <core mechanism> is removed, performance on <hard subset> should drop by at least <delta>.",
+    "Under matched compute budget, <our method> should outperform <strong baseline> on <metric>."
+  ],
+  "delta_vs_strongest_baseline": "Compared with <strong baseline>, we add <new mechanism> and gain <delta> under matched budget.",
+  "limitations_or_failure_cases": "We analyze failure cases under <scenario> and discuss why the method is not dominant there.",
+  "contribution_schema": [
+    "Contribution: <type=theory|method|benchmark|analysis|system> | Evidence: <Theorem/Table/Ablation/Open-source>",
+    "Contribution: <type> | Evidence: <verifiable artifact>"
+  ],
+  "failure_modes": [
+    "geometry ambiguity",
+    "long-tail occlusion",
+    "temporal inconsistency",
+    "domain shift"
+  ],
+  "operational_definition": {
+    "A": "primary quality metric on benchmark",
+    "B": "resource or reliability metric reported jointly"
+  },
+  "phrase_alternatives": {
+    "However": [
+      "Nevertheless",
+      "Yet",
+      "Despite these advances"
+    ],
+    "We propose": [
+      "We introduce",
+      "We present",
+      "We develop"
+    ],
+    "In summary": [
+      "Overall",
+      "Taken together",
+      "In closing"
+    ]
+  },
+  "updated_at": "2026-03-07T17:09:38+00:00"
+}
