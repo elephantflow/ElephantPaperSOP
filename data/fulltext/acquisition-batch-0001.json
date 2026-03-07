@@ -1,0 +1,16 @@
+{
+  "batch_id": "batch-0001",
+  "policy": "prefer_open_access_pdf",
+  "records": [
+    {"paper_id":"01XV5Za56k","status":"text_extracted","source":"openreview_pdf"},
+    {"paper_id":"0DE1dLMW2b","status":"parse_failed","source":"openreview_pdf","reason":"pdf parsing timeout"},
+    {"paper_id":"0Gl5WxY6es","status":"text_extracted","source":"openreview_pdf"},
+    {"paper_id":"0bFXbEMz8e","status":"text_extracted","source":"openreview_pdf"},
+    {"paper_id":"0rl5vWOzRU","status":"parse_failed","source":"openreview_pdf","reason":"pdf parsing timeout"},
+    {"paper_id":"0sJBW05a2W","status":"text_extracted","source":"openreview_pdf"},
+    {"paper_id":"0uGlKYS7a2","status":"text_extracted","source":"openreview_pdf"},
+    {"paper_id":"164QnJsYjF","status":"text_extracted","source":"openreview_pdf"},
+    {"paper_id":"168NLzTpw8","status":"text_extracted","source":"openreview_pdf"},
+    {"paper_id":"1ELFGSNBGC","status":"text_extracted","source":"openreview_pdf"}
+  ]
+}

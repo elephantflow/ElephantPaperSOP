@@ -1,0 +1,8 @@
+{
+  "version": "v0.1.0",
+  "dimensions": {
+    "theme": ["Learning Theory", "Quantum ML / Optimization", "Embodied AI", "Scientific ML", "Generative Modeling", "3D Vision", "Game Theory", "Neural Memory", "Vision-Language", "Spatial Intelligence"],
+    "task_type": ["Property Testing", "Market Equilibrium", "Action Grounding", "Material Generation", "Diffusion Sampling", "Point Cloud Registration", "Repeated Games", "Associative Retrieval", "Referring Expression Generation", "Scene Representation"],
+    "writing_style": ["theory-rigorous", "claim-driven", "empirical-systematic", "result-forward", "pipeline-explicit", "theorem-centric", "conceptual-theoretical", "problem-solution", "dataset-task-driven"]
+  }
+}
