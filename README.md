@@ -28,6 +28,19 @@ python3 scripts/migrate_intro_to_v1.py
 - 若 `pdf` 为 `local:///...` 且文件存在，会抽取全文并压缩写入 `data/v1/papers/*.json`
 - 若章节切分失败，会回退到 `intro_highlights` 作为 Introduction 文本兜底
 
+增量闭环（每轮抽取新论文）：
+
+```bash
+python3 scripts/run_closed_loop.py \
+  --templates-local-dir data/v1/templates/intro \
+  --spotlight-dir /Users/gulucaptain/Downloads/cvpr2025-spotlight \
+  --spotlight-select-mode incremental \
+  --spotlight-state-file reviewer_reports/.spotlight_state.json \
+  --spotlight-max-papers 5 \
+  --spotlight-feedback-json reviewer_reports/sop_feedback.json \
+  --output reviewer_reports/reviewer.md
+```
+
 ## 页面
 
 - `index.html`
