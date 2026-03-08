@@ -25,13 +25,15 @@
     "resource_cost_disclosure"
   ],
   "full_intro_template": [
-    "P1 Context: strong capability but unstable grounding.",
-    "P2 Define tradeoff metrics A/B (e.g., grounding F1 vs hallucination rate).",
-    "P3 Diagnose why prior alignment objectives cannot optimize A and B jointly.",
-    "P4 Introduce <training-free/fine-tuned/hybrid> bridge framework.",
-    "P5 Provide operational delta vs strongest baseline with matched token budget.",
-    "P6 Include failure cases under long-context / multi-hop settings.",
-    "P7 Contributions with evidence hooks."
+    "P1 Context: <VLM task> requires aligning visual evidence and language reasoning in <deployment setting>.",
+    "P2 Gap: Current systems suffer from hallucination, weak grounding, or brittle long-context reasoning.",
+    "P3 Failure diagnosis: Prior approaches overfit shortcut correlations and underuse fine-grained visual cues.",
+    "P4 Reframing: We separate grounding, reasoning, and calibration into coordinated modules.",
+    "P5 Method intuition: <grounding module> links phrases to regions; <reasoning module> composes evidence chains.",
+    "P6 Evaluation contract: Report quality metrics and hallucination/faithfulness metrics jointly.",
+    "P7 Cost contract: Report token budget, latency, and memory overhead under matched settings.",
+    "P8 Limitation boundary: Analyze failure under long-tail concepts, cluttered scenes, and ambiguous language.",
+    "P9 Contributions: (i) grounded design, (ii) controllable inference, (iii) comprehensive evaluation."
   ],
   "abstract_template": [
     "A1: Define task and deployment setting with one measurable constraint.",
@@ -40,14 +42,20 @@
     "A4: Add uncertainty (mean±std/significance) and one limitation boundary."
   ],
   "method_template": [
-    "M1: Define input-output contract and module decomposition.",
-    "M2: Explain core mechanism and expected causal effect on target metric.",
-    "M3: Provide complexity/memory/runtime cost against strongest baseline."
+    "M1 Define task formulation and evaluation protocol.",
+    "M2 Describe visual encoder and language interface.",
+    "M3 Detail grounding module and evidence extraction.",
+    "M4 Detail reasoning module and calibration mechanism.",
+    "M5 Explain training objectives, data mixture, and regularization.",
+    "M6 Provide inference complexity and token-cost analysis."
   ],
   "experiments_template": [
-    "E1: Report matched-budget baselines and protocol details (seeds, scripts, hardware).",
-    "E2: Report mean±std or confidence intervals and significance where applicable.",
-    "E3: Provide failure taxonomy and at least one counter-example scenario."
+    "E1 Benchmark suite and protocol disclosure with matched budgets.",
+    "E2 Main results on accuracy/grounding/faithfulness metrics.",
+    "E3 Hallucination and stability stress tests.",
+    "E4 Ablation on grounding and reasoning modules.",
+    "E5 Error taxonomy with representative qualitative cases.",
+    "E6 Cost-quality frontier across model scales or token budgets."
   ],
   "falsifiable_claims": [
     "If <core module> is removed, performance on <hard subset> should decrease by >= <delta>.",
@@ -100,9 +108,9 @@
         "hallucination-related boundary"
       ],
       "forbidden_claims": [
-        "state-of-the-art performance",
+        "top-tier performance",
         "the first work that",
-        "robust in all scenarios",
+        "reliable in all scenarios",
         "consistently superior without exception"
       ],
       "evidence_hook": "Link this paragraph to a concrete artifact: Table/Figure/Theorem/Ablation.",
@@ -117,8 +125,8 @@
           "better": "To the best of our knowledge, this is one of the first unified treatments under <assumptions>."
         },
         {
-          "bad": "Our method is robust.",
-          "better": "We quantify robustness on <stress test> and report failure cases on <hard subset>."
+          "bad": "Our method is reliable.",
+          "better": "We quantify stability on <stress test> and report failure cases on <hard subset>."
         }
       ]
     },
@@ -134,9 +142,9 @@
         "hallucination-related boundary"
       ],
       "forbidden_claims": [
-        "state-of-the-art performance",
+        "top-tier performance",
         "the first work that",
-        "robust in all scenarios",
+        "reliable in all scenarios",
         "consistently superior without exception"
       ],
       "evidence_hook": "Link this paragraph to a concrete artifact: Table/Figure/Theorem/Ablation.",
@@ -151,8 +159,8 @@
           "better": "To the best of our knowledge, this is one of the first unified treatments under <assumptions>."
         },
         {
-          "bad": "Our method is robust.",
-          "better": "We quantify robustness on <stress test> and report failure cases on <hard subset>."
+          "bad": "Our method is reliable.",
+          "better": "We quantify stability on <stress test> and report failure cases on <hard subset>."
         }
       ]
     },
@@ -168,9 +176,9 @@
         "hallucination-related boundary"
       ],
       "forbidden_claims": [
-        "state-of-the-art performance",
+        "top-tier performance",
         "the first work that",
-        "robust in all scenarios",
+        "reliable in all scenarios",
         "consistently superior without exception"
       ],
       "evidence_hook": "Link this paragraph to a concrete artifact: Table/Figure/Theorem/Ablation.",
@@ -185,8 +193,8 @@
           "better": "To the best of our knowledge, this is one of the first unified treatments under <assumptions>."
         },
         {
-          "bad": "Our method is robust.",
-          "better": "We quantify robustness on <stress test> and report failure cases on <hard subset>."
+          "bad": "Our method is reliable.",
+          "better": "We quantify stability on <stress test> and report failure cases on <hard subset>."
         }
       ]
     },
@@ -202,9 +210,9 @@
         "hallucination-related boundary"
       ],
       "forbidden_claims": [
-        "state-of-the-art performance",
+        "top-tier performance",
         "the first work that",
-        "robust in all scenarios",
+        "reliable in all scenarios",
         "consistently superior without exception"
       ],
       "evidence_hook": "Link this paragraph to a concrete artifact: Table/Figure/Theorem/Ablation.",
@@ -221,8 +229,8 @@
           "better": "To the best of our knowledge, this is one of the first unified treatments under <assumptions>."
         },
         {
-          "bad": "Our method is robust.",
-          "better": "We quantify robustness on <stress test> and report failure cases on <hard subset>."
+          "bad": "Our method is reliable.",
+          "better": "We quantify stability on <stress test> and report failure cases on <hard subset>."
         }
       ]
     },
@@ -238,9 +246,9 @@
         "hallucination-related boundary"
       ],
       "forbidden_claims": [
-        "state-of-the-art performance",
+        "top-tier performance",
         "the first work that",
-        "robust in all scenarios",
+        "reliable in all scenarios",
         "consistently superior without exception"
       ],
       "evidence_hook": "Link this paragraph to a concrete artifact: Table/Figure/Theorem/Ablation.",
@@ -255,8 +263,8 @@
           "better": "To the best of our knowledge, this is one of the first unified treatments under <assumptions>."
         },
         {
-          "bad": "Our method is robust.",
-          "better": "We quantify robustness on <stress test> and report failure cases on <hard subset>."
+          "bad": "Our method is reliable.",
+          "better": "We quantify stability on <stress test> and report failure cases on <hard subset>."
         }
       ]
     },
@@ -272,9 +280,9 @@
         "hallucination-related boundary"
       ],
       "forbidden_claims": [
-        "state-of-the-art performance",
+        "top-tier performance",
         "the first work that",
-        "robust in all scenarios",
+        "reliable in all scenarios",
         "consistently superior without exception"
       ],
       "evidence_hook": "Link this paragraph to a concrete artifact: Table/Figure/Theorem/Ablation.",
@@ -289,8 +297,8 @@
           "better": "To the best of our knowledge, this is one of the first unified treatments under <assumptions>."
         },
         {
-          "bad": "Our method is robust.",
-          "better": "We quantify robustness on <stress test> and report failure cases on <hard subset>."
+          "bad": "Our method is reliable.",
+          "better": "We quantify stability on <stress test> and report failure cases on <hard subset>."
         }
       ]
     },
@@ -306,9 +314,9 @@
         "hallucination-related boundary"
       ],
       "forbidden_claims": [
-        "state-of-the-art performance",
+        "top-tier performance",
         "the first work that",
-        "robust in all scenarios",
+        "reliable in all scenarios",
         "consistently superior without exception"
       ],
       "evidence_hook": "Link this paragraph to a concrete artifact: Table/Figure/Theorem/Ablation.",
@@ -323,8 +331,8 @@
           "better": "To the best of our knowledge, this is one of the first unified treatments under <assumptions>."
         },
         {
-          "bad": "Our method is robust.",
-          "better": "We quantify robustness on <stress test> and report failure cases on <hard subset>."
+          "bad": "Our method is reliable.",
+          "better": "We quantify stability on <stress test> and report failure cases on <hard subset>."
         }
       ]
     }
@@ -374,5 +382,10 @@
         "contribution"
       ]
     }
+  ],
+  "conclusion_template": [
+    "C1 Summarize grounding-reasoning synergy.",
+    "C2 Highlight reliable gains and deployment cost trade-offs.",
+    "C3 Discuss ethical/stability limits and future work."
   ]
 }

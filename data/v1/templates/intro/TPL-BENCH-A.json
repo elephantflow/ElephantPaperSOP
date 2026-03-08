@@ -25,12 +25,15 @@
     "resource_cost_disclosure"
   ],
   "full_intro_template": [
-    "P1 User-side pain point with measurable evidence.",
-    "P2 Task and evaluation target formalization.",
-    "P3 Data governance: dedup, license, leakage, ethics.",
-    "P4 Baseline protocol and reproducibility checklist.",
-    "P5 Benchmark findings and strongest baseline gap.",
-    "P6 Future benchmark longevity strategy."
+    "P1 Motivation: Existing benchmarks for <task> fail to capture <real challenge> in realistic settings.",
+    "P2 Evidence of need: We show concrete failure cases from current datasets/protocols.",
+    "P3 Benchmark design goal: Build a dataset/protocol that measures <capability A> and <capability B> jointly.",
+    "P4 Curation principle: Define data source, annotation policy, and quality control.",
+    "P5 Protocol principle: Ensure fairness with matched budgets and transparent evaluation scripts.",
+    "P6 Baseline plan: Include strong baselines and disclose hyperparameter/search budgets.",
+    "P7 Reliability plan: Report mean ± std and significance tests for key metrics.",
+    "P8 Risk and bias: Discuss leakage, distribution bias, and ethical boundaries.",
+    "P9 Contributions: benchmark resource, protocol, and diagnostic insights."
   ],
   "abstract_template": [
     "A1: Define task and deployment setting with one measurable constraint.",
@@ -39,14 +42,20 @@
     "A4: Add uncertainty (mean±std/significance) and one limitation boundary."
   ],
   "method_template": [
-    "M1: Define input-output contract and module decomposition.",
-    "M2: Explain core mechanism and expected causal effect on target metric.",
-    "M3: Provide complexity/memory/runtime cost against strongest baseline."
+    "M1 Dataset collection pipeline and filtering criteria.",
+    "M2 Annotation schema and inter-annotator agreement details.",
+    "M3 Split strategy with leakage checks and versioning policy.",
+    "M4 Evaluation metrics and scoring rationale.",
+    "M5 Baseline implementation and tuning budget disclosure.",
+    "M6 Reproducibility artifacts: scripts, seeds, and data cards."
   ],
   "experiments_template": [
-    "E1: Report matched-budget baselines and protocol details (seeds, scripts, hardware).",
-    "E2: Report mean±std or confidence intervals and significance where applicable.",
-    "E3: Provide failure taxonomy and at least one counter-example scenario."
+    "E1 Baseline leaderboard under unified protocol.",
+    "E2 Difficulty breakdown by subset and failure mode.",
+    "E3 Statistical reliability and confidence reporting.",
+    "E4 Sensitivity to training budget and model scale.",
+    "E5 Leakage/stability checks and protocol stress tests.",
+    "E6 Qualitative error analysis and benchmark limitations."
   ],
   "falsifiable_claims": [
     "If <core module> is removed, performance on <hard subset> should decrease by >= <delta>.",
@@ -99,9 +108,9 @@
         "baseline protocol disclosure"
       ],
       "forbidden_claims": [
-        "state-of-the-art performance",
+        "top-tier performance",
         "the first work that",
-        "robust in all scenarios",
+        "reliable in all scenarios",
         "consistently superior without exception"
       ],
       "evidence_hook": "Link this paragraph to a concrete artifact: Table/Figure/Theorem/Ablation.",
@@ -116,8 +125,8 @@
           "better": "To the best of our knowledge, this is one of the first unified treatments under <assumptions>."
         },
         {
-          "bad": "Our method is robust.",
-          "better": "We quantify robustness on <stress test> and report failure cases on <hard subset>."
+          "bad": "Our method is reliable.",
+          "better": "We quantify stability on <stress test> and report failure cases on <hard subset>."
         }
       ]
     },
@@ -133,9 +142,9 @@
         "baseline protocol disclosure"
       ],
       "forbidden_claims": [
-        "state-of-the-art performance",
+        "top-tier performance",
         "the first work that",
-        "robust in all scenarios",
+        "reliable in all scenarios",
         "consistently superior without exception"
       ],
       "evidence_hook": "Link this paragraph to a concrete artifact: Table/Figure/Theorem/Ablation.",
@@ -150,8 +159,8 @@
           "better": "To the best of our knowledge, this is one of the first unified treatments under <assumptions>."
         },
         {
-          "bad": "Our method is robust.",
-          "better": "We quantify robustness on <stress test> and report failure cases on <hard subset>."
+          "bad": "Our method is reliable.",
+          "better": "We quantify stability on <stress test> and report failure cases on <hard subset>."
         }
       ]
     },
@@ -167,9 +176,9 @@
         "baseline protocol disclosure"
       ],
       "forbidden_claims": [
-        "state-of-the-art performance",
+        "top-tier performance",
         "the first work that",
-        "robust in all scenarios",
+        "reliable in all scenarios",
         "consistently superior without exception"
       ],
       "evidence_hook": "Link this paragraph to a concrete artifact: Table/Figure/Theorem/Ablation.",
@@ -184,8 +193,8 @@
           "better": "To the best of our knowledge, this is one of the first unified treatments under <assumptions>."
         },
         {
-          "bad": "Our method is robust.",
-          "better": "We quantify robustness on <stress test> and report failure cases on <hard subset>."
+          "bad": "Our method is reliable.",
+          "better": "We quantify stability on <stress test> and report failure cases on <hard subset>."
         }
       ]
     },
@@ -201,9 +210,9 @@
         "baseline protocol disclosure"
       ],
       "forbidden_claims": [
-        "state-of-the-art performance",
+        "top-tier performance",
         "the first work that",
-        "robust in all scenarios",
+        "reliable in all scenarios",
         "consistently superior without exception"
       ],
       "evidence_hook": "Link this paragraph to a concrete artifact: Table/Figure/Theorem/Ablation.",
@@ -218,8 +227,8 @@
           "better": "To the best of our knowledge, this is one of the first unified treatments under <assumptions>."
         },
         {
-          "bad": "Our method is robust.",
-          "better": "We quantify robustness on <stress test> and report failure cases on <hard subset>."
+          "bad": "Our method is reliable.",
+          "better": "We quantify stability on <stress test> and report failure cases on <hard subset>."
         }
       ]
     },
@@ -235,9 +244,9 @@
         "baseline protocol disclosure"
       ],
       "forbidden_claims": [
-        "state-of-the-art performance",
+        "top-tier performance",
         "the first work that",
-        "robust in all scenarios",
+        "reliable in all scenarios",
         "consistently superior without exception"
       ],
       "evidence_hook": "Link this paragraph to a concrete artifact: Table/Figure/Theorem/Ablation.",
@@ -252,8 +261,8 @@
           "better": "To the best of our knowledge, this is one of the first unified treatments under <assumptions>."
         },
         {
-          "bad": "Our method is robust.",
-          "better": "We quantify robustness on <stress test> and report failure cases on <hard subset>."
+          "bad": "Our method is reliable.",
+          "better": "We quantify stability on <stress test> and report failure cases on <hard subset>."
         }
       ]
     },
@@ -269,9 +278,9 @@
         "baseline protocol disclosure"
       ],
       "forbidden_claims": [
-        "state-of-the-art performance",
+        "top-tier performance",
         "the first work that",
-        "robust in all scenarios",
+        "reliable in all scenarios",
         "consistently superior without exception"
       ],
       "evidence_hook": "Link this paragraph to a concrete artifact: Table/Figure/Theorem/Ablation.",
@@ -286,8 +295,8 @@
           "better": "To the best of our knowledge, this is one of the first unified treatments under <assumptions>."
         },
         {
-          "bad": "Our method is robust.",
-          "better": "We quantify robustness on <stress test> and report failure cases on <hard subset>."
+          "bad": "Our method is reliable.",
+          "better": "We quantify stability on <stress test> and report failure cases on <hard subset>."
         }
       ]
     }
@@ -337,5 +346,10 @@
         "contribution"
       ]
     }
+  ],
+  "conclusion_template": [
+    "C1 Summarize benchmark contribution and practical impact.",
+    "C2 Emphasize protocol transparency and fairness guarantees.",
+    "C3 Outline extension roadmap and maintenance policy."
   ]
 }

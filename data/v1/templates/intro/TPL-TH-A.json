@@ -24,12 +24,14 @@
     "resource_cost_disclosure"
   ],
   "full_intro_template": [
-    "P1 Problem setup with concrete operational constraints.",
-    "P2 Formalization and assumptions A1-A3.",
-    "P3 Main result in condition-result-regime form.",
-    "P4 Delta vs strongest baseline and complexity disclosure.",
-    "P5 Theory-to-practice alignment and lower-bound/barrier note.",
-    "P6 Limitation and failure-case commitment."
+    "P1 Problem statement: We study <task> under explicit assumptions <A1, A2>.",
+    "P2 Formal gap: Existing methods provide weak guarantees in regime <R>.",
+    "P3 Intuition: We connect <phenomenon> with <theoretical mechanism> to explain failure/success.",
+    "P4 Main idea: Introduce <principle> enabling tighter guarantees or better trade-off.",
+    "P5 Theorem roadmap: State theorem scope, assumptions, and practical implication.",
+    "P6 Lower-bound/barrier: Clarify impossibility or hardness boundary where applicable.",
+    "P7 Empirical alignment: Show how theory predicts behavior in controlled experiments.",
+    "P8 Contribution summary: theorem, algorithmic implication, and diagnostic evidence."
   ],
   "abstract_template": [
     "A1: Define task and deployment setting with one measurable constraint.",
@@ -38,14 +40,20 @@
     "A4: Add uncertainty (mean±std/significance) and one limitation boundary."
   ],
   "method_template": [
-    "M1: Define input-output contract and module decomposition.",
-    "M2: Explain core mechanism and expected causal effect on target metric.",
-    "M3: Provide complexity/memory/runtime cost against strongest baseline."
+    "M1 Define notation, assumptions, and objective formally.",
+    "M2 Present key lemma and proof strategy overview.",
+    "M3 Derive main theorem with regime and constants disclosure.",
+    "M4 Translate theory into implementable algorithmic steps.",
+    "M5 Complexity and convergence or sample-efficiency analysis.",
+    "M6 Practical notes for reproducible implementation."
   ],
   "experiments_template": [
-    "E1: Report matched-budget baselines and protocol details (seeds, scripts, hardware).",
-    "E2: Report mean±std or confidence intervals and significance where applicable.",
-    "E3: Provide failure taxonomy and at least one counter-example scenario."
+    "E1 Controlled experiments validating theorem predictions.",
+    "E2 Comparison with strongest practical baselines.",
+    "E3 Sensitivity to assumption violations and boundary cases.",
+    "E4 Ablation linking each theoretical component to empirical effect.",
+    "E5 Statistical reliability and uncertainty reporting.",
+    "E6 Efficiency trade-off under matched budgets."
   ],
   "falsifiable_claims": [
     "If <core module> is removed, performance on <hard subset> should decrease by >= <delta>.",
@@ -98,9 +106,9 @@
         "theory-practice alignment"
       ],
       "forbidden_claims": [
-        "state-of-the-art performance",
+        "top-tier performance",
         "the first work that",
-        "robust in all scenarios",
+        "reliable in all scenarios",
         "consistently superior without exception"
       ],
       "evidence_hook": "Link this paragraph to a concrete artifact: Table/Figure/Theorem/Ablation.",
@@ -115,8 +123,8 @@
           "better": "To the best of our knowledge, this is one of the first unified treatments under <assumptions>."
         },
         {
-          "bad": "Our method is robust.",
-          "better": "We quantify robustness on <stress test> and report failure cases on <hard subset>."
+          "bad": "Our method is reliable.",
+          "better": "We quantify stability on <stress test> and report failure cases on <hard subset>."
         }
       ]
     },
@@ -132,9 +140,9 @@
         "theory-practice alignment"
       ],
       "forbidden_claims": [
-        "state-of-the-art performance",
+        "top-tier performance",
         "the first work that",
-        "robust in all scenarios",
+        "reliable in all scenarios",
         "consistently superior without exception"
       ],
       "evidence_hook": "Link this paragraph to a concrete artifact: Table/Figure/Theorem/Ablation.",
@@ -149,8 +157,8 @@
           "better": "To the best of our knowledge, this is one of the first unified treatments under <assumptions>."
         },
         {
-          "bad": "Our method is robust.",
-          "better": "We quantify robustness on <stress test> and report failure cases on <hard subset>."
+          "bad": "Our method is reliable.",
+          "better": "We quantify stability on <stress test> and report failure cases on <hard subset>."
         }
       ]
     },
@@ -166,9 +174,9 @@
         "theory-practice alignment"
       ],
       "forbidden_claims": [
-        "state-of-the-art performance",
+        "top-tier performance",
         "the first work that",
-        "robust in all scenarios",
+        "reliable in all scenarios",
         "consistently superior without exception"
       ],
       "evidence_hook": "Link this paragraph to a concrete artifact: Table/Figure/Theorem/Ablation.",
@@ -183,8 +191,8 @@
           "better": "To the best of our knowledge, this is one of the first unified treatments under <assumptions>."
         },
         {
-          "bad": "Our method is robust.",
-          "better": "We quantify robustness on <stress test> and report failure cases on <hard subset>."
+          "bad": "Our method is reliable.",
+          "better": "We quantify stability on <stress test> and report failure cases on <hard subset>."
         }
       ]
     },
@@ -200,9 +208,9 @@
         "theory-practice alignment"
       ],
       "forbidden_claims": [
-        "state-of-the-art performance",
+        "top-tier performance",
         "the first work that",
-        "robust in all scenarios",
+        "reliable in all scenarios",
         "consistently superior without exception"
       ],
       "evidence_hook": "Link this paragraph to a concrete artifact: Table/Figure/Theorem/Ablation.",
@@ -217,8 +225,8 @@
           "better": "To the best of our knowledge, this is one of the first unified treatments under <assumptions>."
         },
         {
-          "bad": "Our method is robust.",
-          "better": "We quantify robustness on <stress test> and report failure cases on <hard subset>."
+          "bad": "Our method is reliable.",
+          "better": "We quantify stability on <stress test> and report failure cases on <hard subset>."
         }
       ]
     },
@@ -234,9 +242,9 @@
         "theory-practice alignment"
       ],
       "forbidden_claims": [
-        "state-of-the-art performance",
+        "top-tier performance",
         "the first work that",
-        "robust in all scenarios",
+        "reliable in all scenarios",
         "consistently superior without exception"
       ],
       "evidence_hook": "Link this paragraph to a concrete artifact: Table/Figure/Theorem/Ablation.",
@@ -251,8 +259,8 @@
           "better": "To the best of our knowledge, this is one of the first unified treatments under <assumptions>."
         },
         {
-          "bad": "Our method is robust.",
-          "better": "We quantify robustness on <stress test> and report failure cases on <hard subset>."
+          "bad": "Our method is reliable.",
+          "better": "We quantify stability on <stress test> and report failure cases on <hard subset>."
         }
       ]
     },
@@ -268,9 +276,9 @@
         "theory-practice alignment"
       ],
       "forbidden_claims": [
-        "state-of-the-art performance",
+        "top-tier performance",
         "the first work that",
-        "robust in all scenarios",
+        "reliable in all scenarios",
         "consistently superior without exception"
       ],
       "evidence_hook": "Link this paragraph to a concrete artifact: Table/Figure/Theorem/Ablation.",
@@ -285,8 +293,8 @@
           "better": "To the best of our knowledge, this is one of the first unified treatments under <assumptions>."
         },
         {
-          "bad": "Our method is robust.",
-          "better": "We quantify robustness on <stress test> and report failure cases on <hard subset>."
+          "bad": "Our method is reliable.",
+          "better": "We quantify stability on <stress test> and report failure cases on <hard subset>."
         }
       ]
     }
@@ -336,5 +344,10 @@
         "contribution"
       ]
     }
+  ],
+  "conclusion_template": [
+    "C1 Summarize the theoretical contribution and practical meaning.",
+    "C2 Clarify valid regime and known limitations.",
+    "C3 Point to open problems and broader applicability."
   ]
 }

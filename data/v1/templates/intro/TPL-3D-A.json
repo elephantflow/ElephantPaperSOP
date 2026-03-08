@@ -25,13 +25,16 @@
     "resource_cost_disclosure"
   ],
   "full_intro_template": [
-    "P1 Context: <3D task> is critical for <application>, but real scenes contain <occlusion / pose variation / sparse views>.",
-    "P2 Failure diagnosis: Existing <global or monolithic> methods accumulate errors because <coupled subproblem> is solved at once.",
-    "P3 Reframing: We decompose the problem into <stage-1> and <stage-2>, reducing global ambiguity into local verifiable steps.",
-    "P4 Method core: Our design introduces <module> to model <geometry/consistency>, and <refinement module> to correct residual mismatch.",
-    "P5 Evidence promise: Under matched budgets, we target gains on <metric1/metric2> and analyze per-stage error propagation.",
-    "P6 Limitation hint: We also report failure cases under <extreme sparsity / topology change>.",
-    "P7 Contributions: (i) decomposition, (ii) mechanism, (iii) empirical validation with ablation and diagnostics."
+    "P1 Problem setup: In <3D task>, we target <deployment setting> where <hard condition> frequently appears and directly affects <downstream objective>.",
+    "P2 Why now: Recent progress in <related direction> improves <capability>, but practical systems still fail under <specific regime>.",
+    "P3 Formal gap: Existing <baseline family> assumes <assumption>, which breaks when <violation signal> occurs.",
+    "P4 Failure evidence: Prior pipelines show accumulated error from <stage-A> to <stage-B>, causing degradation on <metric>.",
+    "P5 Core idea: We decompose the full problem into <stage-1> and <stage-2> with explicit interface variable <interface token>.",
+    "P6 Mechanism detail: Stage-1 estimates <structure variable>; stage-2 refines <residual variable> with <consistency prior>.",
+    "P7 Theoretical/empirical hook: We expect monotonic improvement on <metric1> and bounded cost on <latency/memory/token>.",
+    "P8 Quantitative promise: Under matched budgets, we report <mean ± std> and absolute gain <delta%> against <strong baseline>.",
+    "P9 Boundary and failure: We include failure cases under <extreme sparsity/topology shift/motion blur> and explain failure causes.",
+    "P10 Contributions: (i) decomposition principle, (ii) implementable mechanism, (iii) diagnostics with ablation and error attribution."
   ],
   "abstract_template": [
     "A1: State 3D problem and deployment constraint.",
@@ -40,14 +43,24 @@
     "A4: Report matched-budget improvement and one limitation boundary."
   ],
   "method_template": [
-    "M1: Define each stage input/output and invariants.",
-    "M2: Explain core module and why it reduces ambiguity.",
-    "M3: Provide complexity and memory cost delta."
+    "M1 Problem formulation: Define inputs, outputs, and symbols for <scene/task variable>.",
+    "M2 Pipeline overview: Describe stage-1, stage-2, and data flow between modules.",
+    "M3 Stage-1 objective: Optimize <objective-1> with constraint <constraint-1>.",
+    "M4 Stage-2 objective: Refine <objective-2> using residual signal from stage-1.",
+    "M5 Interface contract: Specify what must be passed from stage-1 to stage-2 and why.",
+    "M6 Complexity: Report training/inference overhead in <ms>, <GB>, and <FLOPs/token>.",
+    "M7 stability mechanism: Explain how <module> handles <noise/occlusion/domain shift>.",
+    "M8 Implementation notes: List key hyperparameters, seeds, and reproducibility settings."
   ],
   "experiments_template": [
-    "E1: Report strong baselines under matched budgets.",
-    "E2: Include stage-wise error propagation analysis.",
-    "E3: Include failure taxonomy and representative counter-example."
+    "E1 Datasets/protocol: Define benchmark splits, leakage checks, and matched-budget setup.",
+    "E2 Main table: Compare with strongest baselines on <metric1>, <metric2>, and <cost metric>.",
+    "E3 Statistical reliability: Report <mean ± std>, confidence interval, and significance test.",
+    "E4 Ablation-1: Remove <module-1> and quantify delta on hard subsets.",
+    "E5 Ablation-2: Remove <module-2> and analyze error propagation from stage-1 to stage-2.",
+    "E6 Efficiency: Report latency, memory, and compute trade-offs at multiple scales.",
+    "E7 Failure analysis: Provide taxonomy and representative counter-examples with explanations.",
+    "E8 Generalization: Test domain shift / out-of-distribution settings and discuss limits."
   ],
   "falsifiable_claims": [
     "If <core module> is removed, performance on <hard subset> should decrease by >= <delta>.",
@@ -100,9 +113,9 @@
         "stage-wise error propagation note"
       ],
       "forbidden_claims": [
-        "state-of-the-art performance",
+        "top-tier performance",
         "the first work that",
-        "robust in all scenarios",
+        "reliable in all scenarios",
         "consistently superior without exception"
       ],
       "evidence_hook": "Link this paragraph to a concrete artifact: Table/Figure/Theorem/Ablation.",
@@ -121,8 +134,8 @@
           "better": "To the best of our knowledge, this is one of the first unified treatments under <assumptions>."
         },
         {
-          "bad": "Our method is robust.",
-          "better": "We quantify robustness on <stress test> and report failure cases on <hard subset>."
+          "bad": "Our method is reliable.",
+          "better": "We quantify stability on <stress test> and report failure cases on <hard subset>."
         }
       ]
     },
@@ -138,9 +151,9 @@
         "stage-wise error propagation note"
       ],
       "forbidden_claims": [
-        "state-of-the-art performance",
+        "top-tier performance",
         "the first work that",
-        "robust in all scenarios",
+        "reliable in all scenarios",
         "consistently superior without exception"
       ],
       "evidence_hook": "Link this paragraph to a concrete artifact: Table/Figure/Theorem/Ablation.",
@@ -158,8 +171,8 @@
           "better": "To the best of our knowledge, this is one of the first unified treatments under <assumptions>."
         },
         {
-          "bad": "Our method is robust.",
-          "better": "We quantify robustness on <stress test> and report failure cases on <hard subset>."
+          "bad": "Our method is reliable.",
+          "better": "We quantify stability on <stress test> and report failure cases on <hard subset>."
         }
       ]
     },
@@ -175,9 +188,9 @@
         "stage-wise error propagation note"
       ],
       "forbidden_claims": [
-        "state-of-the-art performance",
+        "top-tier performance",
         "the first work that",
-        "robust in all scenarios",
+        "reliable in all scenarios",
         "consistently superior without exception"
       ],
       "evidence_hook": "Link this paragraph to a concrete artifact: Table/Figure/Theorem/Ablation.",
@@ -195,8 +208,8 @@
           "better": "To the best of our knowledge, this is one of the first unified treatments under <assumptions>."
         },
         {
-          "bad": "Our method is robust.",
-          "better": "We quantify robustness on <stress test> and report failure cases on <hard subset>."
+          "bad": "Our method is reliable.",
+          "better": "We quantify stability on <stress test> and report failure cases on <hard subset>."
         }
       ]
     },
@@ -212,9 +225,9 @@
         "stage-wise error propagation note"
       ],
       "forbidden_claims": [
-        "state-of-the-art performance",
+        "top-tier performance",
         "the first work that",
-        "robust in all scenarios",
+        "reliable in all scenarios",
         "consistently superior without exception"
       ],
       "evidence_hook": "Link this paragraph to a concrete artifact: Table/Figure/Theorem/Ablation.",
@@ -233,8 +246,8 @@
           "better": "To the best of our knowledge, this is one of the first unified treatments under <assumptions>."
         },
         {
-          "bad": "Our method is robust.",
-          "better": "We quantify robustness on <stress test> and report failure cases on <hard subset>."
+          "bad": "Our method is reliable.",
+          "better": "We quantify stability on <stress test> and report failure cases on <hard subset>."
         }
       ]
     },
@@ -250,9 +263,9 @@
         "stage-wise error propagation note"
       ],
       "forbidden_claims": [
-        "state-of-the-art performance",
+        "top-tier performance",
         "the first work that",
-        "robust in all scenarios",
+        "reliable in all scenarios",
         "consistently superior without exception"
       ],
       "evidence_hook": "Link this paragraph to a concrete artifact: Table/Figure/Theorem/Ablation.",
@@ -269,8 +282,8 @@
           "better": "To the best of our knowledge, this is one of the first unified treatments under <assumptions>."
         },
         {
-          "bad": "Our method is robust.",
-          "better": "We quantify robustness on <stress test> and report failure cases on <hard subset>."
+          "bad": "Our method is reliable.",
+          "better": "We quantify stability on <stress test> and report failure cases on <hard subset>."
         }
       ]
     },
@@ -286,9 +299,9 @@
         "stage-wise error propagation note"
       ],
       "forbidden_claims": [
-        "state-of-the-art performance",
+        "top-tier performance",
         "the first work that",
-        "robust in all scenarios",
+        "reliable in all scenarios",
         "consistently superior without exception"
       ],
       "evidence_hook": "Link this paragraph to a concrete artifact: Table/Figure/Theorem/Ablation.",
@@ -305,8 +318,8 @@
           "better": "To the best of our knowledge, this is one of the first unified treatments under <assumptions>."
         },
         {
-          "bad": "Our method is robust.",
-          "better": "We quantify robustness on <stress test> and report failure cases on <hard subset>."
+          "bad": "Our method is reliable.",
+          "better": "We quantify stability on <stress test> and report failure cases on <hard subset>."
         }
       ]
     },
@@ -322,9 +335,9 @@
         "stage-wise error propagation note"
       ],
       "forbidden_claims": [
-        "state-of-the-art performance",
+        "top-tier performance",
         "the first work that",
-        "robust in all scenarios",
+        "reliable in all scenarios",
         "consistently superior without exception"
       ],
       "evidence_hook": "Link this paragraph to a concrete artifact: Table/Figure/Theorem/Ablation.",
@@ -339,8 +352,8 @@
           "better": "To the best of our knowledge, this is one of the first unified treatments under <assumptions>."
         },
         {
-          "bad": "Our method is robust.",
-          "better": "We quantify robustness on <stress test> and report failure cases on <hard subset>."
+          "bad": "Our method is reliable.",
+          "better": "We quantify stability on <stress test> and report failure cases on <hard subset>."
         }
       ]
     }
@@ -390,5 +403,10 @@
         "contribution"
       ]
     }
+  ],
+  "conclusion_template": [
+    "C1 We summarize how decomposition from <stage-1> to <stage-2> resolves the identified gap.",
+    "C2 We highlight quantitative gains under matched settings and clarify cost boundaries.",
+    "C3 We state concrete limitations and next steps for broader deployment."
   ]
 }

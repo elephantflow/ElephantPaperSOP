@@ -1,7 +1,7 @@
 {
   "schema_version": "index.v1",
   "version": "v1.3.0",
-  "updated_at": "2026-03-07T17:19:37+00:00",
+  "updated_at": "2026-03-08T07:36:39Z",
   "focus": "multi-section+reviewer-guided+template-v3",
   "sections_supported": [
     "introduction",
@@ -11,7 +11,7 @@
     "conclusion"
   ],
   "paper_count": 50,
-  "template_count": 10,
+  "template_count": 5,
   "paths": {
     "papers_dir": "data/v1/papers",
     "templates_intro_dir": "data/v1/templates/intro",
@@ -19,23 +19,17 @@
   },
   "templates": [
     "TPL-3D-A",
-    "TPL-3D-B",
     "TPL-SEG-A",
-    "TPL-SEG-B",
     "TPL-VLM-A",
-    "TPL-VLM-B",
     "TPL-BENCH-A",
-    "TPL-BENCH-B",
-    "TPL-MED-A",
     "TPL-TH-A"
   ],
   "papers": [
     {
       "id": "cvpr2025-001-2dmamba-efficient-state-space-model-for-image-repres",
       "title": "2DMamba： Efficient State Space Model for Image Representation with Applications on Giga-Pixel Whole Slide Image Classification",
-      "template_id": "TPL-BENCH-B",
+      "template_id": "TPL-BENCH-A",
       "template_candidates": [
-        "TPL-BENCH-B",
         "TPL-BENCH-A"
       ],
       "status": "ready",
@@ -49,8 +43,7 @@
       "title": "3D Convex Splatting： Radiance Field Rendering with 3D Smooth Convexes",
       "template_id": "TPL-3D-A",
       "template_candidates": [
-        "TPL-3D-A",
-        "TPL-3D-B"
+        "TPL-3D-A"
       ],
       "status": "ready",
       "path": "data/v1/papers/cvpr2025-002-3d-convex-splatting-radiance-field-rendering-with-3d.json",
@@ -63,8 +56,7 @@
       "title": "3D Dental Model Segmentation with Geometrical Boundary Preserving",
       "template_id": "TPL-SEG-A",
       "template_candidates": [
-        "TPL-SEG-A",
-        "TPL-SEG-B"
+        "TPL-SEG-A"
       ],
       "status": "ready",
       "path": "data/v1/papers/cvpr2025-003-3d-dental-model-segmentation-with-geometrical-bounda.json",
@@ -77,8 +69,7 @@
       "title": "3D Gaussian Head Avatars with Expressive Dynamic Appearances by Compact Tensorial Representations",
       "template_id": "TPL-3D-A",
       "template_candidates": [
-        "TPL-3D-A",
-        "TPL-3D-B"
+        "TPL-3D-A"
       ],
       "status": "ready",
       "path": "data/v1/papers/cvpr2025-004-3d-gaussian-head-avatars-with-expressive-dynamic-app.json",
@@ -89,9 +80,8 @@
     {
       "id": "cvpr2025-005-3d-gaussian-inpainting-with-depth-guided-cross-view-",
       "title": "3D Gaussian Inpainting with Depth-Guided Cross-View Consistency",
-      "template_id": "TPL-3D-B",
+      "template_id": "TPL-3D-A",
       "template_candidates": [
-        "TPL-3D-B",
         "TPL-3D-A"
       ],
       "status": "ready",
@@ -105,9 +95,8 @@
       "title": "3D Occupancy Prediction with Low-Resolution Queries via Prototype-aware View Transformation",
       "template_id": "TPL-TH-A",
       "template_candidates": [
-        "TPL-TH-A",
         "TPL-3D-A",
-        "TPL-3D-B"
+        "TPL-TH-A"
       ],
       "status": "ready",
       "path": "data/v1/papers/cvpr2025-006-3d-occupancy-prediction-with-low-resolution-queries-.json",
@@ -120,8 +109,7 @@
       "title": "3D Prior Is All You Need： Cross-Task Few-shot 2D Gaze Estimation",
       "template_id": "TPL-SEG-A",
       "template_candidates": [
-        "TPL-SEG-A",
-        "TPL-SEG-B"
+        "TPL-SEG-A"
       ],
       "status": "ready",
       "path": "data/v1/papers/cvpr2025-007-3d-prior-is-all-you-need-cross-task-few-shot-2d-gaze.json",
@@ -132,9 +120,8 @@
     {
       "id": "cvpr2025-008-3d-student-splatting-and-scooping",
       "title": "3D Student Splatting and Scooping",
-      "template_id": "TPL-3D-B",
+      "template_id": "TPL-3D-A",
       "template_candidates": [
-        "TPL-3D-B",
         "TPL-3D-A"
       ],
       "status": "ready",
@@ -148,8 +135,7 @@
       "title": "3D-AVS： LiDAR-based 3D Auto-Vocabulary Segmentation",
       "template_id": "TPL-SEG-A",
       "template_candidates": [
-        "TPL-SEG-A",
-        "TPL-SEG-B"
+        "TPL-SEG-A"
       ],
       "status": "ready",
       "path": "data/v1/papers/cvpr2025-009-3d-avs-lidar-based-3d-auto-vocabulary-segmentation.json",
@@ -160,9 +146,8 @@
     {
       "id": "cvpr2025-010-3d-grand-a-million-scale-dataset-for-3d-llms-with-be",
       "title": "3D-GRAND： A Million-Scale Dataset for 3D-LLMs with Better Grounding and Less Hallucination",
-      "template_id": "TPL-VLM-B",
+      "template_id": "TPL-VLM-A",
       "template_candidates": [
-        "TPL-VLM-B",
         "TPL-VLM-A"
       ],
       "status": "ready",
@@ -174,9 +159,8 @@
     {
       "id": "cvpr2025-011-3d-gsw-3d-gaussian-splatting-for-robust-watermarking",
       "title": "3D-GSW： 3D Gaussian Splatting for Robust Watermarking",
-      "template_id": "TPL-3D-B",
+      "template_id": "TPL-3D-A",
       "template_candidates": [
-        "TPL-3D-B",
         "TPL-3D-A"
       ],
       "status": "ready",
@@ -190,8 +174,7 @@
       "title": "3D-HGS： 3D Half-Gaussian Splatting",
       "template_id": "TPL-3D-A",
       "template_candidates": [
-        "TPL-3D-A",
-        "TPL-3D-B"
+        "TPL-3D-A"
       ],
       "status": "ready",
       "path": "data/v1/papers/cvpr2025-012-3d-hgs-3d-half-gaussian-splatting.json",
@@ -204,8 +187,7 @@
       "title": "3D-LLaVA： Towards Generalist 3D LMMs with Omni Superpoint Transformer",
       "template_id": "TPL-VLM-A",
       "template_candidates": [
-        "TPL-VLM-A",
-        "TPL-VLM-B"
+        "TPL-VLM-A"
       ],
       "status": "ready",
       "path": "data/v1/papers/cvpr2025-013-3d-llava-towards-generalist-3d-lmms-with-omni-superp.json",
@@ -218,8 +200,7 @@
       "title": "3D-Mem： 3D Scene Memory for Embodied Exploration and Reasoning",
       "template_id": "TPL-3D-A",
       "template_candidates": [
-        "TPL-3D-A",
-        "TPL-3D-B"
+        "TPL-3D-A"
       ],
       "status": "ready",
       "path": "data/v1/papers/cvpr2025-014-3d-mem-3d-scene-memory-for-embodied-exploration-and-.json",
@@ -232,8 +213,7 @@
       "title": "3D-MVP： 3D Multiview Pretraining for Manipulation",
       "template_id": "TPL-3D-A",
       "template_candidates": [
-        "TPL-3D-A",
-        "TPL-3D-B"
+        "TPL-3D-A"
       ],
       "status": "ready",
       "path": "data/v1/papers/cvpr2025-015-3d-mvp-3d-multiview-pretraining-for-manipulation.json",
@@ -246,8 +226,7 @@
       "title": "3D-SLNR： A Super Lightweight Neural Representation for Large-scale 3D Mapping",
       "template_id": "TPL-3D-A",
       "template_candidates": [
-        "TPL-3D-A",
-        "TPL-3D-B"
+        "TPL-3D-A"
       ],
       "status": "ready",
       "path": "data/v1/papers/cvpr2025-016-3d-slnr-a-super-lightweight-neural-representation-fo.json",
@@ -260,8 +239,7 @@
       "title": "3DEnhancer： Consistent Multi-View Diffusion for 3D Enhancement",
       "template_id": "TPL-3D-A",
       "template_candidates": [
-        "TPL-3D-A",
-        "TPL-3D-B"
+        "TPL-3D-A"
       ],
       "status": "ready",
       "path": "data/v1/papers/cvpr2025-017-3denhancer-consistent-multi-view-diffusion-for-3d-en.json",
@@ -274,8 +252,7 @@
       "title": "3DGUT： Enabling Distorted Cameras and Secondary Rays in Gaussian Splatting",
       "template_id": "TPL-3D-A",
       "template_candidates": [
-        "TPL-3D-A",
-        "TPL-3D-B"
+        "TPL-3D-A"
       ],
       "status": "ready",
       "path": "data/v1/papers/cvpr2025-018-3dgut-enabling-distorted-cameras-and-secondary-rays-.json",
@@ -288,8 +265,7 @@
       "title": "3DTopia-XL： Scaling High-quality 3D Asset Generation via Primitive Diffusion",
       "template_id": "TPL-3D-A",
       "template_candidates": [
-        "TPL-3D-A",
-        "TPL-3D-B"
+        "TPL-3D-A"
       ],
       "status": "ready",
       "path": "data/v1/papers/cvpr2025-019-3dtopia-xl-scaling-high-quality-3d-asset-generation-.json",
@@ -302,8 +278,7 @@
       "title": "4D LangSplat： 4D Language Gaussian Splatting via Multimodal Large Language Models",
       "template_id": "TPL-3D-A",
       "template_candidates": [
-        "TPL-3D-A",
-        "TPL-3D-B"
+        "TPL-3D-A"
       ],
       "status": "ready",
       "path": "data/v1/papers/cvpr2025-020-4d-langsplat-4d-language-gaussian-splatting-via-mult.json",
@@ -316,8 +291,7 @@
       "title": "4D-Fly： Fast 4D Reconstruction from a Single Monocular Video",
       "template_id": "TPL-3D-A",
       "template_candidates": [
-        "TPL-3D-A",
-        "TPL-3D-B"
+        "TPL-3D-A"
       ],
       "status": "ready",
       "path": "data/v1/papers/cvpr2025-021-4d-fly-fast-4d-reconstruction-from-a-single-monocula.json",
@@ -330,8 +304,7 @@
       "title": "4Deform： Neural Surface Deformation for Robust Shape Interpolation",
       "template_id": "TPL-3D-A",
       "template_candidates": [
-        "TPL-3D-A",
-        "TPL-3D-B"
+        "TPL-3D-A"
       ],
       "status": "ready",
       "path": "data/v1/papers/cvpr2025-022-4deform-neural-surface-deformation-for-robust-shape-.json",
@@ -344,8 +317,7 @@
       "title": "4DGC： Rate-Aware 4D Gaussian Compression for Efficient Streamable Free-Viewpoint Video",
       "template_id": "TPL-3D-A",
       "template_candidates": [
-        "TPL-3D-A",
-        "TPL-3D-B"
+        "TPL-3D-A"
       ],
       "status": "ready",
       "path": "data/v1/papers/cvpr2025-023-4dgc-rate-aware-4d-gaussian-compression-for-efficien.json",
@@ -356,9 +328,8 @@
     {
       "id": "cvpr2025-024-4dtam-non-rigid-tracking-and-mapping-via-dynamic-sur",
       "title": "4DTAM： Non-Rigid Tracking and Mapping via Dynamic Surface Gaussians",
-      "template_id": "TPL-3D-B",
+      "template_id": "TPL-3D-A",
       "template_candidates": [
-        "TPL-3D-B",
         "TPL-3D-A"
       ],
       "status": "ready",
@@ -372,8 +343,7 @@
       "title": "4Real-Video： Learning Generalizable Photo-Realistic 4D Video Diffusion",
       "template_id": "TPL-3D-A",
       "template_candidates": [
-        "TPL-3D-A",
-        "TPL-3D-B"
+        "TPL-3D-A"
       ],
       "status": "ready",
       "path": "data/v1/papers/cvpr2025-025-4real-video-learning-generalizable-photo-realistic-4.json",
@@ -384,9 +354,8 @@
     {
       "id": "cvpr2025-026-5-100-breaking-performance-shackles-of-full-fine-tun",
       "title": "5%＞100%： Breaking Performance Shackles of Full Fine-Tuning on Visual Recognition Tasks",
-      "template_id": "TPL-SEG-B",
+      "template_id": "TPL-SEG-A",
       "template_candidates": [
-        "TPL-SEG-B",
         "TPL-SEG-A"
       ],
       "status": "ready",
@@ -400,8 +369,7 @@
       "title": "A Bias-Free Training Paradigm for More General AI-generated Image Detection",
       "template_id": "TPL-SEG-A",
       "template_candidates": [
-        "TPL-SEG-A",
-        "TPL-SEG-B"
+        "TPL-SEG-A"
       ],
       "status": "ready",
       "path": "data/v1/papers/cvpr2025-027-a-bias-free-training-paradigm-for-more-general-ai-ge.json",
@@ -414,8 +382,7 @@
       "title": "A Closer Look at Time Steps is Worthy of Triple Speed-Up for Diffusion Model Training",
       "template_id": "TPL-3D-A",
       "template_candidates": [
-        "TPL-3D-A",
-        "TPL-3D-B"
+        "TPL-3D-A"
       ],
       "status": "ready",
       "path": "data/v1/papers/cvpr2025-028-a-closer-look-at-time-steps-is-worthy-of-triple-spee.json",
@@ -428,8 +395,7 @@
       "title": "A Comprehensive Study of Decoder-Only LLMs for Text-to-Image Generation",
       "template_id": "TPL-VLM-A",
       "template_candidates": [
-        "TPL-VLM-A",
-        "TPL-VLM-B"
+        "TPL-VLM-A"
       ],
       "status": "ready",
       "path": "data/v1/papers/cvpr2025-029-a-comprehensive-study-of-decoder-only-llms-for-text-.json",
@@ -442,8 +408,7 @@
       "title": "A Data-Centric Revisit of Pre-Trained Vision Models for Robot Learning",
       "template_id": "TPL-BENCH-A",
       "template_candidates": [
-        "TPL-BENCH-A",
-        "TPL-BENCH-B"
+        "TPL-BENCH-A"
       ],
       "status": "ready",
       "path": "data/v1/papers/cvpr2025-030-a-data-centric-revisit-of-pre-trained-vision-models-.json",
@@ -456,8 +421,7 @@
       "title": "A Dataset for Semantic Segmentation in the Presence of Unknowns",
       "template_id": "TPL-BENCH-A",
       "template_candidates": [
-        "TPL-BENCH-A",
-        "TPL-BENCH-B"
+        "TPL-BENCH-A"
       ],
       "status": "ready",
       "path": "data/v1/papers/cvpr2025-031-a-dataset-for-semantic-segmentation-in-the-presence-.json",
@@ -470,8 +434,7 @@
       "title": "A Distractor-Aware Memory for Visual Object Tracking with SAM2",
       "template_id": "TPL-SEG-A",
       "template_candidates": [
-        "TPL-SEG-A",
-        "TPL-SEG-B"
+        "TPL-SEG-A"
       ],
       "status": "ready",
       "path": "data/v1/papers/cvpr2025-032-a-distractor-aware-memory-for-visual-object-tracking.json",
@@ -484,8 +447,7 @@
       "title": "A Flag Decomposition for Hierarchical Datasets",
       "template_id": "TPL-3D-A",
       "template_candidates": [
-        "TPL-3D-A",
-        "TPL-3D-B"
+        "TPL-3D-A"
       ],
       "status": "ready",
       "path": "data/v1/papers/cvpr2025-033-a-flag-decomposition-for-hierarchical-datasets.json",
@@ -498,8 +460,7 @@
       "title": "A Focused Human Body Model for Accurate Anthropometric Measurements Extraction",
       "template_id": "TPL-3D-A",
       "template_candidates": [
-        "TPL-3D-A",
-        "TPL-3D-B"
+        "TPL-3D-A"
       ],
       "status": "ready",
       "path": "data/v1/papers/cvpr2025-034-a-focused-human-body-model-for-accurate-anthropometr.json",
@@ -512,8 +473,7 @@
       "title": "A General Adaptive Dual-level Weighting Mechanism for Remote Sensing Pansharpening",
       "template_id": "TPL-SEG-A",
       "template_candidates": [
-        "TPL-SEG-A",
-        "TPL-SEG-B"
+        "TPL-SEG-A"
       ],
       "status": "ready",
       "path": "data/v1/papers/cvpr2025-035-a-general-adaptive-dual-level-weighting-mechanism-fo.json",
@@ -526,8 +486,7 @@
       "title": "A Hubness Perspective on Representation Learning for Graph-Based Multi-View Clustering",
       "template_id": "TPL-BENCH-A",
       "template_candidates": [
-        "TPL-BENCH-A",
-        "TPL-BENCH-B"
+        "TPL-BENCH-A"
       ],
       "status": "ready",
       "path": "data/v1/papers/cvpr2025-036-a-hubness-perspective-on-representation-learning-for.json",
@@ -540,8 +499,7 @@
       "title": "A Lightweight UDF Learning Framework for 3D Reconstruction Based on Local Shape Functions",
       "template_id": "TPL-3D-A",
       "template_candidates": [
-        "TPL-3D-A",
-        "TPL-3D-B"
+        "TPL-3D-A"
       ],
       "status": "ready",
       "path": "data/v1/papers/cvpr2025-037-a-lightweight-udf-learning-framework-for-3d-reconstr.json",
@@ -554,9 +512,8 @@
       "title": "A New Statistical Model of Star Speckles for Learning to Detect and Characterize Exoplanets in Direct Imaging Observations",
       "template_id": "TPL-TH-A",
       "template_candidates": [
-        "TPL-TH-A",
         "TPL-3D-A",
-        "TPL-3D-B"
+        "TPL-TH-A"
       ],
       "status": "ready",
       "path": "data/v1/papers/cvpr2025-038-a-new-statistical-model-of-star-speckles-for-learnin.json",
@@ -569,8 +526,7 @@
       "title": "A Physics-Informed Blur Learning Framework for Imaging Systems",
       "template_id": "TPL-BENCH-A",
       "template_candidates": [
-        "TPL-BENCH-A",
-        "TPL-BENCH-B"
+        "TPL-BENCH-A"
       ],
       "status": "ready",
       "path": "data/v1/papers/cvpr2025-039-a-physics-informed-blur-learning-framework-for-imagi.json",
@@ -583,9 +539,8 @@
       "title": "A Polarization-Aided Transformer for Image Deblurring via Motion Vector Decomposition",
       "template_id": "TPL-TH-A",
       "template_candidates": [
-        "TPL-TH-A",
         "TPL-3D-A",
-        "TPL-3D-B"
+        "TPL-TH-A"
       ],
       "status": "ready",
       "path": "data/v1/papers/cvpr2025-040-a-polarization-aided-transformer-for-image-deblurrin.json",
@@ -598,8 +553,7 @@
       "title": "A Regularization-Guided Equivariant Approach for Image Restoration",
       "template_id": "TPL-SEG-A",
       "template_candidates": [
-        "TPL-SEG-A",
-        "TPL-SEG-B"
+        "TPL-SEG-A"
       ],
       "status": "ready",
       "path": "data/v1/papers/cvpr2025-041-a-regularization-guided-equivariant-approach-for-ima.json",
@@ -612,9 +566,8 @@
       "title": "A Selective Re-learning Mechanism for Hyperspectral Fusion Imaging",
       "template_id": "TPL-TH-A",
       "template_candidates": [
-        "TPL-TH-A",
         "TPL-3D-A",
-        "TPL-3D-B"
+        "TPL-TH-A"
       ],
       "status": "ready",
       "path": "data/v1/papers/cvpr2025-042-a-selective-re-learning-mechanism-for-hyperspectral-.json",
@@ -627,8 +580,7 @@
       "title": "A Semantic Knowledge Complementarity based Decoupling Framework for Semi-supervised Class-imbalanced Medical Image Segmentation",
       "template_id": "TPL-SEG-A",
       "template_candidates": [
-        "TPL-SEG-A",
-        "TPL-SEG-B"
+        "TPL-SEG-A"
       ],
       "status": "ready",
       "path": "data/v1/papers/cvpr2025-043-a-semantic-knowledge-complementarity-based-decouplin.json",
@@ -641,8 +593,7 @@
       "title": "A Simple Data Augmentation for Feature Distribution Skewed Federated Learning",
       "template_id": "TPL-SEG-A",
       "template_candidates": [
-        "TPL-SEG-A",
-        "TPL-SEG-B"
+        "TPL-SEG-A"
       ],
       "status": "ready",
       "path": "data/v1/papers/cvpr2025-044-a-simple-data-augmentation-for-feature-distribution-.json",
@@ -655,8 +606,7 @@
       "title": "A Simple yet Effective Layout Token in Large Language Models for Document Understanding",
       "template_id": "TPL-VLM-A",
       "template_candidates": [
-        "TPL-VLM-A",
-        "TPL-VLM-B"
+        "TPL-VLM-A"
       ],
       "status": "ready",
       "path": "data/v1/papers/cvpr2025-045-a-simple-yet-effective-layout-token-in-large-languag.json",
@@ -669,9 +619,8 @@
       "title": "A Stitch in Time Saves Nine： Small VLM is a Precise Guidance for Accelerating Large VLMs",
       "template_id": "TPL-TH-A",
       "template_candidates": [
-        "TPL-TH-A",
         "TPL-3D-A",
-        "TPL-3D-B"
+        "TPL-TH-A"
       ],
       "status": "ready",
       "path": "data/v1/papers/cvpr2025-046-a-stitch-in-time-saves-nine-small-vlm-is-a-precise-g.json",
@@ -684,8 +633,7 @@
       "title": "A Tale of Two Classes： Adapting Supervised Contrastive Learning to Binary Imbalanced Datasets",
       "template_id": "TPL-BENCH-A",
       "template_candidates": [
-        "TPL-BENCH-A",
-        "TPL-BENCH-B"
+        "TPL-BENCH-A"
       ],
       "status": "ready",
       "path": "data/v1/papers/cvpr2025-047-a-tale-of-two-classes-adapting-supervised-contrastiv.json",
@@ -698,9 +646,8 @@
       "title": "A Theory of Learning Unified Model via Knowledge Integration from Label Space Varying Domains",
       "template_id": "TPL-TH-A",
       "template_candidates": [
-        "TPL-TH-A",
         "TPL-3D-A",
-        "TPL-3D-B"
+        "TPL-TH-A"
       ],
       "status": "ready",
       "path": "data/v1/papers/cvpr2025-048-a-theory-of-learning-unified-model-via-knowledge-int.json",
@@ -713,8 +660,7 @@
       "title": "A Unified Approach to Interpreting Self-supervised Pre-training Methods for 3D Point Clouds via Interactions",
       "template_id": "TPL-3D-A",
       "template_candidates": [
-        "TPL-3D-A",
-        "TPL-3D-B"
+        "TPL-3D-A"
       ],
       "status": "ready",
       "path": "data/v1/papers/cvpr2025-049-a-unified-approach-to-interpreting-self-supervised-p.json",
@@ -725,9 +671,8 @@
     {
       "id": "cvpr2025-050-a-unified-framework-for-heterogeneous-semi-supervise",
       "title": "A Unified Framework for Heterogeneous Semi-supervised Learning",
-      "template_id": "TPL-BENCH-B",
+      "template_id": "TPL-BENCH-A",
       "template_candidates": [
-        "TPL-BENCH-B",
         "TPL-BENCH-A"
       ],
       "status": "ready",
