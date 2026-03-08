@@ -34,3 +34,7 @@ python3 scripts/migrate_intro_to_v1.py
   - 左侧：论文列表（搜索 / 模板 / 状态过滤）
   - 中间：论文详情（摘抄句 / 模板映射 / 章节状态 / 全文压缩统计）
   - 右侧：模板全文（完整 Introduction 段落模板 + 句式库）
+- `templates.html`
+  - 模板专用展示页（按 domain / strategy / variant 筛选）
+  - 查看 Abstract/Introduction/Method/Experiments/Conclusion 模板正文
+  - 查看 paragraph cards 与审稿约束字段
